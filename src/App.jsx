@@ -1,15 +1,14 @@
 import React from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { LampDemo } from "@/components/ui/lamp"  
+import { Githubglobe } from "./pages/Githubglobe"
+import WorldMapDemo from "./pages/WorldMap"
+
 function App() {
-
-
   return (
-    
-     <LampDemo/>
-
+    <div className="bg-black min-h-screen text-white">
+      <Githubglobe />
+      <WorldMapDemo />
+    </div>
   )
 }
 
