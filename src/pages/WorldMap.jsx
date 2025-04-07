@@ -4,12 +4,12 @@ import { motion } from "framer-motion"
 
 export default function WorldMapDemo() {
   return (
-    <div className="bg-black py-40 w-full">
-      <div className="max-w-7xl mx-auto text-center">
-        <p className="font-bold text-xl md:text-4xl text-white">
-          Remote{" "}
-          <span className="text-neutral-400">
-            {"Connectivity".split("").map((word, idx) => (
+    <div className="bg-white w-full py-20">
+      <div className="max-w-7xl mx-auto text-center px-6">
+        <p className="font-display text-xl md:text-4xl font-bold text-spice-dark">
+          Global{" "}
+          <span className="text-spice-primary">
+            {"Distribution".split("").map((letter, idx) => (
               <motion.span
                 key={idx}
                 className="inline-block"
@@ -17,53 +17,53 @@ export default function WorldMapDemo() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: idx * 0.04 }}
               >
-                {word}
+                {letter}
               </motion.span>
             ))}
           </span>
         </p>
-        <p className="text-sm md:text-lg text-neutral-400 max-w-2xl mx-auto py-4">
-          Break free from traditional boundaries. Work from anywhere, at the comfort of your own studio apartment.
-          Perfect for Nomads and Travellers.
+        <p className="font-body text-sm md:text-lg text-spice-text max-w-2xl mx-auto py-4">
+          We export premium Indian commodities to over 30 countries worldwide. Our robust supply chain ensures timely delivery to all corners of the globe.
         </p>
       </div>
       <WorldMap 
-        forceDarkMode={false}  // Set to false to get white background
-        lineColor="#0ea5e9" 
+        forceDarkMode={false}
+        lineColor="#0066cc" 
         dots={[
           {
-            start: {
-              lat: 64.2008,
-              lng: -149.4937,
-            },
-            end: {
-              lat: 34.0522,
-              lng: -118.2437,
-            },
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: 34.0522, lng: -118.2437 }, // Los Angeles
           },
           {
-            start: { lat: 64.2008, lng: -149.4937 }, // Alaska (Fairbanks)
-            end: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: -15.7975, lng: -47.8919 }, // Brazil
           },
           {
-            start: { lat: -15.7975, lng: -47.8919 }, // Brazil (Brasília)
+            start: { lat: 20.5937, lng: 78.9629 }, // India
             end: { lat: 38.7223, lng: -9.1393 }, // Lisbon
           },
           {
-            start: { lat: 51.5074, lng: -0.1278 }, // London
-            end: { lat: 28.6139, lng: 77.209 }, // New Delhi
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: 51.5074, lng: -0.1278 }, // London
           },
           {
-            start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            end: { lat: 43.1332, lng: 131.9113 }, // Vladivostok
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: 35.6762, lng: 139.6503 }, // Tokyo
           },
           {
-            start: { lat: 28.6139, lng: 77.209 }, // New Delhi
-            end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: -33.8688, lng: 151.2093 }, // Sydney
+          },
+          {
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: 25.2048, lng: 55.2708 }, // Dubai
+          },
+          {
+            start: { lat: 20.5937, lng: 78.9629 }, // India
+            end: { lat: 1.3521, lng: 103.8198 }, // Singapore
           },
         ]}
       />
     </div>
   )
 }
-

@@ -11,27 +11,30 @@ const World = lazy(() =>
 export function Githubglobe() {
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: "#f8fafc", // Light background for the globe
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: "#e0f2fe", // Light blue atmosphere
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: "#e0f2fe", // Light blue emissive
     emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
+    polygonColor: "rgba(0, 102, 204, 0.15)", // Light blue polygons
+    ambientLight: "#ffffff", // White ambient light
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
+    pointLight: "#e0f2fe",
     arcTime: 1000,
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: 22.3193, lng: 114.1694 },
+    initialPosition: { lat: 20.5937, lng: 78.9629 }, // Center on India
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+  
+  // Update colors to blue theme
+  const colors = ["#0066cc", "#2d8efd", "#0099ff"];
+  
   const sampleArcs = [
     {
       order: 1,
@@ -396,10 +399,8 @@ export function Githubglobe() {
   ];
 
   return (
-    <div
-      className="flex flex-row items-center justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
-      <div
-        className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+    <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto bg-gradient-to-b from-white to-blue-50 relative w-full">
+      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
         <motion.div
           initial={{
             opacity: 0,
@@ -413,17 +414,14 @@ export function Githubglobe() {
             duration: 1,
           }}
           className="div">
-          <h2
-            className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-            Briskwell International - Trusted Global Partner
+          <h2 className="text-center font-display text-xl md:text-4xl font-bold text-spice-dark">
+            Briskwell International - <span className="text-spice-primary">Global Exporter</span>
           </h2>
-          <p
-            className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-            We sell WorldWide
+          <p className="text-center font-body text-base md:text-lg font-normal text-spice-text max-w-md mt-2 mx-auto">
+            Connecting Indian premium products with the world
           </p>
         </motion.div>
-        <div
-          className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
+        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent to-blue-50 z-40" />
         <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
           <Suspense fallback={<div>Loading...</div>}>
             <World data={sampleArcs} globeConfig={globeConfig} />
