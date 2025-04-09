@@ -1,101 +1,158 @@
-"use client";;
 import { memo, useCallback, useEffect, useRef } from "react";
-import { cn } from "@/lib/utils";
-import { animate } from "motion/react";
+import { animate } from "framer-motion";
+import { cn } from "../../lib/utils";
 
 const GlowingEffect = memo(({
-  blur = 0,
-  inactiveZone = 0.7,
+  blur = 10,
+  inactiveZone = 0.5,
   proximity = 0,
-  spread = 20,
-  variant = "default",
-  glow = false,
-  className,
-  movementDuration = 2,
-  borderWidth = 1,
-  disabled = true
+spread = 15,
+variant = "default",
+glow = true,
+className,
+movementDuration = 2,
+borderWidth = 1,
+disabled = false
 }) => {
-  const containerRef = useRef(null);
-  const lastPosition = useRef({ x: 0, y: 0 });
-  const animationFrameRef = useRef(0);
+const containerRef = useRef(null);
+const lastPosition = useRef({ x: 0, y: 0 });
+const animationFrameRef = useRef(0);
+const isHoveringRef = useRef(false); // Track if hovering over element
 
-  const handleMove = useCallback((e) => {
-    if (!containerRef.current) return;
+// Throttle mouse movement calculations
+const handleMove = useCallback((e) => {
+  if (!containerRef.current) return;
 
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
+  if (animationFrameRef.current) {
+    cancelAnimationFrame(animationFrameRef.current);
+  }
 
-    animationFrameRef.current = requestAnimationFrame(() => {
-      const element = containerRef.current;
-      if (!element) return;
+  animationFrameRef.current = requestAnimationFrame(() => {
+    const element = containerRef.current;
+    if (!element) return;
 
-      const { left, top, width, height } = element.getBoundingClientRect();
-      const mouseX = e?.x ?? lastPosition.current.x;
-      const mouseY = e?.y ?? lastPosition.current.y;
+    const { left, top, width, height } = element.getBoundingClientRect();
+    const mouseX = e?.x ?? lastPosition.current.x;
+    const mouseY = e?.y ?? lastPosition.current.y;
 
-      if (e) {
-        lastPosition.current = { x: mouseX, y: mouseY };
-      }
+if (e) {
+  lastPosition.current = { x: mouseX, y: mouseY };
+}
 
-      const center = [left + width * 0.5, top + height * 0.5];
-      const distanceFromCenter = Math.hypot(mouseX - center[0], mouseY - center[1]);
-      const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
+// Check if mouse is over this specific element
+const isMouseOver = 
+  mouseX >= left && 
+  mouseX <= left + width && 
+  mouseY >= top && 
+  mouseY <= top + height;
 
-      if (distanceFromCenter < inactiveRadius) {
-        element.style.setProperty("--active", "0");
-        return;
-      }
+// Only process intensive calculations when mouse is near this element
+if (!isMouseOver && !isHoveringRef.current) {
+  element.style.setProperty("--active", "0");
+  return;
+}
 
-      const isActive =
-        mouseX > left - proximity &&
-        mouseX < left + width + proximity &&
-        mouseY > top - proximity &&
-        mouseY < top + height + proximity;
+// Track hover state
+isHoveringRef.current = isMouseOver;
 
-      element.style.setProperty("--active", isActive ? "1" : "0");
+const center = [left + width * 0.5, top + height * 0.5];
+const distanceFromCenter = Math.hypot(mouseX - center[0], mouseY - center[1]);
+const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
 
-      if (!isActive) return;
+if (distanceFromCenter < inactiveRadius) {
+  element.style.setProperty("--active", "0");
+  return;
+}
+const isActive =
+mouseX > left - proximity &&
+mouseX < left + width + proximity &&
+mouseY > top - proximity &&
+mouseY < top + height + proximity;
 
-      const currentAngle =
-        parseFloat(element.style.getPropertyValue("--start")) || 0;
-      let targetAngle =
-        (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
-          Math.PI +
-        90;
+element.style.setProperty("--active", isActive ? "1" : "0");
 
-      const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
-      const newAngle = currentAngle + angleDiff;
+if (!isActive) return;
 
-      animate(currentAngle, newAngle, {
-        duration: movementDuration,
-        ease: [0.16, 1, 0.3, 1],
-        onUpdate: (value) => {
-          element.style.setProperty("--start", String(value));
-        },
-      });
-    });
-  }, [inactiveZone, proximity, movementDuration]);
+const currentAngle =
+parseFloat(element.style.getPropertyValue("--start")) || 0;
+let targetAngle =
+(180 * Math.atan2(mouseY - center[1], mouseX - center[0])) / Math.PI + 90;
 
-  useEffect(() => {
-    if (disabled) return;
+const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
+const newAngle = currentAngle + angleDiff;
 
-    const handleScroll = () => handleMove();
-    const handlePointerMove = (e) => handleMove(e);
+animate(currentAngle, newAngle, {
+duration: movementDuration,
+ease: [0.16, 1, 0.3, 1],
+onUpdate: (value) => {
+  element.style.setProperty("--start", String(value));
+},
+});
+});
+}, [inactiveZone, proximity, movementDuration]);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    document.body.addEventListener("pointermove", handlePointerMove, {
-      passive: true,
-    });
+useEffect(() => {
+  if (disabled) return;
 
+  // Use a throttled event handler for scroll
+  let scrollTimeout;
+  const handleScroll = () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => handleMove(), 100);
+  };
+
+  const handlePointerMove = (e) => handleMove(e);
+
+  // Use passive event listeners for better performance
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  document.body.addEventListener("pointermove", handlePointerMove, { passive: true });
+
+  // Add mouseenter/mouseleave for this specific element
+  const element = containerRef.current;
+  if (element) {
+    element.parentElement.addEventListener("mouseenter", () => {
+      isHoveringRef.current = true;
+    }, { passive: true });
+    
+    element.parentElement.addEventListener("mouseleave", () => {
+      isHoveringRef.current = false;
+      element.style.setProperty("--active", "0");
+    }, { passive: true });
+  }
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+      clearTimeout(scrollTimeout);
       window.removeEventListener("scroll", handleScroll);
       document.body.removeEventListener("pointermove", handlePointerMove);
+      
+      if (element) {
+        element.parentElement.removeEventListener("mouseenter", () => {
+          isHoveringRef.current = true;
+        });
+        element.parentElement.removeEventListener("mouseleave", () => {
+          isHoveringRef.current = false;
+        });
+      }
     };
   }, [handleMove, disabled]);
+
+  // Blue-themed gradient specifically for this project
+  const blueGradient = `
+    radial-gradient(circle, #0066cc 10%, #0066cc00 20%),
+    radial-gradient(circle at 40% 40%, #2d8efd 5%, #2d8efd00 15%),
+    radial-gradient(circle at 60% 60%, #0099ff 10%, #0099ff00 20%), 
+    radial-gradient(circle at 40% 60%, #63b3fb 10%, #63b3fb00 20%),
+    repeating-conic-gradient(
+      from 236.84deg at 50% 50%,
+      #0066cc 0%,
+      #2d8efd calc(25% / var(--repeating-conic-gradient-times)),
+      #0099ff calc(50% / var(--repeating-conic-gradient-times)), 
+      #63b3fb calc(75% / var(--repeating-conic-gradient-times)),
+      #0066cc calc(100% / var(--repeating-conic-gradient-times))
+    )
+  `;
 
   return (
     <>
@@ -108,40 +165,25 @@ const GlowingEffect = memo(({
         )} />
       <div
         ref={containerRef}
-        style={
-          {
-            "--blur": `${blur}px`,
-            "--spread": spread,
-            "--start": "0",
-            "--active": "0",
-            "--glowingeffect-border-width": `${borderWidth}px`,
-            "--repeating-conic-gradient-times": "5",
-
-            "--gradient":
-              variant === "white"
-                ? `repeating-conic-gradient(
+        style={{
+          "--blur": `${blur}px`,
+          "--spread": spread,
+          "--start": "0",
+          "--active": "0",
+          "--glowingeffect-border-width": `${borderWidth}px`,
+          "--repeating-conic-gradient-times": "5",
+          "--gradient": variant === "white" 
+            ? `repeating-conic-gradient(
                 from 236.84deg at 50% 50%,
-                var(--black),
-                var(--black) calc(25% / var(--repeating-conic-gradient-times))
+                #FFFFFF,
+                #FFFFFF calc(25% / var(--repeating-conic-gradient-times))
               )`
-                : `radial-gradient(circle, #dd7bbb 10%, #dd7bbb00 20%),
-              radial-gradient(circle at 40% 40%, #d79f1e 5%, #d79f1e00 15%),
-              radial-gradient(circle at 60% 60%, #5a922c 10%, #5a922c00 20%), 
-              radial-gradient(circle at 40% 60%, #4c7894 10%, #4c789400 20%),
-              repeating-conic-gradient(
-                from 236.84deg at 50% 50%,
-                #dd7bbb 0%,
-                #d79f1e calc(25% / var(--repeating-conic-gradient-times)),
-                #5a922c calc(50% / var(--repeating-conic-gradient-times)), 
-                #4c7894 calc(75% / var(--repeating-conic-gradient-times)),
-                #dd7bbb calc(100% / var(--repeating-conic-gradient-times))
-              )`
-          }
-        }
+            : blueGradient
+        }}
         className={cn(
           "pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity",
           glow && "opacity-100",
-          blur > 0 && "blur-[var(--blur)] ",
+          blur > 0 && "blur-[var(--blur)]",
           className,
           disabled && "!hidden"
         )}>

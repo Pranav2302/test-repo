@@ -1,6 +1,6 @@
-"use client";
+
 import React ,{lazy, Suspense} from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion"
 
 
 const World = lazy(() => 

@@ -148,12 +148,18 @@ export function Globe({
   // Handle rings animation with cleanup
   useEffect(() => {
     if (!globeRef.current || !isInitialized || !data) return;
-
+  
+    // Reduce interval frequency to 3 seconds
     const interval = setInterval(() => {
       if (!globeRef.current) return;
-
-      const newNumbersOfRings = genRandomNumbers(0, data.length, Math.floor((data.length * 4) / 5));
-
+  
+      // Reduce the number of rings created at once
+      const newNumbersOfRings = genRandomNumbers(
+        0, 
+        data.length, 
+        Math.min(5, Math.floor((data.length * 2) / 5))
+      );
+  
       const ringsData = data
         .filter((d, i) => newNumbersOfRings.includes(i))
         .map((d) => ({
@@ -161,10 +167,10 @@ export function Globe({
           lng: d.startLng,
           color: d.color,
         }));
-
+  
       globeRef.current.ringsData(ringsData);
-    }, 2000);
-
+    }, 3000); // Increase to 3000ms
+  
     return () => {
       clearInterval(interval);
     };

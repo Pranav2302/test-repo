@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { Githubglobe } from "./Githubglobe";
-import WorldMapDemo from "./WorldMap";
 import { GlowingEffect } from "../components/ui/glow-effect";
 
-// Import feature product images if they exist, or use placeholders
+// Lazy load heavy components
+const Githubglobe = lazy(() => import("./Githubglobe").then(module => ({ 
+  default: module.Githubglobe 
+})));
+
+const WorldMapDemo = lazy(() => import("./WorldMap"));
+
+// Updated product images with Cloudinary CDN links
 const productImages = {
-  spices: "/assests/products/spice.jpg", 
-  sugar: "/img/products/sugar.jpg",
-  jaggery: "/img/products/jaggery.jpg",
-  rice: "/img/products/rice.jpg"
+  spices: "https://res.cloudinary.com/doxrnqdwn/image/upload/fl_preserve_transparency/v1744104890/spices_x73w3x.jpg",
+  sugar: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106327/Business_App/s1jlgk648cotphznkfww.jpg",
+  jaggery: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/qtpnhox07urfme1torrk.jpg",
+  rice: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106328/Business_App/c1iuwp2tvucc3f4epvxj.jpg"
 };
+
+// Cloudinary hero image
+const heroImage = "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/yxndry7q59y8khq9ekgp.jpg";
 
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50">
-        <div className="absolute inset-0 bg-[url('/img/hero-spices.jpg')] bg-cover bg-center opacity-5"></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-80" style={{ backgroundImage: `url(${heroImage})` }}></div>
         <div className="container mx-auto px-6 py-24 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +52,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products */}
+      {/* Product Cards Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
@@ -55,7 +63,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Product Card 1 - With Glow Effect */}
+            {/* Product Card 1 - Spices */}
             <motion.div 
               whileHover={{ y: -10 }}
               className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-glossy-hover transition-all relative"
@@ -83,7 +91,7 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* Product Card 2 - With Glow Effect */}
+            {/* Product Card 2 - Sugar */}
             <motion.div 
               whileHover={{ y: -10 }}
               className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-glossy-hover transition-all relative"
@@ -111,7 +119,7 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* Product Card 3 - With Glow Effect */}
+            {/* Product Card 3 - Jaggery */}
             <motion.div 
               whileHover={{ y: -10 }}
               className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-glossy-hover transition-all relative"
@@ -139,7 +147,7 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* Product Card 4 - With Glow Effect */}
+            {/* Product Card 4 - Rice */}
             <motion.div 
               whileHover={{ y: -10 }}
               className="bg-white rounded-lg overflow-hidden shadow-card hover:shadow-glossy-hover transition-all relative"
@@ -170,16 +178,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rest of the sections remain unchanged */}
       {/* Global Reach Section - Globe Visualization */}
       <section className="py-10 bg-white">
-        <Githubglobe />
-      </section>
+  <Suspense fallback={
+    <div className="h-[500px] w-full flex items-center justify-center">
+      <div className="text-spice-primary">Loading globe visualization...</div>
+    </div>
+  }>
+    <Githubglobe />
+  </Suspense>
+</section>
 
       {/* Connectivity Section - World Map */}
       <section className="py-10 bg-white">
-        <WorldMapDemo />
-      </section>
+  <Suspense fallback={
+    <div className="h-[400px] w-full flex items-center justify-center">
+      <div className="text-spice-primary">Loading map visualization...</div>
+    </div>
+  }>
+    <WorldMapDemo />
+  </Suspense>
+</section>
 
       {/* Why Choose Us */}
       <section className="py-16 bg-blue-50">
@@ -192,7 +211,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Feature 1 - With Glow Effect */}
+            {/* Feature 1 - Quality Assurance */}
             <div className="bg-white p-6 rounded-lg shadow-card hover:shadow-glossy-hover transition-all relative">
               <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                 <svg className="w-8 h-8 text-spice-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -214,7 +233,7 @@ export default function Home() {
               />
             </div>
             
-            {/* Feature 2 - With Glow Effect */}
+            {/* Feature 2 - Ethical Sourcing */}
             <div className="bg-white p-6 rounded-lg shadow-card hover:shadow-glossy-hover transition-all relative">
               <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                 <svg className="w-8 h-8 text-spice-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -236,7 +255,7 @@ export default function Home() {
               />
             </div>
             
-            {/* Feature 3 - With Glow Effect */}
+            {/* Feature 3 - Timely Delivery */}
             <div className="bg-white p-6 rounded-lg shadow-card hover:shadow-glossy-hover transition-all relative">
               <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
                 <svg className="w-8 h-8 text-spice-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
