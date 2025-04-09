@@ -21,7 +21,6 @@ function App() {
       <div className="bg-white min-h-screen flex flex-col">
         <NavbarComponent />
         <main className="flex-grow pt-24">
-          {" "}
           {/* Padding for floating navbar */}
           <Routes>
             <Route path="/" element={<Home />} />

@@ -176,7 +176,7 @@ export default function Footer() {
             {/* Google Maps iframe */}
             <div className="w-full max-w-md h-40 rounded-lg overflow-hidden border-2 border-spice-secondary/30">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.9447196750266!2d73.73249447496671!3d18.666476482455586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b1170f9e675f%3A0x59f8af6f3985c3fb!2sLotus%20Sanskruti!5e0!3m2!1sen!2sin!4v1744188130857!5m2!1sen!2sin"
+                src="https://www.googale.com/maps/embed?pb=!1m18!1m12!1m3!1d3779.9447196750266!2d73.73249447496671!3d18.666476482455586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b1170f9e675f%3A0x59f8af6f3985c3fb!2sLotus%20Sanskruti!5e0!3m2!1sen!2sin!4v1744188130857!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
