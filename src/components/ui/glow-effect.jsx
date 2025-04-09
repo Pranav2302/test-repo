@@ -1,99 +1,140 @@
-
 import { memo, useCallback, useEffect, useRef } from "react";
 import { animate } from "framer-motion";
-import { cn } from "../../lib/utils"; // Updated path to utils
+import { cn } from "../../lib/utils";
 
 const GlowingEffect = memo(({
   blur = 10,
   inactiveZone = 0.5,
   proximity = 0,
-  spread = 15,
-  variant = "default",
-  glow = true,
-  className,
-  movementDuration = 2,
-  borderWidth = 1,
-  disabled = false
+spread = 15,
+variant = "default",
+glow = true,
+className,
+movementDuration = 2,
+borderWidth = 1,
+disabled = false
 }) => {
-  const containerRef = useRef(null);
-  const lastPosition = useRef({ x: 0, y: 0 });
-  const animationFrameRef = useRef(0);
+const containerRef = useRef(null);
+const lastPosition = useRef({ x: 0, y: 0 });
+const animationFrameRef = useRef(0);
+const isHoveringRef = useRef(false); // Track if hovering over element
 
-  const handleMove = useCallback((e) => {
-    if (!containerRef.current) return;
+// Throttle mouse movement calculations
+const handleMove = useCallback((e) => {
+  if (!containerRef.current) return;
 
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
+  if (animationFrameRef.current) {
+    cancelAnimationFrame(animationFrameRef.current);
+  }
 
-    animationFrameRef.current = requestAnimationFrame(() => {
-      const element = containerRef.current;
-      if (!element) return;
+  animationFrameRef.current = requestAnimationFrame(() => {
+    const element = containerRef.current;
+    if (!element) return;
 
-      const { left, top, width, height } = element.getBoundingClientRect();
-      const mouseX = e?.x ?? lastPosition.current.x;
-      const mouseY = e?.y ?? lastPosition.current.y;
+    const { left, top, width, height } = element.getBoundingClientRect();
+    const mouseX = e?.x ?? lastPosition.current.x;
+    const mouseY = e?.y ?? lastPosition.current.y;
 
-      if (e) {
-        lastPosition.current = { x: mouseX, y: mouseY };
-      }
+if (e) {
+  lastPosition.current = { x: mouseX, y: mouseY };
+}
 
-      const center = [left + width * 0.5, top + height * 0.5];
-      const distanceFromCenter = Math.hypot(mouseX - center[0], mouseY - center[1]);
-      const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
+// Check if mouse is over this specific element
+const isMouseOver = 
+  mouseX >= left && 
+  mouseX <= left + width && 
+  mouseY >= top && 
+  mouseY <= top + height;
 
-      if (distanceFromCenter < inactiveRadius) {
-        element.style.setProperty("--active", "0");
-        return;
-      }
+// Only process intensive calculations when mouse is near this element
+if (!isMouseOver && !isHoveringRef.current) {
+  element.style.setProperty("--active", "0");
+  return;
+}
 
-      const isActive =
-        mouseX > left - proximity &&
-        mouseX < left + width + proximity &&
-        mouseY > top - proximity &&
-        mouseY < top + height + proximity;
+// Track hover state
+isHoveringRef.current = isMouseOver;
 
-      element.style.setProperty("--active", isActive ? "1" : "0");
+const center = [left + width * 0.5, top + height * 0.5];
+const distanceFromCenter = Math.hypot(mouseX - center[0], mouseY - center[1]);
+const inactiveRadius = 0.5 * Math.min(width, height) * inactiveZone;
 
-      if (!isActive) return;
+if (distanceFromCenter < inactiveRadius) {
+  element.style.setProperty("--active", "0");
+  return;
+}
+const isActive =
+mouseX > left - proximity &&
+mouseX < left + width + proximity &&
+mouseY > top - proximity &&
+mouseY < top + height + proximity;
 
-      const currentAngle =
-        parseFloat(element.style.getPropertyValue("--start")) || 0;
-      let targetAngle =
-        (180 * Math.atan2(mouseY - center[1], mouseX - center[0])) /
-          Math.PI +
-        90;
+element.style.setProperty("--active", isActive ? "1" : "0");
 
-      const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
-      const newAngle = currentAngle + angleDiff;
+if (!isActive) return;
 
-      animate(currentAngle, newAngle, {
-        duration: movementDuration,
-        ease: [0.16, 1, 0.3, 1],
-        onUpdate: (value) => {
-          element.style.setProperty("--start", String(value));
-        },
-      });
-    });
-  }, [inactiveZone, proximity, movementDuration]);
+const currentAngle =
+parseFloat(element.style.getPropertyValue("--start")) || 0;
+let targetAngle =
+(180 * Math.atan2(mouseY - center[1], mouseX - center[0])) / Math.PI + 90;
 
-  useEffect(() => {
-    if (disabled) return;
+const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
+const newAngle = currentAngle + angleDiff;
 
-    const handleScroll = () => handleMove();
-    const handlePointerMove = (e) => handleMove(e);
+animate(currentAngle, newAngle, {
+duration: movementDuration,
+ease: [0.16, 1, 0.3, 1],
+onUpdate: (value) => {
+  element.style.setProperty("--start", String(value));
+},
+});
+});
+}, [inactiveZone, proximity, movementDuration]);
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    document.body.addEventListener("pointermove", handlePointerMove, {
-      passive: true,
-    });
+useEffect(() => {
+  if (disabled) return;
 
+  // Use a throttled event handler for scroll
+  let scrollTimeout;
+  const handleScroll = () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => handleMove(), 100);
+  };
+
+  const handlePointerMove = (e) => handleMove(e);
+
+  // Use passive event listeners for better performance
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  document.body.addEventListener("pointermove", handlePointerMove, { passive: true });
+
+  // Add mouseenter/mouseleave for this specific element
+  const element = containerRef.current;
+  if (element) {
+    element.parentElement.addEventListener("mouseenter", () => {
+      isHoveringRef.current = true;
+    }, { passive: true });
+    
+    element.parentElement.addEventListener("mouseleave", () => {
+      isHoveringRef.current = false;
+      element.style.setProperty("--active", "0");
+    }, { passive: true });
+  }
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
+      clearTimeout(scrollTimeout);
       window.removeEventListener("scroll", handleScroll);
       document.body.removeEventListener("pointermove", handlePointerMove);
+      
+      if (element) {
+        element.parentElement.removeEventListener("mouseenter", () => {
+          isHoveringRef.current = true;
+        });
+        element.parentElement.removeEventListener("mouseleave", () => {
+          isHoveringRef.current = false;
+        });
+      }
     };
   }, [handleMove, disabled]);
 

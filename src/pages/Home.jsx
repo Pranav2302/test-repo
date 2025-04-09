@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
-import { Githubglobe } from "./Githubglobe";
-import WorldMapDemo from "./WorldMap";
 import { GlowingEffect } from "../components/ui/glow-effect";
+
+// Lazy load heavy components
+const Githubglobe = lazy(() => import("./Githubglobe").then(module => ({ 
+  default: module.Githubglobe 
+})));
+
+const WorldMapDemo = lazy(() => import("./WorldMap"));
 
 // Updated product images with Cloudinary CDN links
 const productImages = {
@@ -175,13 +180,25 @@ export default function Home() {
 
       {/* Global Reach Section - Globe Visualization */}
       <section className="py-10 bg-white">
-        <Githubglobe />
-      </section>
+  <Suspense fallback={
+    <div className="h-[500px] w-full flex items-center justify-center">
+      <div className="text-spice-primary">Loading globe visualization...</div>
+    </div>
+  }>
+    <Githubglobe />
+  </Suspense>
+</section>
 
       {/* Connectivity Section - World Map */}
       <section className="py-10 bg-white">
-        <WorldMapDemo />
-      </section>
+  <Suspense fallback={
+    <div className="h-[400px] w-full flex items-center justify-center">
+      <div className="text-spice-primary">Loading map visualization...</div>
+    </div>
+  }>
+    <WorldMapDemo />
+  </Suspense>
+</section>
 
       {/* Why Choose Us */}
       <section className="py-16 bg-blue-50">

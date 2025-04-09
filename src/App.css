@@ -29,6 +29,19 @@ a:hover {
   color: #2d8efd;
 }
 
+/* Optimize image rendering */
+img {
+  content-visibility: auto;
+}
+
+/* Use hardware acceleration for animations */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  will-change: transform;
+}
+
 .glossy-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -50,10 +63,19 @@ a:hover {
   background: linear-gradient(135deg, #0099ff, #66c2ff);
 }
 
+
+
 .button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform, box-shadow;
 }
 
 .button:hover {
   transform: translateY(-2px);
+}
+/* Smooth scrolling but only for non-reduced motion preferences */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
