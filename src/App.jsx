@@ -5,6 +5,7 @@ import "./App.css";
 // Import components
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 // Import pages
 import Home from "./pages/Home";
@@ -33,6 +34,12 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        
+        {/* WhatsApp Button - visible on all pages */}
+        <WhatsAppButton 
+          phoneNumber="919112951112"
+          message="Hello! I'm interested in Briskwell's products. Can you provide more information?"
+        />
       </div>
     </BrowserRouter>
   );
