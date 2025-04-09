@@ -1,16 +1,23 @@
-import React from 'react';
+import React from "react";
 
 export default function ContactUs() {
   return (
     <div className="py-24 px-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8 text-white">Contact Us</h1>
-      
+      <h1 className="text-4xl font-bold text-center mb-8 text-white">
+        Contact Us
+      </h1>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="bg-black/40 p-8 rounded-lg border border-cyan-900/50">
-          <h2 className="text-2xl font-semibold mb-6 text-cyan-400">Get In Touch</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-cyan-400">
+            Get In Touch
+          </h2>
           <form className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
                 Full Name
               </label>
               <input
@@ -20,9 +27,12 @@ export default function ContactUs() {
                 placeholder="Your name"
               />
             </div>
-            
+
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
                 Email Address
               </label>
               <input
@@ -32,9 +42,12 @@ export default function ContactUs() {
                 placeholder="you@example.com"
               />
             </div>
-            
+
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-300 mb-1"
+              >
                 Your Message
               </label>
               <textarea
@@ -44,7 +57,7 @@ export default function ContactUs() {
                 placeholder="How can we help you?"
               />
             </div>
-            
+
             <button
               type="submit"
               className="w-full px-4 py-2 bg-gradient-to-r from-cyan-700 to-blue-700 rounded-md text-white font-medium hover:-translate-y-1 transition-all duration-200"
@@ -53,12 +66,16 @@ export default function ContactUs() {
             </button>
           </form>
         </div>
-        
+
         <div className="bg-black/40 p-8 rounded-lg border border-cyan-900/50">
-          <h2 className="text-2xl font-semibold mb-6 text-cyan-400">Contact Information</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-cyan-400">
+            Contact Information
+          </h2>
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-medium text-white mb-2">Our Location</h3>
+              <h3 className="text-lg font-medium text-white mb-2">
+                Our Location
+              </h3>
               <p className="text-gray-300">
                 123 Business Avenue, <br />
                 Suite 456, <br />
@@ -66,26 +83,36 @@ export default function ContactUs() {
                 India
               </p>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-medium text-white mb-2">Email Us</h3>
-              <a href="mailto:info@briskwell.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              <a
+                href="mailto:info@briskwell.com"
+                className="text-cyan-400 hover:text-cyan-300 transition-colors"
+              >
                 info@briskwell.com
               </a>
             </div>
-            
+
             <div>
               <h3 className="text-lg font-medium text-white mb-2">Call Us</h3>
-              <a href="tel:+911234567890" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              <a
+                href="tel:+911234567890"
+                className="text-cyan-400 hover:text-cyan-300 transition-colors"
+              >
                 +91 123 456 7890
               </a>
             </div>
-            
+
             <div>
-              <h3 className="text-lg font-medium text-white mb-2">Business Hours</h3>
+              <h3 className="text-lg font-medium text-white mb-2">
+                Business Hours
+              </h3>
               <p className="text-gray-300">
-                Monday - Friday: 9:00 AM - 6:00 PM<br />
-                Saturday: 10:00 AM - 2:00 PM<br />
+                Monday - Friday: 9:00 AM - 6:00 PM
+                <br />
+                Saturday: 10:00 AM - 2:00 PM
+                <br />
                 Sunday: Closed
               </p>
             </div>
