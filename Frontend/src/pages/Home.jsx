@@ -220,7 +220,7 @@ export default function Home() {
     </div>
   }>
     {/* Uncomment if you want to use the GitHub globe */}
-    <Githubglobe />
+{/*     <Githubglobe /> */}
   </Suspense>
 </section>
       {/* What we do section */}
