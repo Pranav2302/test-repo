@@ -220,7 +220,7 @@ export default function Home() {
     </div>
   }>
     {/* Uncomment if you want to use the GitHub globe */}
-    <Githubglobe />
+{/*     <Githubglobe /> */}
   </Suspense>
 </section>
       {/* What we do section */}
@@ -467,7 +467,7 @@ export default function Home() {
         <div className="text-spice-primary">{t('loading.worldMap')}</div>
       </div>
     }>
-      <WorldMapDemo />
+{/*       <WorldMapDemo /> */}
     </Suspense>
   </div>
 </section>
