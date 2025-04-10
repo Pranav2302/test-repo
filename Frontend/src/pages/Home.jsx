@@ -467,7 +467,7 @@ export default function Home() {
         <div className="text-spice-primary">{t('loading.worldMap')}</div>
       </div>
     }>
-      <WorldMapDemo />
+{/*       <WorldMapDemo /> */}
     </Suspense>
   </div>
 </section>
