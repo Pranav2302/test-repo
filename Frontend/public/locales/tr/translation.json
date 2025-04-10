@@ -1,0 +1,165 @@
+{
+    "navbar": {
+      "home": "Ana Sayfa",
+      "aboutUs": "Hakkımızda",
+      "products": "Ürünler",
+      "brochure": "Broşür",
+      "certification": "Sertifikasyon",
+      "gallery": "Galeri",
+      "contactUs": "İletişim",
+      "getQuote": "Fiyat Teklifi Al"
+    },
+    "hero": {
+      "title": {
+        "start": "Hindistan'ın En İyi",
+        "highlight": "Baharatları ve Ürünleri"
+      },
+      "subtitle": "Küresel pazarlara otantik Hint baharatları, şeker, jaggery ve tarım ürünlerinin premium tedarikçisi.",
+      "cta": {
+        "explore": "Ürünleri Keşfet",
+        "quote": "Fiyat Teklifi Al"
+      }
+    },
+    "products": {
+      "section": {
+        "title": "Premium Ürünlerimiz",
+        "subtitle": "Uluslararası standartları karşılayan ve küresel damak zevklerini tatmin eden yüksek kaliteli Hint ürünleri ihraç ediyoruz."
+      },
+      "spices": {
+        "title": "Premium Baharatlar",
+        "description": "Zerdeçal, kakule, karabiber ve tarçın dahil otantik Hint baharatları.",
+        "alt": "Baharatlar"
+      },
+      "sugar": {
+        "title": "Rafine Şeker",
+        "description": "Ticari kullanım için çeşitli derecelerde mevcut yüksek kaliteli rafine ve ham şeker.",
+        "alt": "Şeker"
+      },
+      "jaggery": {
+        "title": "Organik Jaggery",
+        "description": "Organik çiftliklerden zengin mineralli ve otantik tada sahip geleneksel rafine edilmemiş şeker.",
+        "alt": "Jaggery"
+      },
+      "rice": {
+        "title": "Basmati Pirinç",
+        "description": "Himalayaların eteklerinden gelen kokulu, uzun taneli pirinç çeşitleri.",
+        "alt": "Pirinç"
+      },
+      "viewCta": "Ürünleri Görüntüle"
+    },
+    "loading": {
+      "globe": "Küre görselleştirmesi yükleniyor...",
+      "map": "Harita görselleştirmesi yükleniyor..."
+    },
+    "whyChooseUs": {
+      "title": "Neden Briskwell International",
+      "subtitle": "Etik iş uygulamalarımız ve kaliteye olan bağlılığımızla gurur duyuyoruz.",
+      "quality": {
+        "title": "Kalite Güvencesi",
+        "description": "Ürünlerimiz titiz kalite testlerinden geçer ve uluslararası güvenlik standartlarını karşılar."
+      },
+      "ethical": {
+        "title": "Etik Tedarik",
+        "description": "Adil ticaret uygulamalarını ve sürdürülebilir tarım yöntemlerini sağlamak için doğrudan çiftçilerle çalışıyoruz."
+      },
+      "delivery": {
+        "title": "Zamanında Teslimat",
+        "description": "Verimli lojistiğimiz, siparişlerinizin her zaman zamanında teslim edilmesini sağlar."
+      }
+    },
+    "cta": {
+      "title": "Premium Hint Ürünleri İthal Etmeye Hazır mısınız?",
+      "subtitle": "İhtiyaçlarınızı görüşmek ve işletmeniz için özelleştirilmiş bir teklif almak için bugün bizimle iletişime geçin.",
+      "button": "Şimdi İletişime Geçin"
+    },
+    "contactForm": {
+      "title": "İletişime Geçin",
+      "name": "Tam Ad",
+      "email": "E-posta Adresi",
+      "inquiryType": "Talep Türü",
+      "inquiryTypes": {
+        "import": "Mal İthalatı/İhracatı",
+        "spices": "Baharatlar",
+        "pulses": "Baklagiller",
+        "sugar": "Şeker ve Jaggery",
+        "rice": "Pirinç ve Tahıllar",
+        "pricing": "Fiyatlandırma Bilgisi",
+        "shipping": "Nakliye ve Lojistik",
+        "other": "Diğer (Belirtin)"
+      },
+      "specifyInquiry": "Talebi Belirtin",
+      "message": "Mesajınız",
+      "messagePlaceholder": "Size nasıl yardımcı olabiliriz?",
+      "submit": "Mesaj Gönder",
+      "sending": "Gönderiliyor...",
+      "required": "gerekli",
+      "validation": {
+        "nameRequired": "Ad gereklidir",
+        "emailRequired": "E-posta gereklidir",
+        "emailInvalid": "Lütfen geçerli bir e-posta adresi girin",
+        "inquiryTypeRequired": "Lütfen bir talep türü seçin",
+        "customInquiryRequired": "Lütfen talebinizi belirtin",
+        "messageRequired": "Mesaj gereklidir",
+        "messageMinLength": "Mesaj en az 10 karakter olmalıdır"
+      }
+    },
+    "contactInfo": {
+      "title": "İletişim Bilgileri",
+      "location": {
+        "title": "Konumumuz",
+        "address": "123 Business Avenue, Suite 456, Mumbai, Maharashtra 400001, Hindistan"
+      },
+      "email": {
+        "title": "E-posta Gönderin",
+        "address": "info@briskwell.com"
+      },
+      "phone": {
+        "title": "Bizi Arayın",
+        "number": "+91 123 456 7890"
+      },
+      "hours": {
+        "title": "Çalışma Saatleri",
+        "weekdays": "Pazartesi - Cuma: 9:00 - 18:00",
+        "saturday": "Cumartesi: 10:00 - 14:00",
+        "sunday": "Pazar: Kapalı"
+      },
+      "social": {
+        "title": "Bizi Takip Edin"
+      }
+    },
+    "gallery": {
+      "title": "Galerimiz",
+      "subtitle": "Ürünlerimizi, tesislerimizi ve çiftlikten küresel pazarlara olan yolculuğu gösteren görsel koleksiyonumuzu keşfedin.",
+      "featured": "Öne Çıkan Görseller",
+      "categories": {
+        "all": "Tümü",
+        "products": "Ürünler",
+        "facilities": "Tesisler",
+        "events": "Etkinlikler",
+        "team": "Ekip"
+      }
+    },
+    "worldMap": {
+      "title": "Küresel Dağıtım",
+      "subtitle": "Dünya genelinde 30'dan fazla ülkeye premium Hint ürünleri ihraç ediyoruz. Güçlü tedarik zincirimiz, dünyanın her köşesine zamanında teslimat sağlar."
+    },
+    "globe": {
+      "title": "Briskwell International - Küresel İhracatçı",
+      "subtitle": "Hint premium ürünlerini dünya ile buluşturuyoruz"
+    },
+    "footer": {
+      "companyDescription": "Hindistan'dan dünyaya kaliteli baharatlar, şeker ve geleneksel ürünlerin premium ihracatçısı.",
+      "quickLinks": "Hızlı Bağlantılar",
+      "products": "Ürünlerimiz",
+      "productCategories": {
+        "spices": "Baharatlar",
+        "sugar": "Şeker ve Jaggery",
+        "rice": "Pirinç ve Tahıllar",
+        "tea": "Çay ve Kahve",
+        "pickles": "Turşular ve Çatniler"
+      },
+      "contactUs": "İletişime Geçin",
+      "findUs": "Bizi burada bulun",
+      "copyright": "© {{year}} Briskwell International. Tüm hakları saklıdır."
+    }
+  }

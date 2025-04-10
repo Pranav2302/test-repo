@@ -1,0 +1,165 @@
+{
+    "navbar": {
+      "home": "Home",
+      "aboutUs": "Over Ons",
+      "products": "Producten",
+      "brochure": "Brochure",
+      "certification": "Certificering",
+      "gallery": "Galerij",
+      "contactUs": "Contact",
+      "getQuote": "Offerte Aanvragen"
+    },
+    "hero": {
+      "title": {
+        "start": "Export van India's Beste",
+        "highlight": "Kruiden & Grondstoffen"
+      },
+      "subtitle": "Premium leveranciers van authentieke Indiase kruiden, suiker, jaggery en landbouwproducten voor wereldwijde markten.",
+      "cta": {
+        "explore": "Producten Verkennen",
+        "quote": "Offerte Aanvragen"
+      }
+    },
+    "products": {
+      "section": {
+        "title": "Onze Premium Producten",
+        "subtitle": "Wij exporteren hoogwaardige Indiase grondstoffen die voldoen aan internationale normen en wereldwijde smaken bevredigen."
+      },
+      "spices": {
+        "title": "Premium Kruiden",
+        "description": "Authentieke Indiase kruiden waaronder kurkuma, kardemom, zwarte peper en kaneel.",
+        "alt": "Kruiden"
+      },
+      "sugar": {
+        "title": "Geraffineerde Suiker",
+        "description": "Hoogwaardige geraffineerde en ruwe suiker beschikbaar in verschillende kwaliteiten voor commercieel gebruik.",
+        "alt": "Suiker"
+      },
+      "jaggery": {
+        "title": "Biologische Jaggery",
+        "description": "Traditionele ongeraffineerde suiker rijk aan mineralen en authentieke smaak van biologische boerderijen.",
+        "alt": "Jaggery"
+      },
+      "rice": {
+        "title": "Basmati Rijst",
+        "description": "Geurige, langkorrelige rijstvariëteiten uit de uitlopers van de Himalaya.",
+        "alt": "Rijst"
+      },
+      "viewCta": "Producten Bekijken"
+    },
+    "loading": {
+      "globe": "Wereldbol visualisatie laden...",
+      "map": "Kaartvisualisatie laden..."
+    },
+    "whyChooseUs": {
+      "title": "Waarom Kiezen voor Briskwell International",
+      "subtitle": "Wij zijn trots op onze ethische bedrijfspraktijken en toewijding aan kwaliteit.",
+      "quality": {
+        "title": "Kwaliteitsgarantie",
+        "description": "Onze producten ondergaan strenge kwaliteitstests en voldoen aan internationale veiligheidsnormen."
+      },
+      "ethical": {
+        "title": "Ethische Inkoop",
+        "description": "We werken rechtstreeks samen met boeren om eerlijke handelspraktijken en duurzame landbouwmethoden te waarborgen."
+      },
+      "delivery": {
+        "title": "Tijdige Levering",
+        "description": "Onze efficiënte logistiek zorgt ervoor dat uw bestellingen altijd op tijd worden geleverd."
+      }
+    },
+    "cta": {
+      "title": "Klaar om Premium Indiase Producten te Importeren?",
+      "subtitle": "Neem vandaag nog contact met ons op om uw wensen te bespreken en een aangepaste offerte voor uw bedrijf te ontvangen.",
+      "button": "Neem Nu Contact Op"
+    },
+    "contactForm": {
+      "title": "Neem Contact Op",
+      "name": "Volledige Naam",
+      "email": "E-mailadres",
+      "inquiryType": "Soort Aanvraag",
+      "inquiryTypes": {
+        "import": "Goederen Import/Export",
+        "spices": "Kruiden",
+        "pulses": "Peulvruchten",
+        "sugar": "Suiker & Jaggery",
+        "rice": "Rijst & Granen",
+        "pricing": "Prijsinformatie",
+        "shipping": "Verzending & Logistiek",
+        "other": "Anders (Specificeer)"
+      },
+      "specifyInquiry": "Specificeer Aanvraag",
+      "message": "Uw Bericht",
+      "messagePlaceholder": "Hoe kunnen we u helpen?",
+      "submit": "Bericht Versturen",
+      "sending": "Versturen...",
+      "required": "verplicht",
+      "validation": {
+        "nameRequired": "Naam is verplicht",
+        "emailRequired": "E-mail is verplicht",
+        "emailInvalid": "Voer een geldig e-mailadres in",
+        "inquiryTypeRequired": "Selecteer een aanvraagtype",
+        "customInquiryRequired": "Specificeer uw aanvraag",
+        "messageRequired": "Bericht is verplicht",
+        "messageMinLength": "Bericht moet minimaal 10 tekens bevatten"
+      }
+    },
+    "contactInfo": {
+      "title": "Contactgegevens",
+      "location": {
+        "title": "Onze Locatie",
+        "address": "123 Business Avenue, Suite 456, Mumbai, Maharashtra 400001, India"
+      },
+      "email": {
+        "title": "E-mail Ons",
+        "address": "info@briskwell.com"
+      },
+      "phone": {
+        "title": "Bel Ons",
+        "number": "+91 123 456 7890"
+      },
+      "hours": {
+        "title": "Openingstijden",
+        "weekdays": "Maandag - Vrijdag: 9:00 - 18:00",
+        "saturday": "Zaterdag: 10:00 - 14:00",
+        "sunday": "Zondag: Gesloten"
+      },
+      "social": {
+        "title": "Volg Ons"
+      }
+    },
+    "gallery": {
+      "title": "Onze Galerij",
+      "subtitle": "Ontdek onze collectie afbeeldingen die onze producten, faciliteiten en de reis van boerderij naar wereldwijde markten laten zien.",
+      "featured": "Uitgelichte Hoogtepunten",
+      "categories": {
+        "all": "Alles",
+        "products": "Producten",
+        "facilities": "Faciliteiten",
+        "events": "Evenementen",
+        "team": "Team"
+      }
+    },
+    "worldMap": {
+      "title": "Wereldwijde Distributie",
+      "subtitle": "We exporteren premium Indiase grondstoffen naar meer dan 30 landen wereldwijd. Onze robuuste toeleveringsketen zorgt voor tijdige levering naar alle uithoeken van de wereld."
+    },
+    "globe": {
+      "title": "Briskwell International - Wereldwijde Exporteur",
+      "subtitle": "Het verbinden van Indiase premium producten met de wereld"
+    },
+    "footer": {
+      "companyDescription": "Premium exporteurs van fijne kruiden, suiker en traditionele producten van India naar de wereld.",
+      "quickLinks": "Snelle Links",
+      "products": "Onze Producten",
+      "productCategories": {
+        "spices": "Kruiden",
+        "sugar": "Suiker & Jaggery",
+        "rice": "Rijst & Granen",
+        "tea": "Thee & Koffie",
+        "pickles": "Pickles & Chutneys"
+      },
+      "contactUs": "Contact",
+      "findUs": "Vind ons hier",
+      "copyright": "© {{year}} Briskwell International. Alle rechten voorbehouden."
+    }
+  }

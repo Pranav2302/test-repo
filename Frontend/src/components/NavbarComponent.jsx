@@ -2,19 +2,10 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Logo from "../assets/Logo.png";
+import LanguageSwitcher from "./LanguageSwitcher"; // Import the language switcher
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 // Navigation items
-const navItems = [
-  { name: "Home", link: "/" },
-  { name: "About Us", link: "/aboutus" },
-  { name: "Products", link: "/products" },
-  { name: "Brochure", link: "/brochure" },
-  { name: "Certification", link: "/certification" },
-  { name: "Gallery", link: "/gallery" },
-  { name: "Contact Us", link: "/contactus" },
-];
-
-// Memoize navigation items to prevent unnecessary re-renders
 const NavLinks = React.memo(({ items, location, hovered, setHovered, scrolled }) => {
   return items.map((item, idx) => (
     <Link
@@ -49,6 +40,18 @@ export default function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
   const location = useLocation();
+  const { t } = useTranslation(); // Add this to translate text
+
+  // Update navItems to use translations
+  const navItems = [
+    { name: t('navbar.home'), link: "/" },
+    { name: t('navbar.aboutUs'), link: "/aboutus" },
+    { name: t('navbar.products'), link: "/products" },
+    { name: t('navbar.brochure'), link: "/brochure" },
+    { name: t('navbar.certification'), link: "/certification" },
+    { name: t('navbar.gallery'), link: "/gallery" },
+    { name: t('navbar.contactUs'), link: "/contactus" },
+  ];
 
   // Use scroll ratio for smoother transitions
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -122,11 +125,15 @@ export default function NavbarComponent() {
               setHovered={setHovered}
               scrolled={scrollRatio > 0.6}
             />
+            
+            <div className="flex items-center ml-4">
+  <LanguageSwitcher />
+</div>
             <Link 
               to="/contactus" 
               className={`ml-4 rounded-md px-6 py-2.5 font-body font-medium transition-all blue-gradient text-white shadow-blue-glow hover:shadow-glossy-hover`}
             >
-              Get a Quote
+              {t('navbar.getQuote')}
             </Link>
           </nav>
         </motion.div>
@@ -222,7 +229,7 @@ export default function NavbarComponent() {
                 className="block w-full mt-3 px-4 py-3 rounded-md text-base font-medium text-center text-white blue-gradient shadow-blue-glow"
                 onClick={() => setIsOpen(false)}
               >
-                Get a Quote
+                {t('navbar.getQuote')}
               </Link>
             </div>
           </motion.div>

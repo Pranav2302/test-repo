@@ -1,7 +1,9 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { GlowingEffect } from "../components/ui/glowing-effect";
+import { useTranslation } from 'react-i18next';
+import { Products } from "../components/ProductCarousel"
 
 // Lazy load heavy components
 const Githubglobe = lazy(() => import("./Githubglobe").then(module => ({ 
@@ -18,297 +20,475 @@ const productImages = {
   rice: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106328/Business_App/c1iuwp2tvucc3f4epvxj.jpg"
 };
 
-// Cloudinary hero image
-const heroImage = "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/yxndry7q59y8khq9ekgp.jpg";
+// Cloudinary hero images array
+const heroImages = [
+  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311491/aerial-view-cargo-ship-cargo-container-harbor_335224-1374_w7ev4r.jpg",
+  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311429/port-6670684_1280_qmcoei.jpg",
+  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311376/logistics-transportation-container-cargo-ship-cargo-plane-with-working-crane-bridge-shipyard-sunrise-logistic-import-export-transport-industry-background-ai-generative_123827-24177_nudvo2.jpg",
+  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311423/aerial-view-cargo-ship-cargo-container-harbor_335224-1380_qmcnzl.jpg"
+];
 
 export default function Home() {
+  const { t } = useTranslation();
+  const [currentHeroImage, setCurrentHeroImage] = useState(0);
+
+  // Effect for rotating hero images with enhanced 3 second interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHeroImage(prevImage => (prevImage + 1) % heroImages.length);
+    }, 3000); // 3 seconds interval
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Animation variants for more impressive transitions
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 1.1,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.5 },
+        scale: { duration: 0.7, ease: [0.6, 0.05, -0.01, 0.9] }
+      }
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        x: { type: "spring", stiffness: 300, damping: 30 },
+        opacity: { duration: 0.5 },
+      }
+    })
+  };
+
+  // Keep track of the direction for animation
+  const [[page, direction], setPage] = useState([0, 0]);
+
+  // Update both the current image and the direction
+  useEffect(() => {
+    setPage([currentHeroImage, 1]); // 1 for forward direction
+  }, [currentHeroImage]);
+
   return (
     <div className="overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50">
-        <div className="absolute inset-0 bg-cover bg-center opacity-80" style={{ backgroundImage: `url(${heroImage})` }}></div>
-        <div className="container mx-auto px-6 py-24 relative z-10">
+      {/* Hero Section with Enhanced Image Carousel */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 h-[80vh] md:h-[90vh]">
+        {/* Dynamic Hero Image Carousel with improved animation */}
+        <div className="absolute inset-0 overflow-hidden">
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div 
+              key={page}
+              className="absolute inset-0"
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                duration: 1,
+                ease: [0.25, 1, 0.5, 1],
+              }}
+            >
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ 
+                  backgroundImage: `url(${heroImages[currentHeroImage]})`,
+                  filter: "brightness(0.85)",
+                }}
+              >
+                {/* Add a subtle motion effect to the background image */}
+                <motion.div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${heroImages[currentHeroImage]})`,
+                    backgroundPosition: 'center',
+                  }}
+                  initial={{ scale: 1.05 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 3, ease: "easeOut" }}
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        
+        {/* Hero Content with staggered animation */}
+        <div className="container mx-auto px-6 py-24 relative z-10 h-full flex items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+            }}
+            className="max-w-3xl text-left"
           >
-            <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 text-spice-dark">
-              Exporting India's Finest <span className="text-spice-primary">Spices & Commodities</span>
-            </h1>
-            <p className="font-body text-lg md:text-xl mb-8 text-spice-text">
-              Premium suppliers of authentic Indian spices, sugar, jaggery, and agricultural products to global markets.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.h1 
+              className="font-display text-4xl md:text-6xl font-bold mb-6 text-white"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
+            >
+              {t('hero.title.start')} <span className="text-blue-300">{t('hero.title.highlight')}</span>
+            </motion.h1>
+            
+            <motion.p 
+              className="font-body text-lg md:text-xl mb-8 text-white/90"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
+            >
+              {t('hero.subtitle')}
+            </motion.p>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+              }}
+            >
               <Link to="/products" className="rounded-md bg-gradient-to-b from-spice-primary to-spice-accent hover:shadow-blue-glow hover:-translate-y-0.5 px-8 py-3 font-body font-medium text-white transition-all shadow-md">
-                Explore Products
+                {t('hero.cta.explore')}
               </Link>
-              <Link to="/contactus" className="rounded-md bg-white border border-spice-border hover:border-spice-primary hover:bg-blue-50/30 hover:shadow-md px-8 py-3 font-body font-medium text-spice-primary transition-all">
-                Get a Quote
+              <Link to="/contactus" className="rounded-md bg-white/90 border border-transparent hover:bg-white hover:shadow-md px-8 py-3 font-body font-medium text-spice-primary transition-all">
+                {t('hero.cta.quote')}
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
+        </div>
+        
+        {/* Image Indicator Dots with enhanced animations */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-10">
+          {heroImages.map((_, index) => (
+            <motion.button 
+              key={index} 
+              className={`w-3 h-3 rounded-full transition-all`}
+              initial={false}
+              animate={{
+                backgroundColor: currentHeroImage === index ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.5)',
+                scale: currentHeroImage === index ? 1.25 : 1
+              }}
+              whileHover={{ 
+                backgroundColor: currentHeroImage === index ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.7)',
+                scale: 1.2
+              }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setCurrentHeroImage(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
-   
-      
-<section className="py-16 bg-white">
-  <div className="container mx-auto px-6">
-    <div className="text-center mb-12">
-      <h2 className="font-display text-3xl font-bold text-spice-primary mb-3">Our Premium Products</h2>
-      <p className="font-body text-spice-text max-w-2xl mx-auto">
-        We export high-quality Indian commodities that meet international standards and satisfy global tastes.
-      </p>
-    </div>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {/* Product Card 1 - Spices */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-white relative flex flex-col justify-between overflow-hidden rounded-xl border-[0.5px] shadow-card hover:shadow-glossy-hover transition-all"
-          >
-            <div className="h-48 overflow-hidden">
-              <img src={productImages.spices} alt="Spices" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
-            <div className="p-6 relative">
-              <h3 className="font-display text-xl font-bold text-spice-primary mb-2">Premium Spices</h3>
-              <p className="font-body text-spice-text mb-4">
-                Authentic Indian spices including turmeric, cardamom, black pepper, and cinnamon.
-              </p>
-              <Link to="/products" className="inline-block font-body font-medium text-spice-primary hover:text-spice-secondary">
-                View Products →
-              </Link>
-            </div>
-          </motion.div>
+      {/* Featured Products Carousel */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6 mb-8">
+          <div className="text-center mb-8">
+            <h2 className="font-display text-3xl font-bold text-spice-primary mb-3">{t('products.section.title')}</h2>
+            <p className="font-body text-spice-text max-w-2xl mx-auto">
+              {t('products.carousel.subtitle')}
+            </p>
+          </div>
         </div>
-      </div>
-      
-      {/* Product Card 2 - Sugar */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-white relative flex flex-col justify-between overflow-hidden rounded-xl border-[0.5px] shadow-card hover:shadow-glossy-hover transition-all"
-          >
-            <div className="h-48 overflow-hidden">
-              <img src={productImages.sugar} alt="Sugar" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
-            <div className="p-6 relative">
-              <h3 className="font-display text-xl font-bold text-spice-primary mb-2">Refined Sugar</h3>
-              <p className="font-body text-spice-text mb-4">
-                High-quality refined and raw sugar available in various grades for commercial use.
-              </p>
-              <Link to="/products" className="inline-block font-body font-medium text-spice-primary hover:text-spice-secondary">
-                View Products →
-              </Link>
-            </div>
-          </motion.div>
+        
+        <Products />
+        
+        <div className="container mx-auto px-6 mt-12 text-center">
+          <Link to="/products" className="inline-block rounded-md bg-gradient-to-b from-spice-primary to-spice-accent px-8 py-3 font-body font-medium text-white transition-all shadow-md hover:shadow-blue-glow hover:-translate-y-0.5">
+            {t('products.viewAllButton')}
+          </Link>
         </div>
-      </div>
-      
-      {/* Product Card 3 - Jaggery */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-white relative flex flex-col justify-between overflow-hidden rounded-xl border-[0.5px] shadow-card hover:shadow-glossy-hover transition-all"
-          >
-            <div className="h-48 overflow-hidden">
-              <img src={productImages.jaggery} alt="Jaggery" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
-            <div className="p-6 relative">
-              <h3 className="font-display text-xl font-bold text-spice-primary mb-2">Organic Jaggery</h3>
-              <p className="font-body text-spice-text mb-4">
-                Traditional unrefined sugar with rich minerals and authentic taste from organic farms.
-              </p>
-              <Link to="/products" className="inline-block font-body font-medium text-spice-primary hover:text-spice-secondary">
-                View Products →
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-      
-      {/* Product Card 4 - Rice */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <motion.div 
-            whileHover={{ y: -5 }}
-            className="bg-white relative flex flex-col justify-between overflow-hidden rounded-xl border-[0.5px] shadow-card hover:shadow-glossy-hover transition-all"
-          >
-            <div className="h-48 overflow-hidden">
-              <img src={productImages.rice} alt="Rice" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            </div>
-            <div className="p-6 relative">
-              <h3 className="font-display text-xl font-bold text-spice-primary mb-2">Basmati Rice</h3>
-              <p className="font-body text-spice-text mb-4">
-                Fragrant, long-grain rice varieties from the foothills of the Himalayas.
-              </p>
-              <Link to="/products" className="inline-block font-body font-medium text-spice-primary hover:text-spice-secondary">
-                View Products →
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-     {/* Global Reach Section - Globe Visualization */}
-      <section className="py-10 bg-white">
+      </section>
+
+    {/* Globe visualization can remain in another section if needed */}
+<section className="py-10 bg-white">
   <Suspense fallback={
     <div className="h-[500px] w-full flex items-center justify-center">
-      <div className="text-spice-primary">Loading globe visualization...</div>
+      <div className="text-spice-primary">{t('loading.globe')}</div>
     </div>
   }>
+    {/* Uncomment if you want to use the GitHub globe */}
     <Githubglobe />
   </Suspense>
 </section>
+      {/* What we do section */}
+      <section className="py-20 bg-blue-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl font-bold text-spice-primary mb-4">
+              {t('whatWeDo.title')}
+            </h2>
+            <p className="font-body text-lg text-spice-text max-w-2xl mx-auto">
+              {t('whatWeDo.subtitle')}
+            </p>
+          </div>
 
-      {/* Connectivity Section - World Map */}
-      <section className="py-10 bg-white">
-  <Suspense fallback={
-    <div className="h-[400px] w-full flex items-center justify-center">
-      <div className="text-spice-primary">Loading map visualization...</div>
-    </div>
-  }>
-    <WorldMapDemo />
-  </Suspense>
-</section>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div className="relative group">
+              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-spice-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                    {t('whatWeDo.sourcing.title')}
+                  </h3>
+                  <p className="font-body text-spice-text">
+                    {t('whatWeDo.sourcing.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
 
-      {/* Why Choose Us */}
-<section className="py-16 bg-blue-50">
+            <div className="relative group">
+              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-spice-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                    {t('whatWeDo.quality.title')}
+                  </h3>
+                  <p className="font-body text-spice-text">
+                    {t('whatWeDo.quality.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative group">
+              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-spice-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                    {t('whatWeDo.export.title')}
+                  </h3>
+                  <p className="font-body text-spice-text">
+                    {t('whatWeDo.export.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link to="/aboutUs" className="inline-flex items-center gap-2 text-spice-primary hover:text-spice-secondary font-medium transition-colors">
+              {t('whatWeDo.learnMore')}
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl font-bold text-spice-primary mb-4">
+              {t('whyChooseUs.title')}
+            </h2>
+            <p className="font-body text-lg text-spice-text max-w-2xl mx-auto">
+              {t('whyChooseUs.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          
+            <div className="relative group">
+              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-spice-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16.88 3.549a9 9 0 11-9.76 0M12 12v.01" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                    {t('whyChooseUs.quality.title')}
+                  </h3>
+                  <p className="font-body text-spice-text">
+                    {t('whyChooseUs.quality.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+         
+            <div className="relative group">
+              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-spice-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                    {t('whyChooseUs.ethical.title')}
+                  </h3>
+                  <p className="font-body text-spice-text">
+                    {t('whyChooseUs.ethical.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+         
+            <div className="relative group">
+              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <svg
+                      className="w-8 h-8 text-spice-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 10h11l-1 9H4l-1-9zm5 0V7a4 4 0 118 0v3" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                    {t('whyChooseUs.delivery.title')}
+                  </h3>
+                  <p className="font-body text-spice-text">
+                    {t('whyChooseUs.delivery.description')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+*/}
+
+
+
+{/* Global Reach Section - Globe Visualization */}
+<section className="py-10 bg-white">
   <div className="container mx-auto px-6">
     <div className="text-center mb-12">
-      <h2 className="font-display text-3xl font-bold text-spice-primary mb-3">Why Choose Briskwell International</h2>
+      <h2 className="font-display text-3xl font-bold text-spice-primary mb-3">
+        {t('globalReach.title')}
+      </h2>
       <p className="font-body text-spice-text max-w-2xl mx-auto">
-        We take pride in our ethical business practices and commitment to quality.
+        {t('globalReach.description')}
       </p>
     </div>
     
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {/* Feature 1 - Quality Assurance */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all">
-            <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-              <svg className="w-8 h-8 text-spice-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-            </div>
-            <h3 className="font-display text-xl font-bold text-spice-primary mb-2 text-center">Quality Assurance</h3>
-            <p className="font-body text-spice-text text-center">
-              Our products undergo rigorous quality testing and meet international safety standards.
-            </p>
-          </div>
-        </div>
+    <Suspense fallback={
+      <div className="h-[500px] w-full flex items-center justify-center">
+        <div className="text-spice-primary">{t('loading.worldMap')}</div>
       </div>
-      
-      {/* Feature 2 - Ethical Sourcing */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all">
-            <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-              <svg className="w-8 h-8 text-spice-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
-              </svg>
-            </div>
-            <h3 className="font-display text-xl font-bold text-spice-primary mb-2 text-center">Ethical Sourcing</h3>
-            <p className="font-body text-spice-text text-center">
-              We work directly with farmers to ensure fair trade practices and sustainable farming methods.
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      {/* Feature 3 - Timely Delivery */}
-      <div className="relative group">
-        <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-          <GlowingEffect
-            spread={40}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
-          <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all">
-            <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-              <svg className="w-8 h-8 text-spice-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 className="font-display text-xl font-bold text-spice-primary mb-2 text-center">Timely Delivery</h3>
-            <p className="font-body text-spice-text text-center">
-              Our efficient logistics ensure your orders are delivered on time, every time.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    }>
+      <WorldMapDemo />
+    </Suspense>
   </div>
 </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-spice-primary to-spice-accent">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">Ready to Import Premium Indian Products?</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">{t('cta.title')}</h2>
           <p className="font-body text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Contact us today to discuss your requirements and get a customized quote for your business.
+            {t('cta.subtitle')}
           </p>
           <Link 
             to="/contactus" 
             className="inline-block rounded-md bg-white px-8 py-3 font-body font-bold text-spice-primary hover:bg-spice-light transition-all shadow-md hover:shadow-blue-glow hover:-translate-y-0.5"
           >
-            Contact Us Now
+            {t('cta.button')}
           </Link>
         </div>
       </section>
+
+      
     </div>
   );
 }

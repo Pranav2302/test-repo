@@ -1,0 +1,165 @@
+{
+    "navbar": {
+      "home": "Startseite",
+      "aboutUs": "Über uns",
+      "products": "Produkte",
+      "brochure": "Broschüre",
+      "certification": "Zertifizierung",
+      "gallery": "Galerie",
+      "contactUs": "Kontakt",
+      "getQuote": "Angebot anfordern"
+    },
+    "hero": {
+      "title": {
+        "start": "Export von Indiens feinsten",
+        "highlight": "Gewürzen & Rohstoffen"
+      },
+      "subtitle": "Premium-Lieferanten von authentischen indischen Gewürzen, Zucker, Jaggery und Landwirtschaftsprodukten für globale Märkte.",
+      "cta": {
+        "explore": "Produkte entdecken",
+        "quote": "Angebot anfordern"
+      }
+    },
+    "products": {
+      "section": {
+        "title": "Unsere Premium-Produkte",
+        "subtitle": "Wir exportieren hochwertige indische Produkte, die internationalen Standards entsprechen und globale Geschmäcker befriedigen."
+      },
+      "spices": {
+        "title": "Premium-Gewürze",
+        "description": "Authentische indische Gewürze wie Kurkuma, Kardamom, schwarzer Pfeffer und Zimt.",
+        "alt": "Gewürze"
+      },
+      "sugar": {
+        "title": "Raffinierter Zucker",
+        "description": "Hochwertiger raffinierter und Rohzucker in verschiedenen Qualitätsstufen für den gewerblichen Gebrauch.",
+        "alt": "Zucker"
+      },
+      "jaggery": {
+        "title": "Bio-Jaggery",
+        "description": "Traditioneller unraffinierter Zucker mit reichhaltigen Mineralien und authentischem Geschmack aus biologischem Anbau.",
+        "alt": "Jaggery"
+      },
+      "rice": {
+        "title": "Basmati-Reis",
+        "description": "Duftende, langkörnige Reissorten aus dem Vorgebirge des Himalayas.",
+        "alt": "Reis"
+      },
+      "viewCta": "Produkte ansehen"
+    },
+    "loading": {
+      "globe": "Globus-Visualisierung wird geladen...",
+      "map": "Karten-Visualisierung wird geladen..."
+    },
+    "whyChooseUs": {
+      "title": "Warum Briskwell International wählen",
+      "subtitle": "Wir sind stolz auf unsere ethischen Geschäftspraktiken und unser Engagement für Qualität.",
+      "quality": {
+        "title": "Qualitätssicherung",
+        "description": "Unsere Produkte durchlaufen strenge Qualitätstests und erfüllen internationale Sicherheitsstandards."
+      },
+      "ethical": {
+        "title": "Ethische Beschaffung",
+        "description": "Wir arbeiten direkt mit Landwirten zusammen, um faire Handelspraktiken und nachhaltige Anbaumethoden zu gewährleisten."
+      },
+      "delivery": {
+        "title": "Pünktliche Lieferung",
+        "description": "Unsere effiziente Logistik sorgt dafür, dass Ihre Bestellungen pünktlich geliefert werden, jedes Mal."
+      }
+    },
+    "cta": {
+      "title": "Bereit für den Import hochwertiger indischer Produkte?",
+      "subtitle": "Kontaktieren Sie uns noch heute, um Ihre Anforderungen zu besprechen und ein maßgeschneidertes Angebot für Ihr Unternehmen zu erhalten.",
+      "button": "Jetzt kontaktieren"
+    },
+    "contactForm": {
+      "title": "Kontaktieren Sie uns",
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "inquiryType": "Anfragetyp",
+      "inquiryTypes": {
+        "import": "Warenimport/Export",
+        "spices": "Gewürze",
+        "pulses": "Hülsenfrüchte",
+        "sugar": "Zucker & Jaggery",
+        "rice": "Reis & Getreide",
+        "pricing": "Preisinformationen",
+        "shipping": "Versand & Logistik",
+        "other": "Sonstiges (bitte angeben)"
+      },
+      "specifyInquiry": "Anfrage spezifizieren",
+      "message": "Ihre Nachricht",
+      "messagePlaceholder": "Wie können wir Ihnen helfen?",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "required": "erforderlich",
+      "validation": {
+        "nameRequired": "Name ist erforderlich",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+        "inquiryTypeRequired": "Bitte wählen Sie einen Anfragetyp",
+        "customInquiryRequired": "Bitte geben Sie Ihre Anfrage an",
+        "messageRequired": "Nachricht ist erforderlich",
+        "messageMinLength": "Die Nachricht sollte mindestens 10 Zeichen lang sein"
+      }
+    },
+    "contactInfo": {
+      "title": "Kontaktinformationen",
+      "location": {
+        "title": "Unser Standort",
+        "address": "123 Business Avenue, Suite 456, Mumbai, Maharashtra 400001, Indien"
+      },
+      "email": {
+        "title": "E-Mail",
+        "address": "info@briskwell.com"
+      },
+      "phone": {
+        "title": "Rufen Sie uns an",
+        "number": "+91 123 456 7890"
+      },
+      "hours": {
+        "title": "Geschäftszeiten",
+        "weekdays": "Montag - Freitag: 9:00 - 18:00 Uhr",
+        "saturday": "Samstag: 10:00 - 14:00 Uhr",
+        "sunday": "Sonntag: Geschlossen"
+      },
+      "social": {
+        "title": "Folgen Sie uns"
+      }
+    },
+    "gallery": {
+      "title": "Unsere Galerie",
+      "subtitle": "Entdecken Sie unsere Bildersammlung, die unsere Produkte, Einrichtungen und den Weg vom Bauernhof zu globalen Märkten zeigt.",
+      "featured": "Hervorgehobene Highlights",
+      "categories": {
+        "all": "Alle",
+        "products": "Produkte",
+        "facilities": "Einrichtungen",
+        "events": "Veranstaltungen",
+        "team": "Team"
+      }
+    },
+    "worldMap": {
+      "title": "Globale Verteilung",
+      "subtitle": "Wir exportieren hochwertige indische Produkte in über 30 Länder weltweit. Unsere robuste Lieferkette gewährleistet pünktliche Lieferung in alle Ecken der Welt."
+    },
+    "globe": {
+      "title": "Briskwell International - Globaler Exporteur",
+      "subtitle": "Verbindung hochwertiger indischer Produkte mit der Welt"
+    },
+    "footer": {
+      "companyDescription": "Premium-Exporteure von feinen Gewürzen, Zucker und traditionellen Produkten aus Indien in die ganze Welt.",
+      "quickLinks": "Schnelllinks",
+      "products": "Unsere Produkte",
+      "productCategories": {
+        "spices": "Gewürze",
+        "sugar": "Zucker & Jaggery",
+        "rice": "Reis & Getreide",
+        "tea": "Tee & Kaffee",
+        "pickles": "Pickles & Chutneys"
+      },
+      "contactUs": "Kontaktieren Sie uns",
+      "findUs": "Finden Sie uns hier",
+      "copyright": "© {{year}} Briskwell International. Alle Rechte vorbehalten."
+    }
+  }
