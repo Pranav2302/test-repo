@@ -33,7 +33,7 @@ app.post('/sendemail', async(req, res) => {
     console.log('Sending email to:', to || process.env.DEFAULT_RECIPIENT || "Prajwalkorade@gmail.com");
 
     const mailOptions = {
-        from: process.env.EMAIL_FROM || 'pranavtrade23@gmail.com',
+        from: process.env.EMAIL_FROM || 'pranavkamble663@gmail.com',
         to: to || process.env.DEFAULT_RECIPIENT || "Prajwalkorade@gmail.com",
         subject: subject,
         text: text,

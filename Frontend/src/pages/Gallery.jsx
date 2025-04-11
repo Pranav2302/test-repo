@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next'; // Add this import
 
 // Import icons for the animated gallery
 const IconArrowLeft = () => (
@@ -28,6 +29,7 @@ const HoverCardEffect = ({ children, className = "" }) => {
 
 // Animated Testimonials Component adapted from aceternity
 const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
+  const { t } = useTranslation();
   const [active, setActive] = useState(0);
 
   const handleNext = () => {
@@ -55,7 +57,7 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 font-sans antialiased">
-      <h2 className="font-display text-3xl font-bold text-spice-primary text-center mb-8">Featured Highlights</h2>
+      <h2 className="font-display text-3xl font-bold text-spice-primary text-center mb-8">{t('gallery.featured.title')}</h2>
       <div className="relative grid grid-cols-1 gap-6 md:gap-20 md:grid-cols-2">
         <div>
           <div className="relative h-80 md:h-96 w-full">
@@ -93,7 +95,7 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
                 >
                   <img
                     src={image.src}
-                    alt={image.title}
+                    alt={t(`gallery.images.${image.id}.alt`) || image.alt}
                     className="h-full w-full rounded-3xl object-cover object-center shadow-lg"
                     draggable={false}
                   />
@@ -124,13 +126,13 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
             }}
           >
             <h3 className="text-2xl font-bold text-spice-primary">
-              {images[active].title}
+              {t(`gallery.images.${images[active].id}.title`) || images[active].title}
             </h3>
             <p className="text-sm text-spice-text">
-              {images[active].category}
+              {t(`gallery.images.${images[active].id}.category`) || images[active].category}
             </p>
             <motion.p className="mt-8 text-lg text-spice-text">
-              {images[active].description.split(" ").map((word, index) => (
+              {(t(`gallery.images.${images[active].id}.description`) || images[active].description).split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{
@@ -160,12 +162,14 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
             <button
               onClick={handlePrev}
               className="group flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 hover:bg-blue-100 transition-colors"
+              aria-label={t('gallery.controls.previous')}
             >
               <IconArrowLeft />
             </button>
             <button
               onClick={handleNext}
               className="group flex h-10 w-10 items-center justify-center rounded-full bg-blue-50 hover:bg-blue-100 transition-colors"
+              aria-label={t('gallery.controls.next')}
             >
               <IconArrowRight />
             </button>
@@ -177,8 +181,17 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
 };
 
 export default function Gallery() {
+  const { t } = useTranslation();
+  
   // Define gallery categories
-  const categories = ["All", "Products", "Facilities", "Events", "Team"];
+  const categories = [
+    { id: "All", label: t('gallery.categories.all') },
+    { id: "Products", label: t('gallery.categories.products') },
+    { id: "Facilities", label: t('gallery.categories.facilities') },
+    { id: "Events", label: t('gallery.categories.events') },
+    { id: "Team", label: t('gallery.categories.team') }
+  ];
+  
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -281,10 +294,10 @@ export default function Gallery() {
           className="text-center mb-12"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
-            Our Gallery
+            {t('gallery.title')}
           </h1>
           <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
-            Explore our collection of images showcasing our products, facilities, and the journey from farm to global markets.
+            {t('gallery.description')}
           </p>
         </motion.div>
         
@@ -297,15 +310,15 @@ export default function Gallery() {
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
           {categories.map((category) => (
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === category
+                activeCategory === category.id
                   ? 'blue-gradient text-white shadow-blue-glow'
                   : 'bg-white border border-spice-border hover:bg-blue-50 text-spice-text'
               }`}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </div>
@@ -337,7 +350,7 @@ export default function Gallery() {
               >
                 <img 
                   src={image.src} 
-                  alt={image.alt} 
+                  alt={t(`gallery.images.${image.id}.alt`) || image.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 
@@ -359,7 +372,7 @@ export default function Gallery() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.1 }}
                   >
-                    {image.title}
+                    {t(`gallery.images.${image.id}.title`) || image.title}
                   </motion.h3>
                   <motion.p 
                     className="text-sm text-white/80"
@@ -367,7 +380,7 @@ export default function Gallery() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
-                    {image.description.substring(0, 75)}...
+                    {(t(`gallery.images.${image.id}.description`) || image.description).substring(0, 75)}...
                   </motion.p>
                 </div>
                 
@@ -413,7 +426,7 @@ export default function Gallery() {
               
               <img 
                 src={selectedImage.src} 
-                alt={selectedImage.alt} 
+                alt={t(`gallery.images.${selectedImage.id}.alt`) || selectedImage.alt}
                 className="w-full h-auto object-contain max-h-[80vh] relative z-10"
               />
               
@@ -423,8 +436,8 @@ export default function Gallery() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="text-2xl font-bold">{selectedImage.title}</h3>
-                <p className="text-base opacity-90">{selectedImage.description}</p>
+                <h3 className="text-2xl font-bold">{t(`gallery.images.${selectedImage.id}.title`) || selectedImage.title}</h3>
+                <p className="text-base opacity-90">{t(`gallery.images.${selectedImage.id}.description`) || selectedImage.description}</p>
               </motion.div>
               
               <motion.button
@@ -432,6 +445,7 @@ export default function Gallery() {
                 onClick={() => setSelectedImage(null)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                aria-label={t('gallery.modal.close')}
               >
                 ✕
               </motion.button>

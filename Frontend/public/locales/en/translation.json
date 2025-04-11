@@ -1,0 +1,250 @@
+{
+  "navbar": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "products": "Products",
+    "brochure": "Brochure",
+    "certification": "Certification",
+    "gallery": "Gallery",
+    "contactUs": "Contact Us",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "title": {
+      "start": "Premium Quality Indian",
+      "highlight": "Agricultural Exports"
+    },
+    "subtitle": "Connecting Indian farmers with global markets through premium-quality agricultural exports",
+    "cta": {
+      "explore": "Explore Our Products",
+      "quote": "Get a Quote"
+    }
+  },
+  "products": {
+    "section": {
+      "title": "Our Product Range"
+    },
+    "spices": {
+      "title": "Premium Spices",
+      "description": "Authentic Indian spices including turmeric, cardamom, black pepper, and cinnamon.",
+      "alt": "Spices"
+    },
+    "sugar": {
+      "title": "Refined Sugar",
+      "description": "High-quality refined and raw sugar available in various grades for commercial use.",
+      "alt": "Sugar"
+    },
+    "jaggery": {
+      "title": "Organic Jaggery",
+      "description": "Traditional unrefined sugar with rich minerals and authentic taste from organic farms.",
+      "alt": "Jaggery"
+    },
+    "rice": {
+      "title": "Basmati Rice",
+      "description": "Fragrant, long-grain rice varieties from the foothills of the Himalayas.",
+      "alt": "Rice"
+    },
+    "viewCta": "View Products",
+    "carousel": {
+      "title": "Discover Our Products",
+      "subtitle": "Explore our complete range of premium Indian commodities ready for export",
+      "view": "View Details",
+      "spices": "Premium Spices",
+      "dal": "Premium Dal",
+      "pulses": "Variety of Pulses",
+      "vegetables": "Fresh Vegetables",
+      "fruits": "Exotic Fruits",
+      "wheat": "Premium Wheat",
+      "jowar": "Jowar Millet",
+      "mango": "Premium Mangoes",
+      "sugar": "Refined Sugar",
+      "jaggery": "Organic Jaggery",
+      "rice": "Basmati Rice"
+    },
+    "filters": {
+      "all": "All Products",
+      "spices": "Spices",
+      "pulses": "Pulses",
+      "sugar": "Sugar",
+      "jaggery": "Jaggery",
+      "rice": "Rice",
+      "grains": "Grains",
+      "vegetables": "Vegetables",
+      "fruits": "Fruits"
+    },
+    "viewAllButton": "View All Products",
+    "categories": {
+      "title": "Product Categories",
+      "subtitle": "Browse our products by category"
+    },
+    "page": {
+      "title": "Our Product Range",
+      "description": "Explore our extensive range of premium Indian commodities ready for global markets"
+    },
+    "noProducts": "No products found in this category.",
+    "modal": {
+      "inquire": "Inquire About This Product",
+      "close": "Close"
+    }
+  },
+  "loading": {
+    "globe": "Loading Global Reach Map...",
+    "map": "Loading World Map...",
+    "worldMap": "Loading world map visualization...",
+    "globe": "Loading global visualization..."
+  },
+  "whatWeDo": {
+    "title": "What We Do",
+    "subtitle": "From farm to fork, we ensure quality at every step of the supply chain",
+    "sourcing": {
+      "title": "Direct Sourcing",
+      "description": "We work directly with farmers across India to source the finest agricultural products, ensuring fair compensation and sustainable practices."
+    },
+    "quality": {
+      "title": "Quality Control",
+      "description": "Rigorous quality checks at every step, from harvesting to packaging, ensure only the finest products reach international markets."
+    },
+    "export": {
+      "title": "Global Export",
+      "description": "With established networks in major markets worldwide, we ensure smooth delivery of premium Indian commodities to global customers."
+    },
+    "learnMore": "Learn more about our process"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "subtitle": "Partner with a trusted name in Indian agricultural exports",
+    "quality": {
+      "title": "Quality Assurance",
+      "description": "Our products undergo rigorous quality controls to meet international standards and exceed customer expectations."
+    },
+    "ethical": {
+      "title": "Ethical Sourcing",
+      "description": "We believe in fair compensation for farmers and sustainable agricultural practices that benefit communities."
+    },
+    "delivery": {
+      "title": "Timely Delivery",
+      "description": "With our established logistics network, we ensure your orders are delivered on time, every time."
+    }
+  },
+  "cta": {
+    "title": "Ready to Partner With Us?",
+    "subtitle": "Get in touch to discuss your import requirements and how we can meet your needs.",
+    "button": "Contact Us Today"
+  },
+  "contactUs": {
+    "title": "Contact Us",
+    "form": {
+      "title": "Get In Touch",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Your name",
+      "nameError": "Name is required",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "you@example.com",
+      "emailError": "Please enter a valid email address",
+      "inquiryTypeLabel": "Inquiry Type",
+      "inquiryTypePlaceholder": "-- Select Inquiry Type --",
+      "inquiryTypeError": "Please select an inquiry type",
+      "customInquiryLabel": "Specify Inquiry",
+      "customInquiryPlaceholder": "Specify your inquiry",
+      "customInquiryError": "Please specify your inquiry",
+      "messageLabel": "Your Message",
+      "messagePlaceholder": "How can we help you?",
+      "messageError": "Message should be at least 10 characters",
+      "sending": "Sending...",
+      "sendButton": "Send Message",
+      "inquiryTypes": {
+        "importExport": "Goods Import/Export",
+        "spices": "Spices",
+        "pulses": "Pulses",
+        "sugarJaggery": "Sugar & Jaggery",
+        "riceGrains": "Rice & Grains",
+        "pricing": "Pricing Information",
+        "shipping": "Shipping & Logistics",
+        "other": "Other (Specify)"
+      }
+    },
+    "info": {
+      "title": "Contact Information",
+      "locationTitle": "Our Location",
+      "address": {
+        "line1": "123 Business Avenue",
+        "line2": "Suite 456",
+        "line3": "Mumbai, Maharashtra 400001",
+        "line4": "India"
+      },
+      "emailTitle": "Email Us",
+      "emailAddress": "info@briskwell.com",
+      "phoneTitle": "Call Us",
+      "phoneNumber": "+91 123 456 7890",
+      "hoursTitle": "Business Hours",
+      "hours": {
+        "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",
+        "saturday": "Saturday: 10:00 AM - 2:00 PM",
+        "sunday": "Sunday: Closed"
+      },
+      "socialTitle": "Follow Us"
+    }
+  },
+  "gallery": {
+    "title": "Our Gallery",
+    "description": "Explore our collection of images showcasing our products, facilities, and the journey from farm to global markets.",
+    "featured": {
+      "title": "Featured Highlights"
+    },
+    "categories": {
+      "all": "All",
+      "products": "Products",
+      "facilities": "Facilities",
+      "events": "Events",
+      "team": "Team"
+    },
+    "controls": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "modal": {
+      "close": "Close"
+    },
+    "images": {
+      "1": {
+        "title": "Premium Sugar Products",
+        "alt": "Sugar Production",
+        "description": "Our refined sugar manufacturing process ensures the highest quality product with optimal taste and purity. Each batch is carefully processed using modern technology while maintaining traditional quality standards.",
+        "category": "Products"
+      },
+      "2": {
+        "title": "Organic Jaggery",
+        "alt": "Jaggery",
+        "description": "Traditional jaggery production methods combined with organic farming practices create a nutrient-rich natural sweetener that preserves all the essential minerals and goodness of sugarcane.",
+        "category": "Products"
+      }
+    }
+  },
+  "worldMap": {
+    "title": "Global Distribution",
+    "subtitle": "We export premium Indian commodities to over 30 countries worldwide. Our robust supply chain ensures timely delivery to all corners of the globe."
+  },
+  "globe": {
+    "title": "Briskwell International - Global Exporter",
+    "subtitle": "Connecting Indian premium products with the world"
+  },
+  "globalReach": {
+    "title": "Our Global Presence",
+    "description": "We export premium Indian commodities to destinations worldwide with a robust supply chain and reliable logistics partners."
+  },
+  "footer": {
+    "companyDescription": "Premium exporters of fine spices, sugar, and traditional products from India to the world.",
+    "quickLinks": "Quick Links",
+    "products": "Our Products",
+    "productCategories": {
+      "spices": "Spices",
+      "sugar": "Sugar & Jaggery",
+      "rice": "Rice & Grains",
+      "tea": "Tea & Coffee",
+      "pickles": "Pickles & Chutneys"
+    },
+    "contactUs": "Contact Us",
+    "findUs": "Find us here",
+    "copyright": "© {{year}} Briskwell International. All rights reserved."
+  }
+}

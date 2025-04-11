@@ -1,0 +1,165 @@
+{
+    "navbar": {
+      "home": "Accueil",
+      "aboutUs": "À Propos",
+      "products": "Produits",
+      "brochure": "Brochure",
+      "certification": "Certification",
+      "gallery": "Galerie",
+      "contactUs": "Contact",
+      "getQuote": "Obtenir un Devis"
+    },
+    "hero": {
+      "title": {
+        "start": "Exportation des Meilleurs",
+        "highlight": "Épices et Produits de Base Indiens"
+      },
+      "subtitle": "Fournisseurs premium d'épices indiennes authentiques, de sucre, de jaggery et de produits agricoles pour les marchés mondiaux.",
+      "cta": {
+        "explore": "Explorer les Produits",
+        "quote": "Obtenir un Devis"
+      }
+    },
+    "products": {
+      "section": {
+        "title": "Nos Produits Premium",
+        "subtitle": "Nous exportons des produits indiens de haute qualité qui répondent aux normes internationales et satisfont les goûts mondiaux."
+      },
+      "spices": {
+        "title": "Épices Premium",
+        "description": "Épices indiennes authentiques comprenant le curcuma, la cardamome, le poivre noir et la cannelle.",
+        "alt": "Épices"
+      },
+      "sugar": {
+        "title": "Sucre Raffiné",
+        "description": "Sucre raffiné et brut de haute qualité disponible en différentes qualités pour un usage commercial.",
+        "alt": "Sucre"
+      },
+      "jaggery": {
+        "title": "Jaggery Biologique",
+        "description": "Sucre non raffiné traditionnel avec des minéraux riches et un goût authentique provenant de fermes biologiques.",
+        "alt": "Jaggery"
+      },
+      "rice": {
+        "title": "Riz Basmati",
+        "description": "Variétés de riz parfumées à grain long provenant des contreforts de l'Himalaya.",
+        "alt": "Riz"
+      },
+      "viewCta": "Voir les Produits"
+    },
+    "loading": {
+      "globe": "Chargement de la visualisation du globe...",
+      "map": "Chargement de la visualisation de la carte..."
+    },
+    "whyChooseUs": {
+      "title": "Pourquoi Choisir Briskwell International",
+      "subtitle": "Nous sommes fiers de nos pratiques commerciales éthiques et de notre engagement envers la qualité.",
+      "quality": {
+        "title": "Assurance Qualité",
+        "description": "Nos produits subissent des tests de qualité rigoureux et répondent aux normes de sécurité internationales."
+      },
+      "ethical": {
+        "title": "Approvisionnement Éthique",
+        "description": "Nous travaillons directement avec les agriculteurs pour garantir des pratiques commerciales équitables et des méthodes agricoles durables."
+      },
+      "delivery": {
+        "title": "Livraison Ponctuelle",
+        "description": "Notre logistique efficace garantit que vos commandes sont livrées à temps, à chaque fois."
+      }
+    },
+    "cta": {
+      "title": "Prêt à Importer des Produits Indiens Premium?",
+      "subtitle": "Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis personnalisé pour votre entreprise.",
+      "button": "Contactez-Nous Maintenant"
+    },
+    "contactForm": {
+      "title": "Contactez-Nous",
+      "name": "Nom Complet",
+      "email": "Adresse Email",
+      "inquiryType": "Type de Demande",
+      "inquiryTypes": {
+        "import": "Import/Export de Marchandises",
+        "spices": "Épices",
+        "pulses": "Légumineuses",
+        "sugar": "Sucre & Jaggery",
+        "rice": "Riz & Céréales",
+        "pricing": "Informations sur les Prix",
+        "shipping": "Expédition & Logistique",
+        "other": "Autre (préciser)"
+      },
+      "specifyInquiry": "Préciser la Demande",
+      "message": "Votre Message",
+      "messagePlaceholder": "Comment pouvons-nous vous aider?",
+      "submit": "Envoyer le Message",
+      "sending": "Envoi en cours...",
+      "required": "obligatoire",
+      "validation": {
+        "nameRequired": "Le nom est obligatoire",
+        "emailRequired": "L'email est obligatoire",
+        "emailInvalid": "Veuillez entrer une adresse email valide",
+        "inquiryTypeRequired": "Veuillez sélectionner un type de demande",
+        "customInquiryRequired": "Veuillez préciser votre demande",
+        "messageRequired": "Le message est obligatoire",
+        "messageMinLength": "Le message doit comporter au moins 10 caractères"
+      }
+    },
+    "contactInfo": {
+      "title": "Informations de Contact",
+      "location": {
+        "title": "Notre Emplacement",
+        "address": "123 Business Avenue, Suite 456, Mumbai, Maharashtra 400001, Inde"
+      },
+      "email": {
+        "title": "Envoyez-nous un Email",
+        "address": "info@briskwell.com"
+      },
+      "phone": {
+        "title": "Appelez-Nous",
+        "number": "+91 123 456 7890"
+      },
+      "hours": {
+        "title": "Heures d'Ouverture",
+        "weekdays": "Lundi - Vendredi: 9h00 - 18h00",
+        "saturday": "Samedi: 10h00 - 14h00",
+        "sunday": "Dimanche: Fermé"
+      },
+      "social": {
+        "title": "Suivez-Nous"
+      }
+    },
+    "gallery": {
+      "title": "Notre Galerie",
+      "subtitle": "Explorez notre collection d'images présentant nos produits, nos installations et le parcours de la ferme aux marchés mondiaux.",
+      "featured": "Points Forts",
+      "categories": {
+        "all": "Tous",
+        "products": "Produits",
+        "facilities": "Installations",
+        "events": "Événements",
+        "team": "Équipe"
+      }
+    },
+    "worldMap": {
+      "title": "Distribution Mondiale",
+      "subtitle": "Nous exportons des produits indiens de qualité supérieure vers plus de 30 pays dans le monde. Notre chaîne d'approvisionnement robuste assure une livraison ponctuelle dans tous les coins du globe."
+    },
+    "globe": {
+      "title": "Briskwell International - Exportateur Global",
+      "subtitle": "Connecter les produits premium indiens avec le monde"
+    },
+    "footer": {
+      "companyDescription": "Exportateurs premium d'épices fines, de sucre et de produits traditionnels de l'Inde vers le monde entier.",
+      "quickLinks": "Liens Rapides",
+      "products": "Nos Produits",
+      "productCategories": {
+        "spices": "Épices",
+        "sugar": "Sucre & Jaggery",
+        "rice": "Riz & Céréales",
+        "tea": "Thé & Café",
+        "pickles": "Pickles & Chutneys"
+      },
+      "contactUs": "Contactez-Nous",
+      "findUs": "Trouvez-nous ici",
+      "copyright": "© {{year}} Briskwell International. Tous droits réservés."
+    }
+  }

@@ -1,0 +1,165 @@
+{
+    "navbar": {
+      "home": "Home",
+      "aboutUs": "Chi Siamo",
+      "products": "Prodotti",
+      "brochure": "Brochure",
+      "certification": "Certificazione",
+      "gallery": "Galleria",
+      "contactUs": "Contattaci",
+      "getQuote": "Richiedi un Preventivo"
+    },
+    "hero": {
+      "title": {
+        "start": "Esportazione delle Migliori",
+        "highlight": "Spezie e Materie Prime dell'India"
+      },
+      "subtitle": "Fornitori premium di autentiche spezie indiane, zucchero, jaggery e prodotti agricoli per i mercati globali.",
+      "cta": {
+        "explore": "Esplora i Prodotti",
+        "quote": "Richiedi un Preventivo"
+      }
+    },
+    "products": {
+      "section": {
+        "title": "I Nostri Prodotti Premium",
+        "subtitle": "Esportiamo materie prime indiane di alta qualità che soddisfano gli standard internazionali e i gusti globali."
+      },
+      "spices": {
+        "title": "Spezie Premium",
+        "description": "Autentiche spezie indiane tra cui curcuma, cardamomo, pepe nero e cannella.",
+        "alt": "Spezie"
+      },
+      "sugar": {
+        "title": "Zucchero Raffinato",
+        "description": "Zucchero raffinato e grezzo di alta qualità disponibile in varie gradazioni per uso commerciale.",
+        "alt": "Zucchero"
+      },
+      "jaggery": {
+        "title": "Jaggery Biologico",
+        "description": "Zucchero tradizionale non raffinato ricco di minerali e dal gusto autentico proveniente da fattorie biologiche.",
+        "alt": "Jaggery"
+      },
+      "rice": {
+        "title": "Riso Basmati",
+        "description": "Varietà di riso fragrante a chicco lungo dalle pendici dell'Himalaya.",
+        "alt": "Riso"
+      },
+      "viewCta": "Visualizza Prodotti"
+    },
+    "loading": {
+      "globe": "Caricamento visualizzazione globo...",
+      "map": "Caricamento visualizzazione mappa..."
+    },
+    "whyChooseUs": {
+      "title": "Perché Scegliere Briskwell International",
+      "subtitle": "Siamo orgogliosi delle nostre pratiche commerciali etiche e del nostro impegno per la qualità.",
+      "quality": {
+        "title": "Garanzia di Qualità",
+        "description": "I nostri prodotti sono sottoposti a rigorosi test di qualità e soddisfano gli standard di sicurezza internazionali."
+      },
+      "ethical": {
+        "title": "Approvvigionamento Etico",
+        "description": "Lavoriamo direttamente con gli agricoltori per garantire pratiche di commercio equo e metodi agricoli sostenibili."
+      },
+      "delivery": {
+        "title": "Consegna Puntuale",
+        "description": "La nostra logistica efficiente garantisce che i tuoi ordini vengano consegnati in tempo, sempre."
+      }
+    },
+    "cta": {
+      "title": "Pronto a Importare Prodotti Indiani Premium?",
+      "subtitle": "Contattaci oggi per discutere delle tue esigenze e ottenere un preventivo personalizzato per la tua attività.",
+      "button": "Contattaci Ora"
+    },
+    "contactForm": {
+      "title": "Mettiti in Contatto",
+      "name": "Nome Completo",
+      "email": "Indirizzo Email",
+      "inquiryType": "Tipo di Richiesta",
+      "inquiryTypes": {
+        "import": "Importazione/Esportazione Merci",
+        "spices": "Spezie",
+        "pulses": "Legumi",
+        "sugar": "Zucchero e Jaggery",
+        "rice": "Riso e Cereali",
+        "pricing": "Informazioni sui Prezzi",
+        "shipping": "Spedizione e Logistica",
+        "other": "Altro (Specifica)"
+      },
+      "specifyInquiry": "Specifica Richiesta",
+      "message": "Il Tuo Messaggio",
+      "messagePlaceholder": "Come possiamo aiutarti?",
+      "submit": "Invia Messaggio",
+      "sending": "Invio in corso...",
+      "required": "obbligatorio",
+      "validation": {
+        "nameRequired": "Il nome è obbligatorio",
+        "emailRequired": "L'email è obbligatoria",
+        "emailInvalid": "Inserisci un indirizzo email valido",
+        "inquiryTypeRequired": "Seleziona un tipo di richiesta",
+        "customInquiryRequired": "Specifica la tua richiesta",
+        "messageRequired": "Il messaggio è obbligatorio",
+        "messageMinLength": "Il messaggio deve contenere almeno 10 caratteri"
+      }
+    },
+    "contactInfo": {
+      "title": "Informazioni di Contatto",
+      "location": {
+        "title": "La Nostra Sede",
+        "address": "123 Business Avenue, Suite 456, Mumbai, Maharashtra 400001, India"
+      },
+      "email": {
+        "title": "Scrivici",
+        "address": "info@briskwell.com"
+      },
+      "phone": {
+        "title": "Chiamaci",
+        "number": "+91 123 456 7890"
+      },
+      "hours": {
+        "title": "Orari di Lavoro",
+        "weekdays": "Lunedì - Venerdì: 9:00 - 18:00",
+        "saturday": "Sabato: 10:00 - 14:00",
+        "sunday": "Domenica: Chiuso"
+      },
+      "social": {
+        "title": "Seguici"
+      }
+    },
+    "gallery": {
+      "title": "La Nostra Galleria",
+      "subtitle": "Esplora la nostra collezione di immagini che mostrano i nostri prodotti, le strutture e il percorso dalla fattoria ai mercati globali.",
+      "featured": "In Evidenza",
+      "categories": {
+        "all": "Tutti",
+        "products": "Prodotti",
+        "facilities": "Strutture",
+        "events": "Eventi",
+        "team": "Team"
+      }
+    },
+    "worldMap": {
+      "title": "Distribuzione Globale",
+      "subtitle": "Esportiamo materie prime indiane premium in oltre 30 paesi in tutto il mondo. La nostra solida catena di approvvigionamento garantisce consegne puntuali in tutti gli angoli del globo."
+    },
+    "globe": {
+      "title": "Briskwell International - Esportatore Globale",
+      "subtitle": "Colleghiamo i prodotti premium indiani con il mondo"
+    },
+    "footer": {
+      "companyDescription": "Esportatori premium di spezie raffinate, zucchero e prodotti tradizionali dall'India al mondo.",
+      "quickLinks": "Link Rapidi",
+      "products": "I Nostri Prodotti",
+      "productCategories": {
+        "spices": "Spezie",
+        "sugar": "Zucchero e Jaggery",
+        "rice": "Riso e Cereali",
+        "tea": "Tè e Caffè",
+        "pickles": "Sottaceti e Chutney"
+      },
+      "contactUs": "Contattaci",
+      "findUs": "Trovaci qui",
+      "copyright": "© {{year}} Briskwell International. Tutti i diritti riservati."
+    }
+  }
