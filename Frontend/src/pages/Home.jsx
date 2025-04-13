@@ -5,6 +5,13 @@ import { GlowingEffect } from "../components/ui/glowing-effect";
 import { useTranslation } from "react-i18next";
 import { Products } from "../components/ProductCarousel";
 
+// Import local images from assets folder
+import bgImage1 from "../assets/background/bg1.jpg"; 
+import bgImage2 from "../assets/background/bg2.jpg";
+import bgImage3 from "../assets/background/bg3.jpg";
+import bgImage4 from "../assets/background/bg4.jpg";
+
+
 // Lazy load heavy components
 const Githubglobe = lazy(() =>
   import("./Githubglobe").then((module) => ({
@@ -16,10 +23,10 @@ const WorldMapDemo = lazy(() => import("./WorldMap"));
 
 // Cloudinary hero images array
 const heroImages = [
-  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311491/aerial-view-cargo-ship-cargo-container-harbor_335224-1374_w7ev4r.jpg",
-  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311429/port-6670684_1280_qmcoei.jpg",
-  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311376/logistics-transportation-container-cargo-ship-cargo-plane-with-working-crane-bridge-shipyard-sunrise-logistic-import-export-transport-industry-background-ai-generative_123827-24177_nudvo2.jpg",
-  "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311423/aerial-view-cargo-ship-cargo-container-harbor_335224-1380_qmcnzl.jpg",
+  bgImage1,
+  bgImage2,
+  bgImage3,
+  bgImage4
 ];
 
 export default function Home() {
@@ -359,7 +366,7 @@ export default function Home() {
           }
         >
           {/* Uncomment if you want to use the GitHub globe */}
-          {/*     <Githubglobe /> */}
+              {/* <Githubglobe /> */}
         </Suspense>
       </section>
       {/* What we do section */}
@@ -527,7 +534,7 @@ export default function Home() {
               </div>
             }
           >
-            {/*       <WorldMapDemo /> */}
+                  {/* <WorldMapDemo /> */}
           </Suspense>
         </div>
       </section>

@@ -6,6 +6,7 @@ import "./App.css";
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton"; // Import the WhatsApp button
+import { VideoPopup } from "../src/components/VideoPopup"; // Import the VideoPopup component
 
 // Import pages
 import Home from "./pages/Home";
@@ -34,7 +35,8 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        
+          {/* Add the VideoPopup component */}
+          <VideoPopup />
         {/* WhatsApp Button - appears on all pages */}
         <WhatsAppButton 
           phoneNumber="+919922990829" 
