@@ -118,3 +118,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add this to your existing CSS */
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    r: 2;
+  }
+  100% {
+    opacity: 0;
+    r: 8;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 1.5s infinite;
+}

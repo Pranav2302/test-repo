@@ -534,7 +534,7 @@ export default function Home() {
               </div>
             }
           >
-                  {/* <WorldMapDemo /> */}
+                  <WorldMapDemo />
           </Suspense>
         </div>
       </section>

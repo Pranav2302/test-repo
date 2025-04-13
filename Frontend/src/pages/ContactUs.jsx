@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next'; // Add this import
+import { useTranslation } from 'react-i18next';
+import config from '../../src/config';
 
 export default function ContactUs() {
-  const { t } = useTranslation(); // Add translation hook
+  const { t } = useTranslation();
   
   // Form state
   const [formData, setFormData] = useState({
@@ -99,7 +100,8 @@ export default function ContactUs() {
       : formData.inquiryType;
     
     const emailContent = {
-      to: "pranavkamble0203@gmail.com",
+      name: formData.name,
+      email: formData.email,
       subject: `New Inquiry: ${inquirySubject}`,
       text: `
 Name: ${formData.name}
@@ -112,7 +114,12 @@ ${formData.message}
     };
     
     try {
-      const response = await axios.post('http://localhost:5000/sendemail', emailContent);
+      // Fix the API URL handling
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await axios.post(
+        `${apiUrl}/sendemail`, 
+        emailContent
+      );
       
       setSubmitStatus({
         success: true,
@@ -131,6 +138,14 @@ ${formData.message}
       
     } catch (error) {
       console.error('Error sending email:', error);
+      
+      // Add detailed error logging
+      if (error.response) {
+        console.error('Server error:', error.response.data);
+        console.error('Status code:', error.response.status);
+      } else if (error.request) {
+        console.error('No response received. Check CORS or network.');
+      }
       
       const errorMsg = error.response?.data?.message || t('contactUs.form.errorMessage');
       
