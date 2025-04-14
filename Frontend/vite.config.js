@@ -3,11 +3,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react({
-      include: "**/*.{jsx,js}",  // Enable JSX in .js files
+      include: "**/*.{jsx,js}",
       jsxRuntime: 'automatic'
     }),
     tailwindcss(),
@@ -17,5 +16,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  // Remove the problematic esbuild config and use the plugin options instead
+  server: {
+    host: true,
+    port: 5173,
+    allowedHosts: ['fb23-103-36-44-30.ngrok-free.app'], // 👈 Add your Ngrok domain here
+  },
 })
