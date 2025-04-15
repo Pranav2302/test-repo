@@ -313,7 +313,7 @@ export default function Gallery() {
           className="text-center mb-12"
         >
           <h1 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
-            Our Gallery
+            Services
           </h1>
           <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
             Explore our collection of images showcasing our products,

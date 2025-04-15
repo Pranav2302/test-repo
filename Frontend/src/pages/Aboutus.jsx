@@ -117,8 +117,10 @@ const AboutUs = () => {
               Global Trade Excellence
             </motion.span>
             <h1 className="font-display text-5xl md:text-6xl font-bold mb-6 text-white">
-              Bridging Markets,{" "}
-              <span className="text-blue-400">Connecting the World</span>
+              Who are we ?{" "}
+              <span className="text-blue-400">
+                Spices specialists for over a decade
+              </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl">
               Bridging Borders, Building Partnerships, and Unlocking the Full
@@ -142,7 +144,7 @@ const AboutUs = () => {
         </div>
 
         {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-0 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* About Us Description Section */}
@@ -242,7 +244,7 @@ const AboutUs = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative hidden lg:block"
+              className="relative hidden lg:block pt-50"
             >
               <div className="relative aspect-square">
                 {/* Background Effects */}
