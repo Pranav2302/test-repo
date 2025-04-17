@@ -93,15 +93,15 @@ const AboutUs = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744311491/aerial-view-cargo-ship-cargo-container-harbor_335224-1374_w7ev4r.jpg"
+            src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744910528/Business_App/ibrgbge0wnlpuk3ahgip.jpg"
             alt="Port Operations"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
+          <div className="absolute inset-0 " />
         </div>
 
         {/* Content */}
-        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center">
+        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,14 +117,13 @@ const AboutUs = () => {
               Global Trade Excellence
             </motion.span>
             <h1 className="font-display text-5xl md:text-6xl font-bold mb-6 text-white">
-              Who are we ?{" "}
-              <span className="text-blue-400">
-                Spices specialists for over a decade
+              {/* Who are we ?{" "} */}
+              <span className="text-blue-400 ">
+                Aboutus {/* Spices specialists for over a decade */}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl">
-              Bridging Borders, Building Partnerships, and Unlocking the Full
-              Potential of Global Trade.
+              Spices specialists for over a decade
             </p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -135,7 +134,7 @@ const AboutUs = () => {
               <Link
                 to="/products"
                 className="px-8 py-3 bg-white/10 backdrop-blur-sm text-white rounded-full 
-          hover:bg-white/20 transition-all hover:-translate-y-1 duration-300"
+          hover:bg-white/20 transition-all hover:-translate-y-1 duration-300 "
               >
                 View Products
               </Link>

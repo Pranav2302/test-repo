@@ -25,7 +25,7 @@ const heroImages = [
   bgImage1,
   bgImage2,
   bgImage3,
-  bgImage4
+  bgImage4,
 ];
 
 export default function Home() {
