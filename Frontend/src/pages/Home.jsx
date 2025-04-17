@@ -310,7 +310,7 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <div className="absolute inset-0 bg-gradient-to-r from-spice-primary/20 to-transparent"></div>
                 <img
-                  src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/about_us.jpg"
+                  src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744912464/Business_App/ezjrvfh9lnlkni9lei8w.jpg"
                   alt="About Briskwell International"
                   className="w-full h-[500px] object-cover"
                 />

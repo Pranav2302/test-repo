@@ -11,7 +11,7 @@ import { VideoPopup } from "../src/components/VideoPopup"; // Import the VideoPo
 // Import pages
 import Home from "./pages/Home";
 import Aboutus from "./pages/Aboutus";
-import Brochure from "./pages/Brochure";
+import Services from "./pages/Services";
 import Certification from "./pages/Certification";
 import Gallery from "./pages/Gallery";
 import Products from "./pages/Products";
@@ -28,7 +28,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/aboutus" element={<Aboutus />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/brochure" element={<Brochure />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/certification" element={<Certification />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contactus" element={<ContactUs />} />

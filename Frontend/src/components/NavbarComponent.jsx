@@ -46,7 +46,7 @@ export default function NavbarComponent() {
     { name: t('navbar.home'), link: "/" },
     { name: t('navbar.aboutUs'), link: "/aboutus" },
     { name: t('navbar.products'), link: "/products" },
-    { name: t('navbar.brochure'), link: "/brochure" },
+    { name: t('navbar.services'), link: "/services" },
     { name: t('navbar.certification'), link: "/certification" },
     { name: t('navbar.gallery'), link: "/gallery" },
     { name: t('navbar.contactUs'), link: "/contactus" },
