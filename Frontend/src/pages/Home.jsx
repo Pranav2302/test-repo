@@ -11,7 +11,6 @@ import bgImage2 from "../assets/background/bg2.jpg";
 import bgImage3 from "../assets/background/bg3.jpg";
 import bgImage4 from "../assets/background/bg4.jpg";
 
-
 // Lazy load heavy components
 const Githubglobe = lazy(() =>
   import("./Githubglobe").then((module) => ({
@@ -26,60 +25,86 @@ const heroImages = [
   bgImage1,
   bgImage2,
   bgImage3,
-  bgImage4
+  bgImage4,
 ];
 
 export default function Home() {
   const { t } = useTranslation();
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
+  const [prevHeroImage, setPrevHeroImage] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  // Effect for rotating hero images with enhanced 3 second interval
+  // Effect for rotating hero images with enhanced transition
   useEffect(() => {
     const interval = setInterval(() => {
+      setPrevHeroImage(currentHeroImage);
       setCurrentHeroImage((prevImage) => {
         const newIndex = (prevImage + 1) % heroImages.length;
         setDirection(1); // Always moving forward in auto rotation
         return newIndex;
       });
-    }, 3000); // 3 seconds interval
+    }, 3000); // Increased to 3 seconds to give more time to appreciate each image
 
     return () => clearInterval(interval);
-  }, []);
+  }, [currentHeroImage]);
 
-  // Animation variants for transitions
+  // Enhanced animation variants for smoother transitions
   const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? 1000 : -1000,
+    initial: (direction) => ({
       opacity: 0,
-      scale: 1.1,
+      scale: direction > 0 ? 1.1 : 0.9,
+      x: direction > 0 ? '100%' : '-100%',
     }),
-    center: {
-      x: 0,
+    animate: {
       opacity: 1,
       scale: 1,
+      x: 0,
       transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.5 },
-        scale: { duration: 0.7, ease: [0.6, 0.05, -0.01, 0.9] },
+        x: { type: "spring", stiffness: 100, damping: 20 },
+        opacity: { duration: 0.8 },
+        scale: { duration: 1.2, ease: [0.34, 1.56, 0.64, 1] }, // Custom bezier curve for more natural motion
       },
     },
     exit: (direction) => ({
-      x: direction < 0 ? 1000 : -1000,
       opacity: 0,
-      scale: 0.95,
+      scale: direction > 0 ? 0.9 : 1.1,
+      x: direction > 0 ? '-100%' : '100%',
       transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.5 },
+        x: { type: "spring", stiffness: 100, damping: 20 },
+        opacity: { duration: 0.8 },
       },
     }),
+  };
+
+  // Cross-fade animation for smoother background transitions
+  const fadeVariants = {
+    initial: { opacity: 0 },
+    animate: { 
+      opacity: 1,
+      transition: { duration: 1.2, ease: "easeInOut" }
+    },
+    exit: { 
+      opacity: 0,
+      transition: { duration: 1.2, ease: "easeInOut" }
+    }
   };
 
   // Function to handle manual image change with direction
   const handleImageChange = (index) => {
+    if (index === currentHeroImage) return;
+    
+    setPrevHeroImage(currentHeroImage);
     setDirection(index > currentHeroImage ? 1 : -1);
     setCurrentHeroImage(index);
   };
+
+  // Preload images for smoother experience
+  useEffect(() => {
+    heroImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <div className="overflow-x-hidden">
@@ -87,45 +112,33 @@ export default function Home() {
       <section className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 h-[80vh] md:h-[90vh]">
         {/* Dynamic Hero Image Carousel with improved animation */}
         <div className="absolute inset-0 overflow-hidden">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+          <AnimatePresence initial={false} custom={direction} mode="crossfade">
             <motion.div
               key={currentHeroImage}
-              className="absolute inset-0"
+              className="absolute inset-0 z-10"
               custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
+              variants={fadeVariants}
+              initial="initial"
+              animate="animate"
               exit="exit"
-              transition={{
-                duration: 1,
-                ease: [0.25, 1, 0.5, 1],
-              }}
             >
-              <div
+              <motion.div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${heroImages[currentHeroImage]})`,
-                  filter: "brightness(0.85)",
                 }}
-              >
-                {/* Add a subtle motion effect to the background image */}
-                <motion.div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(${heroImages[currentHeroImage]})`,
-                    backgroundPosition: "center",
-                  }}
-                  initial={{ scale: 1.05 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 3, ease: "easeOut" }}
-                />
-              </div>
+                initial={{ scale: 1.05 }}
+                animate={{ 
+                  scale: 1,
+                  transition: { duration: 6, ease: "easeOut" }
+                }}
+              />
               <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Hero Content with staggered animation */}
+        {/* Hero Content with enhanced staggered animation */}
         <div className="container mx-auto px-6 py-24 relative z-10 h-full flex items-center">
           <motion.div
             initial="hidden"
@@ -143,7 +156,7 @@ export default function Home() {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
+                  transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] },
                 },
               }}
             >
@@ -158,7 +171,7 @@ export default function Home() {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
+                  transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] },
                 },
               }}
             >
@@ -172,7 +185,7 @@ export default function Home() {
                 visible: {
                   opacity: 1,
                   y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
+                  transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] },
                 },
               }}
             >
@@ -192,8 +205,8 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Image Indicator Dots with enhanced animations */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-10">
+        {/* Enhanced Image Indicator Dots with animations */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 z-20">
           {heroImages.map((_, index) => (
             <motion.button
               key={index}
@@ -204,7 +217,10 @@ export default function Home() {
                   currentHeroImage === index
                     ? "rgba(255, 255, 255, 1)"
                     : "rgba(255, 255, 255, 0.5)",
-                scale: currentHeroImage === index ? 1.25 : 1,
+                scale: currentHeroImage === index ? 1.3 : 1,
+                boxShadow: currentHeroImage === index 
+                  ? "0 0 8px 2px rgba(255, 255, 255, 0.5)" 
+                  : "none",
               }}
               whileHover={{
                 backgroundColor:
@@ -213,7 +229,7 @@ export default function Home() {
                     : "rgba(255, 255, 255, 0.7)",
                 scale: 1.2,
               }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
               onClick={() => handleImageChange(index)}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -294,7 +310,7 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <div className="absolute inset-0 bg-gradient-to-r from-spice-primary/20 to-transparent"></div>
                 <img
-                  src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/about_us.jpg"
+                  src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744912464/Business_App/ezjrvfh9lnlkni9lei8w.jpg"
                   alt="About Briskwell International"
                   className="w-full h-[500px] object-cover"
                 />

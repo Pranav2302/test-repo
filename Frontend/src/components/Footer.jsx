@@ -1,28 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LOGO from "../assets/BRISKWELLINTERNATIONLOGO.png";
 
 export default function Footer() {
   return (
     <footer className="bg-spice-dark text-white">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-1">
-            <h3 className="font-display text-xl font-bold mb-4">
-              BRISKWELL INTERNATIONAL
-            </h3>
-            <p className="text-spice-secondary mb-4 font-body">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+          {/* Company Info with Logo - ENLARGED */}
+          <div className="col-span-1 md:col-span-1 flex flex-col items-start">
+            {/* Increased logo size and adjusted margins */}
+            <div className="mb-6 w-full flex justify-start">
+              <img 
+                src={LOGO} 
+                alt="Briskwell International Logo" 
+                className="w-[240px] h-auto" // Increased size from 180px to 240px
+              />
+            </div>
+            <p className="text-spice-secondary mb-6 font-body text-base">
               Premium exporters of fine spices, sugar, and traditional products
               from India to the world.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-5 mt-2"> {/* Increased spacing between icons */}
               <a
                 href="#"
                 aria-label="Facebook"
-                className="text-white hover:text-spice-secondary"
+                className="text-white hover:text-spice-secondary transition-all transform hover:scale-110"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-7 h-7" // Increased size from 6 to 7
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -37,10 +43,10 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="text-white hover:text-spice-secondary"
+                className="text-white hover:text-spice-secondary transition-all transform hover:scale-110"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-7 h-7" // Increased size
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -55,10 +61,10 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="LinkedIn"
-                className="text-white hover:text-spice-secondary"
+                className="text-white hover:text-spice-secondary transition-all transform hover:scale-110"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-7 h-7" // Increased size
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -68,16 +74,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-display text-lg font-bold mb-4 text-spice-secondary">
+          {/* Quick Links - Better spacing */}
+          <div className="mt-4 md:mt-0">
+            <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Quick Links
             </h3>
-            <ul className="space-y-2 font-body">
+            <ul className="space-y-3 font-body text-base"> {/* Increased spacing */}
               <li>
                 <Link
                   to="/"
-                  className="hover:text-spice-secondary transition-colors"
+                  className="hover:text-spice-secondary transition-colors inline-block"
                 >
                   Home
                 </Link>
@@ -85,7 +91,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/aboutus"
-                  className="hover:text-spice-secondary transition-colors"
+                  className="hover:text-spice-secondary transition-colors inline-block"
                 >
                   About Us
                 </Link>
@@ -93,7 +99,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/products"
-                  className="hover:text-spice-secondary transition-colors"
+                  className="hover:text-spice-secondary transition-colors inline-block"
                 >
                   Products
                 </Link>
@@ -101,7 +107,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/certification"
-                  className="hover:text-spice-secondary transition-colors"
+                  className="hover:text-spice-secondary transition-colors inline-block"
                 >
                   Certifications
                 </Link>
@@ -109,7 +115,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/gallery"
-                  className="hover:text-spice-secondary transition-colors"
+                  className="hover:text-spice-secondary transition-colors inline-block"
                 >
                   Gallery
                 </Link>
@@ -117,49 +123,58 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
-
-          <div>
-            <h3 class="font-display text-lg font-bold mb-4 text-spice-secondary ">
+           {/* Contact Info - Improved layout */}
+           <div className="mt-4 md:mt-0">
+            <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Contact Information
             </h3>
-            <p>
-              <h2>
-                Office Location: <br />
-                A602, Lotus Sanskruti, bldg 2, Malawalenager 2, Mukai chowk,
-                Ravet- Kiwale,pune-412101.
-              </h2>
-            </p>
+            
+            <div className="space-y-4"> {/* Added vertical spacing between sections */}
+              <div>
+                <h4 className="font-semibold mb-2">Office Location:</h4>
+                <p className="text-white/90 leading-relaxed">
+                  A602, Lotus Sanskruti, bldg 2, Malawalenager 2, Mukai chowk,
+                  Ravet- Kiwale, pune-412101.
+                </p>
+              </div>
 
-            <div className="space-y-1 text-bold">
-              <h1>Get a Quote : </h1>
-              <a
-                href="tel:+918600150891"
-                className="block text-white/80 hover:text-spice-secondary transition-colors"
-              >
-                +91 9922990829
-              </a>
-            </div>
-            <div>
-              <h2>Email: </h2>
-              <a
-                href="mailto:sales@globefirmexports.com"
-                className="text-white/80 hover:text-spice-secondary transition-colors"
-              >
-                info@briskwellinternational.com briskwellinternational@gmail.com
-              </a>
+              <div>
+                <h4 className="font-semibold mb-2">Get a Quote:</h4>
+                <a
+                  href="tel:+919922990829"
+                  className="block text-white/90 hover:text-spice-secondary transition-colors"
+                >
+                  +91 9922990829
+                </a>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold mb-2">Email:</h4>
+                <a
+                  href="mailto:info@briskwellinternational.com"
+                  className="block text-white/90 hover:text-spice-secondary transition-colors mb-1"
+                >
+                  info@briskwellinternational.com
+                </a>
+                <a
+                  href="mailto:briskwellinternational@gmail.com"
+                  className="block text-white/90 hover:text-spice-secondary transition-colors"
+                >
+                  briskwellinternational@gmail.com
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Find us here */}
-          <div>
-            <h3 className="font-display text-lg font-bold mb-4 text-spice-secondary">
+          {/* Find us here - Fixed map ratio */}
+          <div className="mt-4 md:mt-0">
+            <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Find us here
             </h3>
 
-            {/* Map */}
-            <div className="relative h-[250px] w-full rounded-lg overflow-hidden shadow-md mb-6">
-              <div className="absolute inset-0 bg-gradient-to-b from-spice-primary/10 to-transparent z-10" />
+            {/* Map - Added higher resolution */}
+            <div className="relative h-[220px] w-full rounded-lg overflow-hidden shadow-lg mb-6 border border-white/10">
+              <div className="absolute inset-0 bg-gradient-to-b from-spice-primary/20 to-transparent z-10" />
               <iframe
                 title="Office Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.803957381615!2d72.8270832!3d19.0467798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDAyJzQ4LjQiTiA3MsKwNDknMzcuNSJF!5e0!3m2!1sen!2sin!4v1651234567890!5m2!1sen!2sin"
@@ -171,8 +186,9 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Copyright section - enhanced */}
         <div className="mt-12 border-t border-spice-secondary/30 pt-8 text-center font-body">
-          <p>
+          <p className="text-white/80">
             © {new Date().getFullYear()} Briskwell International. All rights
             reserved.
           </p>

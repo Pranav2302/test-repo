@@ -8,7 +8,7 @@ export default function Certification() {
       title: "ISO 9001:2015",
       description: "Quality Management System Certification",
       image:
-        "https://images.unsplash.com/photo-1634128221889-82ed6eebfc3?q=80&w=2070&auto=format&fit=crop",
+        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303071/Business_App/achxp9ucdda2ajbjeygp.jpg",
       additionalInfo: "International Standard for Quality Management",
     },
     {
@@ -40,13 +40,13 @@ export default function Certification() {
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section with Background Image */}
-      <section className="relative h-[60vh] overflow-hidden">
+      <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744639795/Business_App/p845aqpjlzzc3ya5adaw.jpg"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
+          <div className="absolute inset-0 " />
         </div>
 
         <div className="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
@@ -99,7 +99,7 @@ export default function Certification() {
             genuinity and consistency in the market.
           </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-4xl mx-auto space-y-8">
             {certificates.map((cert, index) => (
               <motion.div
                 key={cert.id}
@@ -108,11 +108,8 @@ export default function Certification() {
                 transition={{ delay: index * 0.1 }}
                 className="group relative"
               >
-                {/* Card Glow Effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl blur opacity-20 group-hover:opacity-30 transition duration-300" />
-
                 {/* Card Content */}
-                <div className="relative bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-xl hover:border-blue-300/30 transition-all duration-300">
+                <div className="relative bg-white/10 backdrop-blur-sm border border-white/10 p-2 rounded-xl hover:border-blue-300/30 transition-all duration-300">
                   <div className="aspect-[4/3] overflow-hidden rounded-lg mb-6 relative">
                     <img
                       src={cert.image}

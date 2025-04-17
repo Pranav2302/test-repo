@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import Logo from "../assets/Logo.png";
-import LanguageSwitcher from "./LanguageSwitcher"; // Import the language switcher
-import { useTranslation } from 'react-i18next'; // Import useTranslation
+import LOGO from "../assets/BRISKWELL_INTERNATION.png";
+import LanguageSwitcher from "./LanguageSwitcher"; 
+import { useTranslation } from 'react-i18next';
 
 // Navigation items
 const NavLinks = React.memo(({ items, location, hovered, setHovered, scrolled }) => {
@@ -40,27 +40,23 @@ export default function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
   const location = useLocation();
-  const { t } = useTranslation(); // Add this to translate text
+  const { t } = useTranslation();
 
-  // Update navItems to use translations
   const navItems = [
     { name: t('navbar.home'), link: "/" },
     { name: t('navbar.aboutUs'), link: "/aboutus" },
     { name: t('navbar.products'), link: "/products" },
-    { name: t('navbar.brochure'), link: "/brochure" },
+    { name: t('navbar.services'), link: "/services" },
     { name: t('navbar.certification'), link: "/certification" },
     { name: t('navbar.gallery'), link: "/gallery" },
     { name: t('navbar.contactUs'), link: "/contactus" },
   ];
 
-  // Use scroll ratio for smoother transitions
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // Calculate a ratio between 0 and 1 for smoother transitions
     const newRatio = Math.min(1, Math.max(0, latest / 100));
     setScrollRatio(newRatio);
   });
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
@@ -77,46 +73,49 @@ export default function NavbarComponent() {
       ref={ref}
       className="fixed inset-x-0 top-0 z-50 w-full"
     >
-      {/* Desktop Navigation */}
-      <div className="mx-auto px-4 lg:px-8">
+      <div className="mx-auto px-4 lg:px-8 w-full">
+        {/* Desktop Navigation */}
         <motion.div
-          animate={{
-            backdropFilter: `blur(${8 + scrollRatio * 4}px)`,
-            backgroundColor: `rgba(255, 255, 255, ${scrollRatio * 0.1})`,
-            boxShadow: scrollRatio > 0.6 
-              ? "0 8px 30px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 102, 204, 0.1)" 
-              : "none",
-            padding: `${1.5 - scrollRatio * 0.75}rem 2rem`,
-            borderRadius: `${scrollRatio * 1}rem`,
-            width: `${100 - scrollRatio * 5}%`,
-            marginTop: `${scrollRatio * 0.75}rem`,
-            border: scrollRatio > 0.6
-              ? "1px solid rgba(255, 255, 255, 0.3)"
-              : "1px solid rgba(255, 255, 255, 0)"
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 30,
-          }}
-          className="hidden lg:flex justify-between items-center"
-        >
-          {/* Logo */}
+  animate={{
+    backdropFilter: `blur(${8 + scrollRatio * 4}px)`,
+    backgroundColor: `rgba(255, 255, 255, ${0.1 + scrollRatio * 0.2})`,
+    boxShadow: scrollRatio > 0.6 
+      ? "0 8px 30px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 102, 204, 0.1)" 
+      : "none",
+    padding: `${1.25 - scrollRatio * 0.5}rem 2rem`,
+    borderRadius: `${scrollRatio * 1}rem`,
+    marginTop: `${scrollRatio * 0.5}rem`,
+    border: scrollRatio > 0.6
+      ? "1px solid rgba(255, 255, 255, 0.3)"
+      : "1px solid rgba(255, 255, 255, 0)"
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 260,
+    damping: 30,
+  }}
+  className="hidden lg:flex justify-between items-center h-full min-h-[64px]"
+>
           <Link
             to="/"
             className="flex items-center space-x-3 z-20 relative"
           >
-            <img 
-              src={Logo} 
+            <motion.img 
+              src={LOGO} 
               alt="Briskwell Logo" 
-              className="h-10 w-10 rounded-full object-cover" 
+              animate={{
+                height: `${Math.max(55, 70 - scrollRatio * 20)}px`,
+                width: 'auto',
+                transition: { duration: 0.3 }
+              }}
+              className="object-contain" 
+              style={{ 
+                maxHeight: '70px',
+                minHeight: '55px'
+              }}
             />
-            <span className="font-display font-bold text-xl text-spice-primary">
-              BRISKWELL
-            </span>
           </Link>
 
-          {/* Desktop Navigation Items */}
           <nav className="flex items-center space-x-1">
             <NavLinks 
               items={navItems}
@@ -127,8 +126,8 @@ export default function NavbarComponent() {
             />
             
             <div className="flex items-center ml-4">
-  <LanguageSwitcher />
-</div>
+              <LanguageSwitcher />
+            </div>
             <Link 
               to="/contactus" 
               className={`ml-4 rounded-md px-6 py-2.5 font-body font-medium transition-all blue-gradient text-white shadow-blue-glow hover:shadow-glossy-hover`}
@@ -140,43 +139,48 @@ export default function NavbarComponent() {
 
         {/* Mobile Navigation */}
         <motion.div
-          animate={{
-            backdropFilter: `blur(${8 + scrollRatio * 4}px)`,
-            backgroundColor: isOpen 
-              ? "rgba(255, 255, 255, 0.3)"
-              : `rgba(255, 255, 255, ${scrollRatio * 0.1})`,
-            boxShadow: (scrollRatio > 0.6 || isOpen)
-              ? "0 8px 30px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 102, 204, 0.1)" 
-              : "none",
-            padding: `${1.0 - scrollRatio * 0.25}rem 1.5rem`,
-            borderRadius: `${scrollRatio * 0.75}rem`,
-            width: `${100 - scrollRatio * 5}%`,
-            marginTop: `${scrollRatio * 0.75}rem`,
-            border: (scrollRatio > 0.6 || isOpen)
-              ? "1px solid rgba(255, 255, 255, 0.3)"
-              : "1px solid rgba(255, 255, 255, 0)"
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 30,
-          }}
-          className="flex lg:hidden justify-between items-center"
-        >
-          {/* Mobile Logo */}
+  animate={{
+    backdropFilter: `blur(${8 + scrollRatio * 4}px)`,
+    backgroundColor: isOpen 
+      ? "rgba(255, 255, 255, 0.8)"
+      : `rgba(255, 255, 255, ${0.1 + scrollRatio * 0.2})`,
+    boxShadow: (scrollRatio > 0.6 || isOpen)
+      ? "0 8px 30px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 102, 204, 0.1)" 
+      : "none",
+    padding: `${0.75 - scrollRatio * 0.25}rem 1.5rem`,
+    borderRadius: `${scrollRatio * 0.75}rem`,
+    marginTop: `${scrollRatio * 0.5}rem`,
+    border: (scrollRatio > 0.6 || isOpen)
+      ? "1px solid rgba(255, 255, 255, 0.3)"
+      : "1px solid rgba(255, 255, 255, 0)"
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 260,
+    damping: 30,
+  }}
+  className="flex lg:hidden justify-between items-center h-full min-h-[64px]"
+>
           <Link
             to="/"
-            className="flex items-center space-x-2 font-display font-bold text-spice-primary"
+            className="flex items-center space-x-2"
           >
-            <img 
-              src={Logo} 
+            <motion.img 
+              src={LOGO} 
               alt="Briskwell Logo" 
-              className="h-8 w-8 rounded-full object-cover" 
+              animate={{
+                height: `${Math.max(42, 52 - scrollRatio * 15)}px`,
+                width: 'auto',
+                transition: { duration: 0.3 }
+              }}
+              className="object-contain" 
+              style={{ 
+                maxHeight: '52px',
+                minHeight: '42px'
+              }}
             />
-            <span>BRISKWELL</span>
           </Link>
 
-          {/* Mobile Menu Button */}
           <button 
             className="p-2 rounded-md text-spice-primary"
             onClick={() => setIsOpen(!isOpen)}
@@ -198,8 +202,7 @@ export default function NavbarComponent() {
           </button>
         </motion.div>
       </div>
-
-      {/* Mobile Menu (Dropdown) */}
+      
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -224,6 +227,9 @@ export default function NavbarComponent() {
                   {item.name}
                 </Link>
               ))}
+              <div className="flex justify-center my-3">
+                <LanguageSwitcher />
+              </div>
               <Link
                 to="/contactus"
                 className="block w-full mt-3 px-4 py-3 rounded-md text-base font-medium text-center text-white blue-gradient shadow-blue-glow"
