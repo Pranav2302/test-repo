@@ -304,188 +304,228 @@ export default function Gallery() {
     .slice(0, 5);
 
   return (
-    <div className="py-20 bg-gradient-to-b from-white to-blue-50 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
-            Services
-          </h1>
-          <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
-            Explore our collection of images showcasing our products,
-            facilities, and the journey from farm to global markets.
-          </p>
-        </motion.div>
-
-        {/* Animated Image Gallery - Aceternity Component */}
-        <div className="mb-16">
-          <AnimatedPhotoGallery images={featuredImages} autoplay={true} />
+    <div className="min-h-screen overflow-hidden">
+      {/* Hero Section with Background Image */}
+      <section className="relative h-[80vh] overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/yxndry7q59y8khq9ekgp.jpg"
+            className="w-full h-full object-cover"
+            alt="Services Hero"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === category
-                  ? "blue-gradient text-white shadow-blue-glow"
-                  : "bg-white border border-spice-border hover:bg-blue-50 text-spice-text"
-              }`}
+        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-6xl font-bold text-white mb-6"
             >
-              {category}
-            </button>
-          ))}
+              Our Services
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-xl text-white/90 leading-relaxed max-w-2xl"
+            >
+              Comprehensive solutions for global trade, from sourcing to
+              delivery
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="py-20 bg-gradient-to-b from-white to-blue-50 min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
+              Explore Our Services
+            </h1>
+            <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
+              Explore our collection of images showcasing our products,
+              facilities, and the journey from farm to global markets.
+            </p>
+          </motion.div>
+
+          {/* Animated Image Gallery - Aceternity Component */}
+          <div className="mb-16">
+            <AnimatedPhotoGallery images={featuredImages} autoplay={true} />
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === category
+                    ? "blue-gradient text-white shadow-blue-glow"
+                    : "bg-white border border-spice-border hover:bg-blue-50 text-spice-text"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Gallery Grid with Enhanced Hover Effects */}
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+            layout
+          >
+            <AnimatePresence>
+              {filteredImages.map((image, idx) => (
+                <motion.div
+                  key={image.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className={`relative overflow-hidden rounded-xl shadow-card group cursor-pointer`}
+                  style={{
+                    height: image.featured
+                      ? "400px"
+                      : image.tall
+                      ? "500px"
+                      : "300px",
+                    gridColumn: image.featured ? "span 2" : "span 1",
+                    gridRow: image.tall ? "span 2" : "span 1",
+                  }}
+                  onClick={() => setSelectedImage(image)}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  whileHover={{ y: -5 }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  {/* Enhanced Overlay with Aceternity-style glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    {/* Subtle glow effect on hover */}
+                    {hoveredIndex === idx && (
+                      <motion.div
+                        className="absolute inset-0 bg-blue-500/10 blur-xl"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.5 }}
+                        exit={{ opacity: 0 }}
+                      />
+                    )}
+
+                    <motion.h3
+                      className="text-xl font-bold text-white"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
+                    >
+                      {image.title}
+                    </motion.h3>
+                    <motion.p
+                      className="text-sm text-white/80"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      {image.description.substring(0, 75)}...
+                    </motion.p>
+                  </div>
+
+                  {/* Aceternity-style floating dots decoration */}
+                  {hoveredIndex === idx && (
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-5 right-5 w-3 h-3 rounded-full bg-blue-500/50 blur-sm" />
+                      <div className="absolute bottom-16 left-6 w-2 h-2 rounded-full bg-blue-300/60 blur-sm" />
+                      <div className="absolute top-1/2 right-10 w-4 h-4 rounded-full bg-blue-400/40 blur-md" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
 
-        {/* Gallery Grid with Enhanced Hover Effects */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-          layout
-        >
-          <AnimatePresence>
-            {filteredImages.map((image, idx) => (
+        {/* Image Modal with Aceternity-style Animation */}
+        <AnimatePresence>
+          {selectedImage && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+              onClick={() => setSelectedImage(null)}
+            >
               <motion.div
-                key={image.id}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                className={`relative overflow-hidden rounded-xl shadow-card group cursor-pointer`}
-                style={{
-                  height: image.featured
-                    ? "400px"
-                    : image.tall
-                    ? "500px"
-                    : "300px",
-                  gridColumn: image.featured ? "span 2" : "span 1",
-                  gridRow: image.tall ? "span 2" : "span 1",
-                }}
-                onClick={() => setSelectedImage(image)}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                whileHover={{ y: -5 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: "spring", damping: 25 }}
+                className="relative max-w-5xl w-full rounded-xl overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                {/* Background glow effect */}
+                <motion.div
+                  className="absolute inset-0 bg-blue-500/20 blur-2xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.5, 0.3] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
                 />
 
-                {/* Enhanced Overlay with Aceternity-style glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                  {/* Subtle glow effect on hover */}
-                  {hoveredIndex === idx && (
-                    <motion.div
-                      className="absolute inset-0 bg-blue-500/10 blur-xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.5 }}
-                      exit={{ opacity: 0 }}
-                    />
-                  )}
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  className="w-full h-auto object-contain max-h-[80vh] relative z-10"
+                />
 
-                  <motion.h3
-                    className="text-xl font-bold text-white"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 }}
-                  >
-                    {image.title}
-                  </motion.h3>
-                  <motion.p
-                    className="text-sm text-white/80"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    {image.description.substring(0, 75)}...
-                  </motion.p>
-                </div>
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent text-white z-20"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <h3 className="text-2xl font-bold">{selectedImage.title}</h3>
+                  <p className="text-base opacity-90">
+                    {selectedImage.description}
+                  </p>
+                </motion.div>
 
-                {/* Aceternity-style floating dots decoration */}
-                {hoveredIndex === idx && (
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-5 right-5 w-3 h-3 rounded-full bg-blue-500/50 blur-sm" />
-                    <div className="absolute bottom-16 left-6 w-2 h-2 rounded-full bg-blue-300/60 blur-sm" />
-                    <div className="absolute top-1/2 right-10 w-4 h-4 rounded-full bg-blue-400/40 blur-md" />
-                  </div>
-                )}
+                <motion.button
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/50 transition-colors z-20"
+                  onClick={() => setSelectedImage(null)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  ✕
+                </motion.button>
+
+                {/* Aceternity-style floating decoration elements */}
+                <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-blue-500/20 blur-xl" />
+                <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-blue-300/10 blur-xl" />
               </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-      </div>
-
-      {/* Image Modal with Aceternity-style Animation */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="relative max-w-5xl w-full rounded-xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Background glow effect */}
-              <motion.div
-                className="absolute inset-0 bg-blue-500/20 blur-2xl"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 0.5, 0.3] }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-
-              <img
-                src={selectedImage.src}
-                alt={selectedImage.alt}
-                className="w-full h-auto object-contain max-h-[80vh] relative z-10"
-              />
-
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent text-white z-20"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h3 className="text-2xl font-bold">{selectedImage.title}</h3>
-                <p className="text-base opacity-90">
-                  {selectedImage.description}
-                </p>
-              </motion.div>
-
-              <motion.button
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/50 transition-colors z-20"
-                onClick={() => setSelectedImage(null)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                ✕
-              </motion.button>
-
-              {/* Aceternity-style floating decoration elements */}
-              <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-blue-500/20 blur-xl" />
-              <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-blue-300/10 blur-xl" />
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

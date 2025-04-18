@@ -97,15 +97,15 @@
     "title": "What We Do",
     "subtitle": "From farm to fork, we ensure quality at every step of the supply chain",
     "sourcing": {
-      "title": "Direct Sourcing",
+      "title": "Sourcing",
       "description": "We work directly with farmers across India to source the finest agricultural products, ensuring fair compensation and sustainable practices."
     },
     "quality": {
-      "title": "Quality Control",
-      "description": "Rigorous quality checks at every step, from harvesting to packaging, ensure only the finest products reach international markets."
+      "title": "Import",
+      "description": "We bring high-quality products from around the world to local markets. We focus on reliability, quality, and building strong supplier relationships to meet customer needs."
     },
     "export": {
-      "title": "Global Export",
+      "title": "Export",
       "description": "With established networks in major markets worldwide, we ensure smooth delivery of premium Indian commodities to global customers."
     },
     "learnMore": "Learn more about our process"

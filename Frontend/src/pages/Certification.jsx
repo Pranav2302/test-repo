@@ -8,7 +8,7 @@ export default function Certification() {
       title: "ISO 9001:2015",
       description: "Quality Management System Certification",
       image:
-        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303071/Business_App/achxp9ucdda2ajbjeygp.jpg",
+        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303071/Business_App/achxp9ucdda2ajbjeyp.jpg",
       additionalInfo: "International Standard for Quality Management",
     },
     {
@@ -93,7 +93,7 @@ export default function Certification() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-grey-200 text-center mb-12 text-lg"
+            className="text-grey-200 text-center mb-12 text-lg "
           >
             We have received several awards and certificates to prove our
             genuinity and consistency in the market.

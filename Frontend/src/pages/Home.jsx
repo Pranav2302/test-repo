@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Products } from "../components/ProductCarousel";
 
 // Import local images from assets folder
-import bgImage1 from "../assets/background/bg1.jpg"; 
+import bgImage1 from "../assets/background/bg1.jpg";
 import bgImage2 from "../assets/background/bg2.jpg";
 import bgImage3 from "../assets/background/bg3.jpg";
 import bgImage4 from "../assets/background/bg4.jpg";
@@ -21,12 +21,7 @@ const Githubglobe = lazy(() =>
 const WorldMapDemo = lazy(() => import("./WorldMap"));
 
 // Cloudinary hero images array
-const heroImages = [
-  bgImage1,
-  bgImage2,
-  bgImage3,
-  bgImage4,
-];
+const heroImages = [bgImage1, bgImage2, bgImage3, bgImage4];
 
 export default function Home() {
   const { t } = useTranslation();
@@ -53,7 +48,7 @@ export default function Home() {
     initial: (direction) => ({
       opacity: 0,
       scale: direction > 0 ? 1.1 : 0.9,
-      x: direction > 0 ? '100%' : '-100%',
+      x: direction > 0 ? "100%" : "-100%",
     }),
     animate: {
       opacity: 1,
@@ -68,7 +63,7 @@ export default function Home() {
     exit: (direction) => ({
       opacity: 0,
       scale: direction > 0 ? 0.9 : 1.1,
-      x: direction > 0 ? '-100%' : '100%',
+      x: direction > 0 ? "-100%" : "100%",
       transition: {
         x: { type: "spring", stiffness: 100, damping: 20 },
         opacity: { duration: 0.8 },
@@ -79,20 +74,20 @@ export default function Home() {
   // Cross-fade animation for smoother background transitions
   const fadeVariants = {
     initial: { opacity: 0 },
-    animate: { 
+    animate: {
       opacity: 1,
-      transition: { duration: 1.2, ease: "easeInOut" }
+      transition: { duration: 1.2, ease: "easeInOut" },
     },
-    exit: { 
+    exit: {
       opacity: 0,
-      transition: { duration: 1.2, ease: "easeInOut" }
-    }
+      transition: { duration: 1.2, ease: "easeInOut" },
+    },
   };
 
   // Function to handle manual image change with direction
   const handleImageChange = (index) => {
     if (index === currentHeroImage) return;
-    
+
     setPrevHeroImage(currentHeroImage);
     setDirection(index > currentHeroImage ? 1 : -1);
     setCurrentHeroImage(index);
@@ -128,9 +123,9 @@ export default function Home() {
                   backgroundImage: `url(${heroImages[currentHeroImage]})`,
                 }}
                 initial={{ scale: 1.05 }}
-                animate={{ 
+                animate={{
                   scale: 1,
-                  transition: { duration: 6, ease: "easeOut" }
+                  transition: { duration: 6, ease: "easeOut" },
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
@@ -218,9 +213,10 @@ export default function Home() {
                     ? "rgba(255, 255, 255, 1)"
                     : "rgba(255, 255, 255, 0.5)",
                 scale: currentHeroImage === index ? 1.3 : 1,
-                boxShadow: currentHeroImage === index 
-                  ? "0 0 8px 2px rgba(255, 255, 255, 0.5)" 
-                  : "none",
+                boxShadow:
+                  currentHeroImage === index
+                    ? "0 0 8px 2px rgba(255, 255, 255, 0.5)"
+                    : "none",
               }}
               whileHover={{
                 backgroundColor:
@@ -236,7 +232,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       {/* About Us Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
@@ -346,7 +341,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Featured Products Carousel */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6 mb-8">
@@ -371,7 +365,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
       {/* Globe visualization can remain in another section if needed */}
       <section className="py-10 bg-white">
         <Suspense
@@ -382,153 +375,150 @@ export default function Home() {
           }
         >
           {/* Uncomment if you want to use the GitHub globe */}
-              {/* <Githubglobe /> */}
+          {/* <Githubglobe /> */}
         </Suspense>
       </section>
+
       {/* What we do section */}
-      <section className="py-20 bg-blue-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
+      <section className="relative py-24 bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden">
+        {/* Background decoration */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(0, 102, 204, 0.5) 1px, transparent 0)`,
+            backgroundSize: "48px 48px",
+          }}
+        />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-6 py-2 bg-blue-50 rounded-full text-blue-600 font-medium text-sm mb-4"
+            >
+              Our Services
+            </motion.div>
             <h2 className="font-display text-4xl font-bold text-spice-primary mb-4">
               {t("whatWeDo.title")}
             </h2>
             <p className="font-body text-lg text-spice-text max-w-2xl mx-auto">
               {t("whatWeDo.subtitle")}
             </p>
-          </div>
+          </motion.div>
 
+          {/* Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="relative group">
-              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-                <GlowingEffect
-                  spread={40}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                />
-                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <svg
-                      className="w-8 h-8 text-spice-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                      />
-                    </svg>
+            {/* Card 1 - Sourcing */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition-all duration-500" />
+              <div className="relative h-full rounded-2xl p-2 md:rounded-3xl md:p-3 bg-gradient-to-b from-blue-900 to-cyan-800 transform group-hover:scale-[1.02] transition-all duration-500">
+                <div className="p-8 rounded-xl h-full flex flex-col items-center text-center group backdrop-blur-sm">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <img
+                      src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744978500/Business_App/kcjwy26hr6mwdzizvbee.png"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                  <h3 className="font-display text-xl font-semibold text-gray-900 mb-4 transform group-hover:scale-105 transition-all duration-500">
                     {t("whatWeDo.sourcing.title")}
                   </h3>
-                  <p className="font-body text-spice-text">
+                  <p className="font-body text-gray-300 group-hover:text-gray-100 transition-all duration-500">
                     {t("whatWeDo.sourcing.description")}
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="relative group">
-              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-                <GlowingEffect
-                  spread={40}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                />
-                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <svg
-                      className="w-8 h-8 text-spice-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                      />
-                    </svg>
+            {/* Card 2 - Quality */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition-all duration-500" />
+              <div className="relative h-full rounded-2xl p-2 md:rounded-3xl md:p-3 bg-gradient-to-b from-blue-900 to-cyan-800 transform group-hover:scale-[1.02] transition-all duration-500">
+                <div className="p-8 rounded-xl h-full flex flex-col items-center text-center group backdrop-blur-sm">
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-full flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <img
+                      src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744978709/Business_App/hvzr4j9o4vrgk8hwhrq5.png"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                  <h3 className="font-display text-xl font-semibold text-white mb-4 transform group-hover:scale-105 transition-all duration-500">
                     {t("whatWeDo.quality.title")}
                   </h3>
-                  <p className="font-body text-spice-text">
+                  <p className="font-body text-gray-300 group-hover:text-gray-100 transition-all duration-500">
                     {t("whatWeDo.quality.description")}
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="relative group">
-              <div className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3">
-                <GlowingEffect
-                  spread={40}
-                  glow={true}
-                  disabled={false}
-                  proximity={64}
-                  inactiveZone={0.01}
-                />
-                <div className="bg-white p-6 rounded-xl shadow-card hover:shadow-glossy-hover transition-all h-full flex flex-col items-center text-center">
-                  <div className="w-16 h-16 bg-spice-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <svg
-                      className="w-8 h-8 text-spice-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
-                      />
-                    </svg>
+            </motion.div>
+            {/* Card 3 - Export */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition-all duration-500" />
+              <div className="relative h-full rounded-2xl p-2 md:rounded-3xl md:p-3 bg-gradient-to-b from-blue-900 to-cyan-800 transform group-hover:scale-[1.02] transition-all duration-500">
+                <div className="p-8 rounded-xl h-full flex flex-col items-center text-center group backdrop-blur-sm">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-full flex items-center justify-center mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <img
+                      src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744978806/Business_App/uacunexf38pukgmhwi6e.png"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-spice-primary mb-2">
+                  <h3 className="font-display text-xl font-semibold text-white mb-4 transform group-hover:scale-105 transition-all duration-500">
                     {t("whatWeDo.export.title")}
                   </h3>
-                  <p className="font-body text-spice-text">
+                  <p className="font-body text-gray-300 group-hover:text-gray-100 transition-all duration-500">
                     {t("whatWeDo.export.description")}
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="mt-16 text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="mt-16 text-center"
+          >
             <Link
               to="/aboutUs"
-              className="inline-flex items-center gap-2 text-spice-primary hover:text-spice-secondary font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 text-blue-600 hover:text-blue-700 font-medium transition-colors group"
             >
               {t("whatWeDo.learnMore")}
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
+              <span className="transform group-hover:translate-x-1 transition-transform">
+                →
+              </span>
             </Link>
-          </div>
+          </motion.div>
         </div>
+        {/* Decorative floating dots */}
+        <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-blue-500/10 blur-xl" />
+        <div className="absolute bottom-10 left-10 w-32 h-32 rounded-full bg-cyan-500/10 blur-xl" />
       </section>
-
       {/* Global Reach Section - Globe Visualization */}
       <section className="py-10 bg-white">
         <div className="container mx-auto px-6">
@@ -550,11 +540,10 @@ export default function Home() {
               </div>
             }
           >
-                  <WorldMapDemo />
+            <WorldMapDemo />
           </Suspense>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-spice-primary to-spice-accent">
         <div className="container mx-auto px-6 text-center">
@@ -572,7 +561,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
       {/* Certificates Section */}
       <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-6">
