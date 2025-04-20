@@ -36,28 +36,34 @@ const IconArrowRight = () => (
   </svg>
 );
 
-// Custom card hover effect component
-const HoverCardEffect = ({ children, className = "" }) => {
+// Custom service card component with hover effects
+const ServiceCard = ({ icon, title, description, className = "" }) => {
   return (
     <div
-      className={`group relative w-full overflow-hidden rounded-xl bg-white shadow-card ${className}`}
+      className={`group relative w-full overflow-hidden rounded-xl bg-white shadow-card hover:shadow-xl transition-all duration-300 ${className}`}
     >
-      <div className="absolute -inset-px rounded-xl bg-gradient-to-b from-blue-100 to-blue-50 opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
-      <div className="relative p-4">{children}</div>
+      <div className="absolute -inset-px rounded-xl bg-gradient-to-b from-blue-100/50 to-blue-50/50 opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
+      <div className="relative p-6">
+        <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+          <span className="text-3xl">{icon}</span>
+        </div>
+        <h3 className="text-xl font-bold text-spice-primary mb-3">{title}</h3>
+        <p className="text-spice-text">{description}</p>
+      </div>
     </div>
   );
 };
 
-// Animated Testimonials Component adapted from aceternity
-const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
+// Animated featured service component
+const AnimatedFeatureService = ({ services, autoplay = false }) => {
   const [active, setActive] = useState(0);
 
   const handleNext = () => {
-    setActive((prev) => (prev + 1) % images.length);
+    setActive((prev) => (prev + 1) % services.length);
   };
 
   const handlePrev = () => {
-    setActive((prev) => (prev - 1 + images.length) % images.length);
+    setActive((prev) => (prev - 1 + services.length) % services.length);
   };
 
   const isActive = (index) => {
@@ -78,15 +84,15 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 font-sans antialiased">
       <h2 className="font-display text-3xl font-bold text-spice-primary text-center mb-8">
-        Featured Highlights
+        Our Featured Services
       </h2>
       <div className="relative grid grid-cols-1 gap-6 md:gap-20 md:grid-cols-2">
         <div>
           <div className="relative h-80 md:h-96 w-full">
             <AnimatePresence>
-              {images.map((image, index) => (
+              {services.map((service, index) => (
                 <motion.div
-                  key={image.src}
+                  key={service.src}
                   initial={{
                     opacity: 0,
                     scale: 0.9,
@@ -98,7 +104,7 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
                     scale: isActive(index) ? 1 : 0.95,
                     z: isActive(index) ? 0 : -100,
                     rotate: isActive(index) ? 0 : randomRotateY(),
-                    zIndex: isActive(index) ? 40 : images.length + 2 - index,
+                    zIndex: isActive(index) ? 40 : services.length + 2 - index,
                     y: isActive(index) ? [0, -20, 0] : 0,
                   }}
                   exit={{
@@ -114,8 +120,8 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
                   className="absolute inset-0 origin-bottom"
                 >
                   <img
-                    src={image.src}
-                    alt={image.title}
+                    src={service.src}
+                    alt={service.title}
                     className="h-full w-full rounded-3xl object-cover object-center shadow-lg"
                     draggable={false}
                   />
@@ -146,11 +152,13 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
             }}
           >
             <h3 className="text-2xl font-bold text-spice-primary">
-              {images[active].title}
+              {services[active].title}
             </h3>
-            <p className="text-sm text-spice-text">{images[active].category}</p>
+            <p className="text-sm text-blue-600 font-medium">
+              {services[active].category}
+            </p>
             <motion.p className="mt-8 text-lg text-spice-text">
-              {images[active].description.split(" ").map((word, index) => (
+              {services[active].description.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
                   initial={{
@@ -196,112 +204,178 @@ const AnimatedPhotoGallery = ({ images, autoplay = false }) => {
   );
 };
 
-export default function Gallery() {
-  // Define gallery categories
-  const categories = ["All", "Products", "Facilities", "Events", "Team"];
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedImage, setSelectedImage] = useState(null);
+export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // Sample gallery images (using the existing images)
-  const galleryImages = [
+  // Main service categories
+  const serviceCategories = [
+    "All", 
+    "Sea Freight", 
+    "Air Freight", 
+    "Customs", 
+    "Consulting"
+  ];
+  
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  // Featured service data
+  const featuredServices = [
     {
       id: 1,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106327/Business_App/s1jlgk648cotphznkfww.jpg",
-      alt: "Sugar Production",
-      title: "Premium Sugar Products",
+      src: "https://images.unsplash.com/photo-1577236544674-ef8d301a5456", // Replace with your Cloudinary URL
+      alt: "Freight Forwarding",
+      title: "Freight Forwarding Solutions",
+      category: "Global Logistics",
       description:
-        "Our refined sugar manufacturing process ensures the highest quality product with optimal taste and purity. Each batch is carefully processed using modern technology while maintaining traditional quality standards.",
-      category: "Products",
+        "Our comprehensive freight forwarding services ensure your cargo reaches its destination efficiently and cost-effectively. With our extensive global network, we handle all aspects of your shipping needs from pickup to delivery, providing real-time tracking and customs documentation.",
       featured: true,
     },
     {
       id: 2,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/qtpnhox07urfme1torrk.jpg",
-      alt: "Jaggery",
-      title: "Organic Jaggery",
+      src: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7", // Replace with your Cloudinary URL
+      alt: "Customs Clearance",
+      title: "Customs Clearance Expertise",
+      category: "Import/Export",
       description:
-        "Traditional jaggery production methods combined with organic farming practices create a nutrient-rich natural sweetener that preserves all the essential minerals and goodness of sugarcane.",
-      category: "Products",
-    },
-    {
-      id: 3,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/yxndry7q59y8khq9ekgp.jpg",
-      alt: "Facility",
-      title: "Processing Facility",
-      description:
-        "Our state-of-the-art processing facility combines modern technology with traditional wisdom to create products that meet international quality standards while maintaining authenticity and nutritional value.",
-      category: "Facilities",
-      tall: true,
-    },
-    {
-      id: 4,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/fl_preserve_transparency/v1744104890/spices_x73w3x.jpg",
-      alt: "Spices",
-      title: "Premium Spice Collection",
-      description:
-        "Authentic Indian spices sourced directly from farms across the country's most renowned growing regions. Each spice is carefully selected, processed and packaged to preserve its aroma and flavor.",
-      category: "Products",
-    },
-    {
-      id: 5,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106328/Business_App/c1iuwp2tvucc3f4epvxj.jpg",
-      alt: "Rice",
-      title: "Basmati Rice",
-      description:
-        "Premium long-grain basmati rice grown in the foothills of the Himalayas, known for its distinctive aroma and taste. Our basmati rice undergoes stringent quality checks before reaching global markets.",
-      category: "Products",
-    },
-    {
-      id: 6,
-      src: "https://images.unsplash.com/photo-1577493340887-b7bfff550145?ixlib=rb-4.0.3",
-      alt: "Team",
-      title: "Our Team",
-      description:
-        "The dedicated people behind Briskwell International work tirelessly to ensure quality at every step of the supply chain. Our team combines decades of experience with innovative approaches to deliver excellence.",
-      category: "Team",
-    },
-    {
-      id: 7,
-      src: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?ixlib=rb-4.0.3",
-      alt: "Farming",
-      title: "Sustainable Farming",
-      description:
-        "Working with local farmers for sustainable agriculture is a cornerstone of our business philosophy. We believe in fair trade practices that benefit both the farmers and the environment.",
-      category: "Events",
+        "Navigate the complexities of international trade with our expert customs clearance services. Our team of licensed customs brokers ensures compliance with all regulations, handles documentation, and manages tariff classifications to facilitate smooth border crossings for your goods.",
       featured: true,
     },
     {
-      id: 8,
-      src: "https://images.unsplash.com/photo-1606914469725-e398d2f1d7ee?ixlib=rb-4.0.3",
-      alt: "Packaging",
-      title: "Quality Packaging",
+      id: 3,
+      src: "https://images.unsplash.com/photo-1571942676516-0ee76ab39327", // Replace with your Cloudinary URL
+      alt: "Sea Export",
+      title: "Sea Export & Import",
+      category: "Ocean Freight",
       description:
-        "Modern packaging facility ensuring product freshness and extended shelf life while maintaining eco-friendly standards. Our packaging solutions are designed to preserve flavor and quality.",
-      category: "Facilities",
+        "Whether you need full container load (FCL) or less than container load (LCL) shipping solutions, our sea freight services connect you to major ports worldwide. We optimize routes, manage carrier relationships, and ensure competitive rates for your ocean logistics needs.",
+      featured: true,
     },
     {
-      id: 9,
-      src: "https://images.unsplash.com/photo-1596978847924-a7efd7d51fea?ixlib=rb-4.0.3",
-      alt: "Global Shipping",
-      title: "Global Distribution",
+      id: 4,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128768/Business_App/uvwysq4okj1meu423zar.jpg", 
+      alt: "Air Freight",
+      title: "Air Export & Import",
+      category: "Air Freight",
       description:
-        "Shipping our products worldwide with care involves sophisticated logistics and quality control systems. We ensure that our products reach customers in perfect condition regardless of destination.",
-      category: "Events",
-      tall: true,
+        "When time is of the essence, our air freight services provide expedited shipping solutions to and from destinations worldwide. We work with major airlines to secure cargo space, manage special handling requirements, and ensure your time-sensitive shipments arrive on schedule.",
+      featured: true,
     },
   ];
 
-  // Filter images based on selected category
-  const filteredImages =
-    activeCategory === "All"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeCategory);
+  // Detailed service offerings
+  const serviceOfferings = [
+    {
+      id: 1,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745129228/Business_App/cox1m6pyuls6ph5puu9v.jpg", // Replace with your Cloudinary URL
+      alt: "Freight Forwarding",
+      title: "Freight Forwarding",
+      description:
+        "End-to-end logistics solutions for your global shipping needs, with dedicated route optimization, carrier selection, and comprehensive cargo management.",
+      icon: "🚢",
+      category: "Sea Freight",
+      details: [
+        "Door-to-door delivery coordination",
+        "Carrier negotiation and booking",
+        "Route optimization and planning",
+        "Cargo insurance arrangements",
+        "Electronic tracking and visibility"
+      ]
+    },
+    {
+      id: 2,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128928/Business_App/trdcq6p0ezuyrxbvho0t.jpg", 
+      alt: "Customs Clearance",
+      title: "Customs Clearance",
+      description:
+        "Expert handling of all customs documentation and regulatory compliance to ensure smooth border crossings and prevent costly delays.",
+      icon: "📝",
+      category: "Customs",
+      details: [
+        "Customs documentation preparation",
+        "Tariff classification assistance",
+        "Regulatory compliance management",
+        "Duty and tax calculation",
+        "Customs bond facilitation"
+      ],
+      tall: true
+    },
+    {
+      id: 3,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745143033/Business_App/dc5y2ufvwnch55huxkb8.jpg", // Replace with your Cloudinary URL
+      alt: "Export Import Consultation",
+      title: "Export Import Consultation",
+      description:
+        "Strategic guidance on international trade regulations, market entry strategies, and optimization of your global supply chain.",
+      icon: "💼",
+      category: "Consulting",
+      details: [
+        "Trade compliance assessments",
+        "Import/export license guidance",
+        "Market entry strategy development",
+        "Supply chain optimization",
+        "Trade agreement benefits analysis"
+      ]
+    },
+    {
+      id: 4,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745129224/Business_App/systt7jxckvyfewgjry9.jpg",
+      alt: "International Parcel",
+      title: "International Parcel",
+      description:
+        "Reliable and cost-effective solutions for smaller shipments and parcels with global tracking capabilities and express options.",
+      icon: "📦",
+      category: "Air Freight",
+      details: [
+        "Express and standard delivery options",
+        "Packaging guidelines and solutions",
+        "International tracking systems",
+        "Last-mile delivery coordination",
+        "Returns management"
+      ]
+    },
+    {
+      id: 5,
+      src: "https://images.unsplash.com/photo-1578575437130-527eed3abbec", // Replace with your Cloudinary URL
+      alt: "Sea Export/Import",
+      title: "Sea Export/Import (FCL/LCL)",
+      description:
+        "Comprehensive ocean freight services for both full container loads (FCL) and less than container loads (LCL) to destinations worldwide.",
+      icon: "🚢",
+      category: "Sea Freight",
+      details: [
+        "FCL and LCL shipping solutions",
+        "Container management and tracking",
+        "Port-to-port and door-to-door options",
+        "Specialized equipment for oversized cargo",
+        "Transshipment coordination"
+      ],
+      featured: true
+    },
+    {
+      id: 6,
+      src: "https://images.unsplash.com/photo-1519666336592-e225a99dcd2f", // Replace with your Cloudinary URL
+      alt: "Air Export/Import",
+      title: "Air Export/Import",
+      description:
+        "Fast and reliable air freight solutions for time-sensitive cargo with flexible scheduling and specialized handling capabilities.",
+      icon: "✈️",
+      category: "Air Freight",
+      details: [
+        "Express and consolidated air freight",
+        "Charter services for urgent shipments",
+        "Temperature-controlled transport",
+        "Dangerous goods handling",
+        "Airport-to-airport and door-to-door options"
+      ],
+      tall: true
+    },
+  ];
 
-  // Select featured images for the animated gallery
-  const featuredImages = galleryImages
-    .filter((img) => img.featured || img.tall)
-    .slice(0, 5);
+  // Filter services based on selected category
+  const filteredServices = activeCategory === "All"
+    ? serviceOfferings
+    : serviceOfferings.filter(service => service.category === activeCategory);
 
   return (
     <div className="min-h-screen overflow-hidden">
@@ -309,71 +383,204 @@ export default function Gallery() {
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/yxndry7q59y8khq9ekgp.jpg"
-            className="w-full h-full object-cover"
-            alt="Services Hero"
+            src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7" // Replace with your Cloudinary URL
+            className="w-full h-full object-cover object-center"
+            alt="Logistics Services"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
 
-        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
+        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 mb-6"
+            >
+              Global Logistics Partner
+            </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl md:text-6xl font-bold text-white mb-6"
             >
-              Our Services
+              Comprehensive <span className="text-blue-400">Logistics</span> Services
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.4 }}
               className="text-xl text-white/90 leading-relaxed max-w-2xl"
             >
-              Comprehensive solutions for global trade, from sourcing to
-              delivery
+              From freight forwarding to customs clearance, we offer end-to-end
+              solutions to streamline your global trade operations.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8 flex flex-wrap gap-4"
+            >
+              <a
+                href="#services"
+                className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all hover:-translate-y-1 duration-300 shadow-md"
+              >
+                Explore Services
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3 bg-white/10 backdrop-blur-sm text-white rounded-md hover:bg-white/20 transition-all hover:-translate-y-1 duration-300"
+              >
+                Request Quote
+              </a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <div className="py-20 bg-gradient-to-b from-white to-blue-50 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Service Overview Section */}
+      <section className="py-20 bg-white" id="services">
+        <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
-              Explore Our Services
-            </h1>
+            <span className="inline-block px-4 py-2 bg-blue-50 rounded-full text-blue-600 font-medium text-sm mb-4">
+              Our Expertise
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
+              Comprehensive Logistics Solutions
+            </h2>
             <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
-              Explore our collection of images showcasing our products,
-              facilities, and the journey from farm to global markets.
+              We offer a complete range of freight forwarding and customs clearance
+              services to simplify your international trade operations.
             </p>
           </motion.div>
 
-          {/* Animated Image Gallery - Aceternity Component */}
-          <div className="mb-16">
-            <AnimatedPhotoGallery images={featuredImages} autoplay={true} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <ServiceCard
+                icon="🚢"
+                title="Sea Export/Import (FCL/LCL)"
+                description="Comprehensive ocean freight services for both full container loads and consolidation shipments with competitive rates and reliable scheduling."
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <ServiceCard
+                icon="✈️"
+                title="Air Export/Import"
+                description="Expedited air freight solutions for time-sensitive cargo with flexible scheduling options and specialized handling capabilities."
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <ServiceCard
+                icon="📝"
+                title="Customs Clearance"
+                description="Expert handling of all customs documentation and regulatory compliance to ensure smooth border crossings and prevent delays."
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <ServiceCard
+                icon="🚚"
+                title="Freight Forwarding"
+                description="End-to-end logistics solutions with route optimization, carrier selection, and comprehensive cargo management services."
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
+              <ServiceCard
+                icon="📦"
+                title="International Parcel"
+                description="Reliable and cost-effective solutions for smaller shipments and parcels with global tracking capabilities and express options."
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <ServiceCard
+                icon="💼"
+                title="Export Import Consultation"
+                description="Strategic guidance on international trade regulations, market entry strategies, and optimization of your global supply chain."
+              />
+            </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Featured Services Section */}
+      <section className="py-16 bg-blue-50/50">
+        <AnimatedFeatureService services={featuredServices} autoplay={true} />
+      </section>
+
+      {/* Detailed Service Gallery */}
+      <div className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-display text-4xl font-bold text-spice-primary mb-4">
+              Explore Our Service Portfolio
+            </h2>
+            <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
+              Dive deeper into our comprehensive range of logistics services designed
+              to meet your global shipping requirements.
+            </p>
+          </motion.div>
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
-            {categories.map((category) => (
+            {serviceCategories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeCategory === category
-                    ? "blue-gradient text-white shadow-blue-glow"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-md"
                     : "bg-white border border-spice-border hover:bg-blue-50 text-spice-text"
                 }`}
               >
@@ -384,13 +591,13 @@ export default function Gallery() {
 
           {/* Gallery Grid with Enhanced Hover Effects */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             layout
           >
             <AnimatePresence>
-              {filteredImages.map((image, idx) => (
+              {filteredServices.map((service, idx) => (
                 <motion.div
-                  key={image.id}
+                  key={service.id}
                   layout
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -398,28 +605,33 @@ export default function Gallery() {
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className={`relative overflow-hidden rounded-xl shadow-card group cursor-pointer`}
                   style={{
-                    height: image.featured
+                    height: service.featured
                       ? "400px"
-                      : image.tall
+                      : service.tall
                       ? "500px"
-                      : "300px",
-                    gridColumn: image.featured ? "span 2" : "span 1",
-                    gridRow: image.tall ? "span 2" : "span 1",
+                      : "350px",
+                    gridColumn: service.featured ? "span 2" : "span 1",
+                    gridRow: service.tall ? "span 2" : "span 1",
                   }}
-                  onClick={() => setSelectedImage(image)}
+                  onClick={() => setSelectedService(service)}
                   onMouseEnter={() => setHoveredIndex(idx)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   whileHover={{ y: -5 }}
                 >
                   <img
-                    src={image.src}
-                    alt={image.alt}
+                    src={service.src}
+                    alt={service.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  {/* Enhanced Overlay with Aceternity-style glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                    {/* Subtle glow effect on hover */}
+                  {/* Enhanced Overlay with Focus Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    {/* Service icon in overlay */}
+                    <div className="absolute top-5 right-5 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <span className="text-2xl">{service.icon}</span>
+                    </div>
+                    
+                    {/* Center card is fully visible, others get darkened */}
                     {hoveredIndex === idx && (
                       <motion.div
                         className="absolute inset-0 bg-blue-500/10 blur-xl"
@@ -435,24 +647,32 @@ export default function Gallery() {
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1 }}
                     >
-                      {image.title}
+                      {service.title}
                     </motion.h3>
                     <motion.p
-                      className="text-sm text-white/80"
+                      className="text-white/80"
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
                     >
-                      {image.description.substring(0, 75)}...
+                      {service.description}
                     </motion.p>
+                    
+                    {/* Click for details indicator */}
+                    <div className="mt-4 flex items-center gap-2 text-blue-300 text-sm">
+                      <span>Click for details</span>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
 
-                  {/* Aceternity-style floating dots decoration */}
+                  {/* Decorative elements */}
                   {hoveredIndex === idx && (
                     <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute top-5 right-5 w-3 h-3 rounded-full bg-blue-500/50 blur-sm" />
-                      <div className="absolute bottom-16 left-6 w-2 h-2 rounded-full bg-blue-300/60 blur-sm" />
-                      <div className="absolute top-1/2 right-10 w-4 h-4 rounded-full bg-blue-400/40 blur-md" />
+                      <div className="absolute top-5 left-5 w-3 h-3 rounded-full bg-blue-500/50 blur-sm" />
+                      <div className="absolute bottom-16 right-6 w-2 h-2 rounded-full bg-blue-300/60 blur-sm" />
+                      <div className="absolute top-1/2 left-10 w-4 h-4 rounded-full bg-blue-400/40 blur-md" />
                     </div>
                   )}
                 </motion.div>
@@ -461,71 +681,122 @@ export default function Gallery() {
           </motion.div>
         </div>
 
-        {/* Image Modal with Aceternity-style Animation */}
+        {/* Service Detail Modal */}
         <AnimatePresence>
-          {selectedImage && (
+          {selectedService && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-              onClick={() => setSelectedImage(null)}
+              onClick={() => setSelectedService(null)}
             >
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 transition={{ type: "spring", damping: 25 }}
-                className="relative max-w-5xl w-full rounded-xl overflow-hidden"
+                className="relative max-w-4xl w-full rounded-xl overflow-hidden bg-white"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Background glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-blue-500/20 blur-2xl"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.5, 0.3] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="h-60 md:h-auto relative">
+                    <img
+                      src={selectedService.src}
+                      alt={selectedService.alt}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent md:bg-gradient-to-t md:from-black/50 md:to-transparent" />
+                    <div className="absolute top-4 right-4 md:top-auto md:bottom-4 md:right-4">
+                      <span className="inline-block px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
+                        {selectedService.category}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
+                        {selectedService.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-spice-primary">
+                        {selectedService.title}
+                      </h3>
+                    </div>
+                    
+                    <p className="text-spice-text mb-6">
+                      {selectedService.description}
+                    </p>
+                    
+                    <div className="space-y-3">
+                      <h4 className="font-medium text-spice-primary">Service Includes:</h4>
+                      <ul className="space-y-2">
+                        {selectedService.details.map((detail, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-spice-text">{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div className="mt-8 flex gap-4">
+                      <button
+                        onClick={() => window.location.href = '#contact'}
+                        className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                      >
+                        Request Quote
+                      </button>
+                      <button
+                        onClick={() => setSelectedService(null)}
+                        className="px-5 py-2 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
-                <img
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  className="w-full h-auto object-contain max-h-[80vh] relative z-10"
-                />
-
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent text-white z-20"
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <h3 className="text-2xl font-bold">{selectedImage.title}</h3>
-                  <p className="text-base opacity-90">
-                    {selectedImage.description}
-                  </p>
-                </motion.div>
-
-                <motion.button
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/50 transition-colors z-20"
-                  onClick={() => setSelectedImage(null)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                <button
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/50 transition-colors md:bg-white/30 md:text-gray-700"
+                  onClick={() => setSelectedService(null)}
                 >
                   ✕
-                </motion.button>
-
-                {/* Aceternity-style floating decoration elements */}
-                <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-blue-500/20 blur-xl" />
-                <div className="absolute bottom-20 right-10 w-32 h-32 rounded-full bg-blue-300/10 blur-xl" />
+                </button>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-500" id="contact">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Simplify Your Global Logistics?
+          </h2>
+          <p className="font-body text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            Get in touch with our team of experts to discuss your specific requirements
+            and receive a customized logistics solution.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contactus"
+              className="inline-block rounded-md bg-white px-8 py-3 font-body font-bold text-blue-600 hover:bg-blue-50 transition-all shadow-md hover:-translate-y-0.5"
+            >
+              Request a Quote
+            </a>
+            <a
+              href="/contactus"
+              className="inline-block rounded-md bg-transparent border border-white px-8 py-3 font-body font-bold text-white hover:bg-white/10 transition-all"
+            >
+              Contact Sales Team
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
