@@ -380,7 +380,7 @@ export default function Products() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
             onClick={() => setSelectedProduct(null)}
           >
             <motion.div
@@ -388,7 +388,7 @@ export default function Products() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25 }}
-              className="relative max-w-5xl w-full rounded-xl overflow-hidden"
+              className="relative max-w-5xl w-full rounded-xl overflow-hidden max-h-[90vh] my-4"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Background glow effect */}
@@ -399,67 +399,72 @@ export default function Products() {
                 transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
               />
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white rounded-xl relative z-10 p-6">
-                <img 
-                  src={selectedProduct.src} 
-                  alt={selectedProduct.alt}
-                  className="w-full h-auto object-cover rounded-lg"
-                />
-                
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-spice-primary mb-3">
-                      {selectedProduct.title}
-                    </h2>
-                    <p className="text-spice-text mb-6">
-                      {selectedProduct.description}
-                    </p>
-                    
-                    {/* Product details */}
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-spice-primary mt-1 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="font-medium text-spice-dark">Quality Assurance</h4>
-                          <p className="text-sm text-spice-text">All our products undergo rigorous quality checks</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-spice-primary mt-1 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="font-medium text-spice-dark">Origin</h4>
-                          <p className="text-sm text-spice-text">Sourced from premium growing regions in India</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-spice-primary mt-1 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="font-medium text-spice-dark">Packaging</h4>
-                          <p className="text-sm text-spice-text">Available in various packaging options for bulk and retail</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-8">
-                    <button
-                      onClick={() => window.location.href = '/contactus'}
-                      className="w-full rounded-md bg-gradient-to-b from-spice-primary to-spice-accent px-8 py-3 font-body font-medium text-white transition-all shadow-md hover:shadow-blue-glow hover:-translate-y-0.5"
-                    >
-                      {t('products.modal.inquire')}
-                    </button>
-                  </div>
-                </div>
-              </div>
-              
+              {/* Close button - positioned absolutely at the top-right and ensure it's always visible */}
               <motion.button
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/30 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/50 transition-colors z-20"
+                className="absolute top-2 right-2 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 rounded-full bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/70 transition-colors z-30 shadow-lg"
                 onClick={() => setSelectedProduct(null)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
                 ✕
               </motion.button>
+              
+              {/* Content with improved layout for mobile */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 bg-white rounded-xl relative z-10 p-4 md:p-6 overflow-y-auto">
+                {/* Image with controlled height on mobile */}
+                <div className="h-64 md:h-auto overflow-hidden rounded-lg">
+                  <img 
+                    src={selectedProduct.src} 
+                    alt={selectedProduct.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <h2 className="text-xl md:text-3xl font-bold text-spice-primary mb-2 md:mb-3 pr-8">
+                      {selectedProduct.title}
+                    </h2>
+                    <p className="text-sm md:text-base text-spice-text mb-4 md:mb-6">
+                      {selectedProduct.description}
+                    </p>
+                    
+                    {/* Product details - simplified for mobile */}
+                    <div className="space-y-2 md:space-y-4">
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-spice-primary mt-1 flex-shrink-0"></div>
+                        <div>
+                          <h4 className="font-medium text-spice-dark text-sm md:text-base">Quality Assurance</h4>
+                          <p className="text-xs md:text-sm text-spice-text">All our products undergo rigorous quality checks</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-spice-primary mt-1 flex-shrink-0"></div>
+                        <div>
+                          <h4 className="font-medium text-spice-dark text-sm md:text-base">Origin</h4>
+                          <p className="text-xs md:text-sm text-spice-text">Sourced from premium growing regions in India</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-spice-primary mt-1 flex-shrink-0"></div>
+                        <div>
+                          <h4 className="font-medium text-spice-dark text-sm md:text-base">Packaging</h4>
+                          <p className="text-xs md:text-sm text-spice-text">Available in various packaging options for bulk and retail</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 md:mt-8">
+                  <button
+  onClick={() => window.location.href = '/contactus'}
+  className="w-full rounded-md bg-white px-4 md:px-8 py-2 md:py-3 font-body font-medium text-black transition-all shadow-md hover:shadow-blue-glow hover:-translate-y-0.5 text-sm md:text-base"
+>
+  Inquiry
+</button>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}

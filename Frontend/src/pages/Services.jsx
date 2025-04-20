@@ -223,7 +223,7 @@ export default function Services() {
   const featuredServices = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1577236544674-ef8d301a5456", // Replace with your Cloudinary URL
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745129228/Business_App/cox1m6pyuls6ph5puu9v.jpg",
       alt: "Freight Forwarding",
       title: "Freight Forwarding Solutions",
       category: "Global Logistics",
@@ -233,7 +233,7 @@ export default function Services() {
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7", // Replace with your Cloudinary URL
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128928/Business_App/trdcq6p0ezuyrxbvho0t.jpg", // Replace with your Cloudinary URL
       alt: "Customs Clearance",
       title: "Customs Clearance Expertise",
       category: "Import/Export",
@@ -336,7 +336,7 @@ export default function Services() {
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1578575437130-527eed3abbec", // Replace with your Cloudinary URL
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745150336/Business_App/ik1tkcygo4ujb7narp3z.jpg", 
       alt: "Sea Export/Import",
       title: "Sea Export/Import (FCL/LCL)",
       description:
@@ -354,7 +354,7 @@ export default function Services() {
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1519666336592-e225a99dcd2f", // Replace with your Cloudinary URL
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745150060/Business_App/l0ksnmgqoomj0swxvfqe.jpg", 
       alt: "Air Export/Import",
       title: "Air Export/Import",
       description:
