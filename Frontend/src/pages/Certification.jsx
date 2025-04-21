@@ -8,7 +8,7 @@ export default function Certification() {
       title: "ISO 9001:2015",
       description: "Quality Management System Certification",
       image:
-        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303071/Business_App/achxp9ucdda2ajbjeyp.jpg",
+        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745237171/Business_App/lsvrbssc79uehouskd3x.jpg",
       additionalInfo: "International Standard for Quality Management",
     },
     {
@@ -16,7 +16,7 @@ export default function Certification() {
       title: "HACCP",
       description: "Food Safety Management System",
       image:
-        "https://images.unsplash.com/photo-145416580406-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745237171/Business_App/lsvrbssc79uehouskd3x.jpg",
       additionalInfo: "Hazard Analysis Critical Control Point",
     },
     {
@@ -24,7 +24,7 @@ export default function Certification() {
       title: "GMP",
       description: "Good Manufacturing Practices",
       image:
-        "https://images.unsplash.com/photo-159825006458-087169a1f08d?q=80&w=2070&auto=format&fit=crop",
+        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745237171/Business_App/lsvrbssc79uehouskd3x.jpg",
       additionalInfo: "Manufacturing Quality Standards",
     },
     {
@@ -32,7 +32,7 @@ export default function Certification() {
       title: "FSSAI",
       description: "Food Safety and Standards Authority of India",
       image:
-        "https://images.unsplash.com/photo-155387752-43269d4ea984?q=80&w=2070&auto=format&fit=crop",
+        "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745237171/Business_App/lsvrbssc79uehouskd3x.jpg",
       additionalInfo: "Indian Food Safety Certification",
     },
   ];

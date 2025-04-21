@@ -15,36 +15,36 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/qtpnhox07urfme1torrk.jpg",
-      alt: "Farmers in Field",
-      title: "Our Farming Partners",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745238983/Business_App/tcsqftxegwootaxrajbq.jpg",
+      alt: "Team collaboration",
+      title: "Team collaboration",
       description:
         "Working closely with local farmers to ensure sustainable agricultural practices.",
       category: "Images",
     },
     {
       id: 2,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303071/Business_App/lke9ucjiklhaajgikvkr.jpg",
-      alt: "Harvesting Process",
-      title: "Harvest Season",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745239007/Business_App/uro8o8ksxbaonnbbmrv3.jpg",
+      alt: "Team Working",
+      title: "Training ",
       description:
         "Farmers harvesting crops using traditional and modern methods.",
       category: "Images",
     },
     {
       id: 3,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303070/Business_App/if7fmackdd34uy6guyys.jpg",
-      alt: "Organic Farming",
-      title: "Organic Cultivation",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745238968/Business_App/arz8evuwviuwxqebdcgk.jpg",
+      alt: "Team Working",
+      title: "Team Working",
       description:
         "Promoting organic farming practices for better yield and sustainability.",
       category: "Images",
     },
     {
       id: 4,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303069/Business_App/eir3jbhafkl4hthv3a8r.jpg",
-      alt: "Farmer Training",
-      title: "Farmer Education Program",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745239142/Business_App/mvubrj56mjj5xnzhlnrs.jpg",
+      alt: "Team Working",
+      title: "Team Working",
       description:
         "Regular training sessions to share modern farming techniques.",
       category: "Videos",

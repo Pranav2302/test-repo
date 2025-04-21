@@ -159,9 +159,27 @@ ${formData.message}
   };
 
   return (
-    <div className="py-24 px-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-8 text-spice-primary">{t('contactUs.title')}</h1>
+    <div className="py-16 px-4 max-w-7xl mx-auto">
+      {/* Hero Image Section */}
+      <div className="relative w-full h-[300px] md:h-[400px] mb-16 rounded-xl overflow-hidden shadow-xl">
+        <img 
+          src="https://res.cloudinary.com/doxrnqdwn/image/upload/v1745237963/Business_App/fq89xrwg7jyf6csfbzll.jpg"
+          alt="Global Trade and Logistics"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
+          {/* <div className="px-8 md:px-16 max-w-2xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              {t('contactUs.title')}
+            </h1>
+            <p className="text-white/90 text-lg md:text-xl">
+              {t('contactUs.subtitle') || "We're here to assist with all your global trade and logistics needs."}
+            </p>
+          </div> */}
+        </div>
+      </div>
       
+      {/* Rest of the page content */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="bg-white p-8 rounded-lg shadow-card border border-spice-border">
           <h2 className="text-2xl font-bold mb-6 text-spice-primary">{t('contactUs.form.title')}</h2>
@@ -240,6 +258,15 @@ ${formData.message}
                 <option value="Rice & Grains">{t('contactUs.form.inquiryTypes.riceGrains')}</option>
                 <option value="Pricing Information">{t('contactUs.form.inquiryTypes.pricing')}</option>
                 <option value="Shipping & Logistics">{t('contactUs.form.inquiryTypes.shipping')}</option>
+                
+                {/* New logistics services options with translation keys */}
+                <option value="Freight Forwarding">{t('contactUs.form.inquiryTypes.freightForwarding')}</option>
+                <option value="Custom Clearance">{t('contactUs.form.inquiryTypes.customClearance')}</option>
+                <option value="Export Import Consultation">{t('contactUs.form.inquiryTypes.exportImportConsultation')}</option>
+                <option value="International Parcel">{t('contactUs.form.inquiryTypes.internationalParcel')}</option>
+                <option value="Sea Export/Import (FCL/LCL)">{t('contactUs.form.inquiryTypes.seaExportImport')}</option>
+                <option value="Air Export/Import">{t('contactUs.form.inquiryTypes.airExportImport')}</option>
+                
                 <option value="Other">{t('contactUs.form.inquiryTypes.other')}</option>
               </select>
               {formErrors.inquiryType && (

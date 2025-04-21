@@ -160,6 +160,12 @@
         "riceGrains": "Rice & Grains",
         "pricing": "Pricing Information",
         "shipping": "Shipping & Logistics",
+        "freightForwarding": "Freight Forwarding",
+        "customClearance": "Custom Clearance",
+        "exportImportConsultation": "Export Import Consultation",
+        "internationalParcel": "International Parcel",
+        "seaExportImport": "Sea Export/Import (FCL/LCL)",
+        "airExportImport": "Air Export/Import",
         "other": "Other (Specify)"
       }
     },
@@ -167,15 +173,15 @@
       "title": "Contact Information",
       "locationTitle": "Our Location",
       "address": {
-        "line1": "123 Business Avenue",
-        "line2": "Suite 456",
-        "line3": "Mumbai, Maharashtra 400001",
-        "line4": "India"
+        "line1": "A602, Lotus Sanskruti, bldg 2,",
+        "line2": "Malawalenager 2, Mukai chowk,",
+        "line3": "Ravet- Kiwale,",
+        "line4": "Pune-412101"
       },
       "emailTitle": "Email Us",
-      "emailAddress": "info@briskwell.com",
+      "emailAddress": "info@briskwellinternational.com",
       "phoneTitle": "Call Us",
-      "phoneNumber": "+91 123 456 7890",
+      "phoneNumber": "+91 9922990892",
       "hoursTitle": "Business Hours",
       "hours": {
         "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",

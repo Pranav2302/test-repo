@@ -50,7 +50,7 @@ export default function Products() {
   const products = [
     {
       id: 1,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744901352/Business_App/zladzshxbcmlyt1t70mz.jpg",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745237584/Business_App/u1errpquxcxn4wshnin5.jpg",
       alt: "Turmeric (Haldi)",
       title: "Turmeric (Haldi)",
       description: "Essential Indian spice known for its vibrant color and medicinal properties. A staple in Indian cuisine.",

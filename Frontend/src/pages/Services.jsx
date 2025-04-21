@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 // Import icons for the animated gallery
 const IconArrowLeft = () => (
@@ -205,8 +206,15 @@ const AnimatedFeatureService = ({ services, autoplay = false }) => {
 };
 
 export default function Services() {
+  const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Function to handle navigation to contact page
+  const handleNavigateToContact = () => {
+    navigate('/contactus');
+    setSelectedService(null); // Close the modal after navigation
+  };
 
   // Main service categories
   const serviceCategories = [
@@ -413,8 +421,8 @@ export default function Services() {
               animate={{ opacity: 1, y: 0 }}
               className="text-5xl md:text-6xl font-bold text-white mb-6  "
             >
-              Comprehensive <span className="text-blue-400">Logistics</span>{" "}
-              Services
+              Logistics <span className="text-blue-400">Services</span>{" "}
+              
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -465,7 +473,7 @@ export default function Services() {
               Our Expertise
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-spice-primary mb-4">
-              Comprehensive Logistics Solutions
+              Logistics Solutions
             </h2>
             <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
               We offer a complete range of freight forwarding and customs
@@ -774,7 +782,7 @@ export default function Services() {
 
                     <div className="mt-8 flex gap-4">
                       <button
-                        onClick={() => (window.location.href = "#contact")}
+                        onClick={handleNavigateToContact}
                         className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                       >
                         Request Quote
@@ -815,19 +823,18 @@ export default function Services() {
             requirements and receive a customized logistics solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contactus"
+            <button
+              onClick={() => navigate('/contactus')}
               className="inline-block rounded-md bg-white px-8 py-3 font-body font-bold text-blue-600 hover:bg-blue-50 transition-all shadow-md hover:-translate-y-0.5"
             >
               Request a Quote
-            </a>
-            <a
-              href="/contactus"
+            </button>
+            <button
+              onClick={() => navigate('/contactus')}
               className="inline-block rounded-md bg-transparent border border-white px-8 py-3 font-body font-bold text-white hover:bg-white/10 transition-all"
-              style={{ color: "white" }} // pure black
             >
               Contact Sales Team
-            </a>
+            </button>
           </div>
         </div>
       </section>

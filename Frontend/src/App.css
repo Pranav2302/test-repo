@@ -15,9 +15,13 @@ body {
   color: #334155;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   color: #1e3a5f;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
 }
 
 a {
