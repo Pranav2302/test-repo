@@ -119,7 +119,7 @@ const AboutUs = () => {
             <h1 className="font-display text-5xl md:text-6xl font-bold mb-6 text-white">
               {/* Who are we ?{" "} */}
               <span className="text-blue-400 ">
-                Aboutus {/* Spices specialists for over a decade */}
+                About Us {/* Spices specialists for over a decade */}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl">

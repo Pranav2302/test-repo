@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlowingEffect } from "../components/ui/glowing-effect";
 import { useTranslation } from "react-i18next";
 import { Products } from "../components/ProductCarousel";
+import { BusinessDetails } from "./BusinessDetails";
 
 // Import local images from assets folder
 import bgImage1 from "../assets/background/bg1.jpg";
@@ -27,7 +28,7 @@ const heroImages = [
   // bgImage2,
   // bgImage3,
   // bgImage4,
-  
+
   // Video URL
   "https://res.cloudinary.com/doxrnqdwn/video/upload/v1744966821/Business_App/aec9jvt2oo3n8uomaxw6.mp4",
 ];
@@ -125,7 +126,7 @@ export default function Home() {
               animate="animate"
               exit="exit"
             >
-              {heroImages[currentHeroImage].includes('.mp4') ? (
+              {heroImages[currentHeroImage].includes(".mp4") ? (
                 // Video Background
                 <motion.video
                   autoPlay
@@ -134,9 +135,9 @@ export default function Home() {
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover"
                   initial={{ scale: 1.05 }}
-                  animate={{ 
+                  animate={{
                     scale: 1,
-                    transition: { duration: 6, ease: "easeOut" }
+                    transition: { duration: 6, ease: "easeOut" },
                   }}
                 >
                   <source src={heroImages[currentHeroImage]} type="video/mp4" />
@@ -150,9 +151,9 @@ export default function Home() {
                     backgroundImage: `url(${heroImages[currentHeroImage]})`,
                   }}
                   initial={{ scale: 1.05 }}
-                  animate={{ 
+                  animate={{
                     scale: 1,
-                    transition: { duration: 6, ease: "easeOut" }
+                    transition: { duration: 6, ease: "easeOut" },
                   }}
                 />
               )}
@@ -260,6 +261,10 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Business Details Section */}
+      <BusinessDetails />
+
       {/* About Us Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
