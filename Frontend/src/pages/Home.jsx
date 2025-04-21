@@ -30,7 +30,7 @@ const heroImages = [
   // bgImage4,
 
   // Video URL
-  "https://res.cloudinary.com/doxrnqdwn/video/upload/v1744966821/Business_App/aec9jvt2oo3n8uomaxw6.mp4",
+  "https://res.cloudinary.com/doxrnqdwn/video/upload/v1745218292/Business_App/ease2vezsgbdccfhws1g.mp4",
 ];
 
 export default function Home() {

@@ -210,13 +210,13 @@ export default function Services() {
 
   // Main service categories
   const serviceCategories = [
-    "All", 
-    "Sea Freight", 
-    "Air Freight", 
-    "Customs", 
-    "Consulting"
+    "All",
+    "Sea Freight",
+    "Air Freight",
+    "Customs",
+    "Consulting",
   ];
-  
+
   const [activeCategory, setActiveCategory] = useState("All");
 
   // Featured service data
@@ -253,7 +253,7 @@ export default function Services() {
     },
     {
       id: 4,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128768/Business_App/uvwysq4okj1meu423zar.jpg", 
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128768/Business_App/uvwysq4okj1meu423zar.jpg",
       alt: "Air Freight",
       title: "Air Export & Import",
       category: "Air Freight",
@@ -279,12 +279,12 @@ export default function Services() {
         "Carrier negotiation and booking",
         "Route optimization and planning",
         "Cargo insurance arrangements",
-        "Electronic tracking and visibility"
-      ]
+        "Electronic tracking and visibility",
+      ],
     },
     {
       id: 2,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128928/Business_App/trdcq6p0ezuyrxbvho0t.jpg", 
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745128928/Business_App/trdcq6p0ezuyrxbvho0t.jpg",
       alt: "Customs Clearance",
       title: "Customs Clearance",
       description:
@@ -296,9 +296,9 @@ export default function Services() {
         "Tariff classification assistance",
         "Regulatory compliance management",
         "Duty and tax calculation",
-        "Customs bond facilitation"
+        "Customs bond facilitation",
       ],
-      tall: true
+      tall: true,
     },
     {
       id: 3,
@@ -314,8 +314,8 @@ export default function Services() {
         "Import/export license guidance",
         "Market entry strategy development",
         "Supply chain optimization",
-        "Trade agreement benefits analysis"
-      ]
+        "Trade agreement benefits analysis",
+      ],
     },
     {
       id: 4,
@@ -331,12 +331,12 @@ export default function Services() {
         "Packaging guidelines and solutions",
         "International tracking systems",
         "Last-mile delivery coordination",
-        "Returns management"
-      ]
+        "Returns management",
+      ],
     },
     {
       id: 5,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745150336/Business_App/ik1tkcygo4ujb7narp3z.jpg", 
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745150336/Business_App/ik1tkcygo4ujb7narp3z.jpg",
       alt: "Sea Export/Import",
       title: "Sea Export/Import (FCL/LCL)",
       description:
@@ -348,13 +348,13 @@ export default function Services() {
         "Container management and tracking",
         "Port-to-port and door-to-door options",
         "Specialized equipment for oversized cargo",
-        "Transshipment coordination"
+        "Transshipment coordination",
       ],
-      featured: true
+      featured: true,
     },
     {
       id: 6,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745150060/Business_App/l0ksnmgqoomj0swxvfqe.jpg", 
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745150060/Business_App/l0ksnmgqoomj0swxvfqe.jpg",
       alt: "Air Export/Import",
       title: "Air Export/Import",
       description:
@@ -366,16 +366,19 @@ export default function Services() {
         "Charter services for urgent shipments",
         "Temperature-controlled transport",
         "Dangerous goods handling",
-        "Airport-to-airport and door-to-door options"
+        "Airport-to-airport and door-to-door options",
       ],
-      tall: true
+      tall: true,
     },
   ];
 
   // Filter services based on selected category
-  const filteredServices = activeCategory === "All"
-    ? serviceOfferings
-    : serviceOfferings.filter(service => service.category === activeCategory);
+  const filteredServices =
+    activeCategory === "All"
+      ? serviceOfferings
+      : serviceOfferings.filter(
+          (service) => service.category === activeCategory
+        );
 
   return (
     <div className="min-h-screen overflow-hidden">
@@ -387,10 +390,10 @@ export default function Services() {
             className="w-full h-full object-cover object-center"
             alt="Logistics Services"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent " />
         </div>
 
-        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center">
+        <div className="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -401,16 +404,17 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 mb-6"
+              className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 mb-6 "
             >
               Global Logistics Partner
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-6xl font-bold text-white mb-6"
+              className="text-5xl md:text-6xl font-bold text-white mb-6  "
             >
-              Comprehensive <span className="text-blue-400">Logistics</span> Services
+              Comprehensive <span className="text-blue-400">Logistics</span>{" "}
+              Services
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -425,17 +429,20 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap gap-4 justify-center items-center text-center"
             >
               <a
                 href="#services"
-                className="px-8 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all hover:-translate-y-1 duration-300 shadow-md"
+                className="px-8 py-3 bg-blue-600 rounded-md hover:bg-blue-700 transition-all hover:-translate-y-1 duration-300 shadow-md"
+                style={{ color: "white" }} // pure black
               >
                 Explore Services
               </a>
+
               <a
                 href="#contact"
-                className="px-8 py-3 bg-white/10 backdrop-blur-sm text-white rounded-md hover:bg-white/20 transition-all hover:-translate-y-1 duration-300"
+                className="px-8 py-3 bg-white/10 backdrop-blur-sm text-  rounded-md hover:bg-white/20 transition-all hover:-translate-y-1 duration-300"
+                style={{ color: "white" }} // pure black
               >
                 Request Quote
               </a>
@@ -461,8 +468,9 @@ export default function Services() {
               Comprehensive Logistics Solutions
             </h2>
             <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
-              We offer a complete range of freight forwarding and customs clearance
-              services to simplify your international trade operations.
+              We offer a complete range of freight forwarding and customs
+              clearance services to simplify your international trade
+              operations.
             </p>
           </motion.div>
 
@@ -567,13 +575,13 @@ export default function Services() {
               Explore Our Service Portfolio
             </h2>
             <p className="font-body text-lg text-spice-text max-w-3xl mx-auto">
-              Dive deeper into our comprehensive range of logistics services designed
-              to meet your global shipping requirements.
+              Dive deeper into our comprehensive range of logistics services
+              designed to meet your global shipping requirements.
             </p>
           </motion.div>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
+          <div className="flex flex-wrap justify-center  gap-2 md:gap-4 mb-10">
             {serviceCategories.map((category) => (
               <button
                 key={category}
@@ -627,10 +635,10 @@ export default function Services() {
                   {/* Enhanced Overlay with Focus Effect */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                     {/* Service icon in overlay */}
-                    <div className="absolute top-5 right-5 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <div className="absolute top-5 right-5 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center ">
                       <span className="text-2xl">{service.icon}</span>
                     </div>
-                    
+
                     {/* Center card is fully visible, others get darkened */}
                     {hoveredIndex === idx && (
                       <motion.div
@@ -657,12 +665,22 @@ export default function Services() {
                     >
                       {service.description}
                     </motion.p>
-                    
+
                     {/* Click for details indicator */}
                     <div className="mt-4 flex items-center gap-2 text-blue-300 text-sm">
                       <span>Click for details</span>
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -713,7 +731,7 @@ export default function Services() {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
@@ -723,28 +741,40 @@ export default function Services() {
                         {selectedService.title}
                       </h3>
                     </div>
-                    
+
                     <p className="text-spice-text mb-6">
                       {selectedService.description}
                     </p>
-                    
+
                     <div className="space-y-3">
-                      <h4 className="font-medium text-spice-primary">Service Includes:</h4>
+                      <h4 className="font-medium text-spice-primary">
+                        Service Includes:
+                      </h4>
                       <ul className="space-y-2">
                         {selectedService.details.map((detail, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <svg className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            <svg
+                              className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
                             </svg>
                             <span className="text-spice-text">{detail}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div className="mt-8 flex gap-4">
                       <button
-                        onClick={() => window.location.href = '#contact'}
+                        onClick={() => (window.location.href = "#contact")}
                         className="px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                       >
                         Request Quote
@@ -772,14 +802,17 @@ export default function Services() {
       </div>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-500" id="contact">
+      <section
+        className="py-16 bg-gradient-to-r from-blue-600 to-blue-500"
+        id="contact"
+      >
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Simplify Your Global Logistics?
           </h2>
           <p className="font-body text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Get in touch with our team of experts to discuss your specific requirements
-            and receive a customized logistics solution.
+            Get in touch with our team of experts to discuss your specific
+            requirements and receive a customized logistics solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -791,6 +824,7 @@ export default function Services() {
             <a
               href="/contactus"
               className="inline-block rounded-md bg-transparent border border-white px-8 py-3 font-body font-bold text-white hover:bg-white/10 transition-all"
+              style={{ color: "white" }} // pure black
             >
               Contact Sales Team
             </a>

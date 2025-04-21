@@ -11,17 +11,21 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-1 flex flex-col items-start">
             {/* Increased logo size and adjusted margins */}
             <div className="mb-6 w-full flex justify-start">
-              <img 
-                src={LOGO} 
-                alt="Briskwell International Logo" 
+              <img
+                src={LOGO}
+                alt="Briskwell International Logo"
                 className="w-[240px] h-auto" // Increased size from 180px to 240px
               />
             </div>
-            <p className="text-spice-secondary mb-6 font-body text-base">
-              Premium exporters of fine spices, sugar, and traditional products
-              from India to the world.
+            <p className="text-spice-secondary mb-6 font-body text-base text-black/90">
+              Briskwell International Premium exporters of fine spices and
+              authentic traditional products from India. Delivering quality,
+              purity, and rich Indian heritage to global markets with a
+              commitment to excellence.
             </p>
-            <div className="flex space-x-5 mt-2"> {/* Increased spacing between icons */}
+            <div className="flex space-x-5 mt-2">
+              {" "}
+              {/* Increased spacing between icons */}
               <a
                 href="#"
                 aria-label="Facebook"
@@ -79,7 +83,9 @@ export default function Footer() {
             <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Quick Links
             </h3>
-            <ul className="space-y-3 font-body text-base"> {/* Increased spacing */}
+            <ul className="space-y-3 font-body text-base">
+              {" "}
+              {/* Increased spacing */}
               <li>
                 <Link
                   to="/"
@@ -120,24 +126,33 @@ export default function Footer() {
                   Gallery
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/contactus"
+                  className="hover:text-spice-secondary transition-colors inline-block"
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 
-           {/* Contact Info - Improved layout */}
-           <div className="mt-4 md:mt-0">
+          {/* Contact Info - Improved layout */}
+          <div className="mt-4 md:mt-0">
             <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Contact Information
             </h3>
-            
-            <div className="space-y-4"> {/* Added vertical spacing between sections */}
+
+            <div className="space-y-4">
+              {" "}
+              {/* Added vertical spacing between sections */}
               <div>
                 <h4 className="font-semibold mb-2">Office Location:</h4>
-                <p className="text-white/90 leading-relaxed">
+                <p className="text-black/90 leading-relaxed">
                   A602, Lotus Sanskruti, bldg 2, Malawalenager 2, Mukai chowk,
-                  Ravet- Kiwale, pune-412101.
+                  Ravet- Kiwale, Pune-412101.
                 </p>
               </div>
-
               <div>
                 <h4 className="font-semibold mb-2">Get a Quote:</h4>
                 <a
@@ -147,7 +162,6 @@ export default function Footer() {
                   +91 9922990829
                 </a>
               </div>
-              
               <div>
                 <h4 className="font-semibold mb-2">Email:</h4>
                 <a
@@ -185,13 +199,26 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Copyright section - enhanced */}
-        <div className="mt-12 border-t border-spice-secondary/30 pt-8 text-center font-body">
-          <p className="text-white/80">
-            © {new Date().getFullYear()} Briskwell International. All rights
-            reserved.
-          </p>
+        {/* Copyright section with developer credits */}
+        <div className="mt-12 border-t border-spice-secondary/30 pt-8 font-body">
+          <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div>
+              <p className="text-black/80 text-left">
+                © {new Date().getFullYear()} Briskwell International. All rights
+                reserved.
+              </p>
+            </div>
+            <div className="mt-4 md:mt-0">
+              <p className="text-sm text-black/60">
+                Developed with ❤️ by{" "}
+                <a className="text-spice-secondary hover:text-spice-primary transition-colors">
+                  Prajwal Korade-Pranav Kamble
+                </a>{" "}
+                <span className="px-2">|</span>
+                <span className="text-black/60">PK</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
