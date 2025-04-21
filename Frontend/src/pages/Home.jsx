@@ -21,7 +21,16 @@ const Githubglobe = lazy(() =>
 const WorldMapDemo = lazy(() => import("./WorldMap"));
 
 // Cloudinary hero images array
-const heroImages = [bgImage1, bgImage2, bgImage3, bgImage4];
+const heroImages = [
+  // Commented photo references
+  // bgImage1,
+  // bgImage2,
+  // bgImage3,
+  // bgImage4,
+  
+  // Video URL
+  "https://res.cloudinary.com/doxrnqdwn/video/upload/v1744966821/Business_App/aec9jvt2oo3n8uomaxw6.mp4",
+];
 
 export default function Home() {
   const { t } = useTranslation();
@@ -100,12 +109,11 @@ export default function Home() {
       img.src = src;
     });
   }, []);
-
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section with Enhanced Image Carousel */}
       <section className="relative overflow-hidden bg-gradient-to-r from-white to-blue-50 h-[80vh] md:h-[90vh]">
-        {/* Dynamic Hero Image Carousel with improved animation */}
+        {/* Dynamic Hero Image/Video Carousel with improved animation */}
         <div className="absolute inset-0 overflow-hidden">
           <AnimatePresence initial={false} custom={direction} mode="crossfade">
             <motion.div
@@ -117,17 +125,37 @@ export default function Home() {
               animate="animate"
               exit="exit"
             >
-              <motion.div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${heroImages[currentHeroImage]})`,
-                }}
-                initial={{ scale: 1.05 }}
-                animate={{
-                  scale: 1,
-                  transition: { duration: 6, ease: "easeOut" },
-                }}
-              />
+              {heroImages[currentHeroImage].includes('.mp4') ? (
+                // Video Background
+                <motion.video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                  initial={{ scale: 1.05 }}
+                  animate={{ 
+                    scale: 1,
+                    transition: { duration: 6, ease: "easeOut" }
+                  }}
+                >
+                  <source src={heroImages[currentHeroImage]} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </motion.video>
+              ) : (
+                // Image Background (for when you uncomment the images)
+                <motion.div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${heroImages[currentHeroImage]})`,
+                  }}
+                  initial={{ scale: 1.05 }}
+                  animate={{ 
+                    scale: 1,
+                    transition: { duration: 6, ease: "easeOut" }
+                  }}
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
             </motion.div>
           </AnimatePresence>
