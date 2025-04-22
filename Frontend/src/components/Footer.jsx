@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-spice-dark text-white">
       <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           {/* Company Info with Logo - ENLARGED */}
           <div className="col-span-1 md:col-span-1 flex flex-col items-start">
             {/* Increased logo size and adjusted margins */}
@@ -79,11 +79,11 @@ export default function Footer() {
           </div>
 
           {/* Quick Links - Better spacing */}
-          <div className="mt-4 md:mt-0">
+          <div className="mt-2 md:mt-0 md:pl-22">
             <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Quick Links
             </h3>
-            <ul className="space-y-3 font-body text-base">
+            <ul className="space-y-1 font-body text-base">
               {" "}
               {/* Increased spacing */}
               <li>
@@ -138,12 +138,12 @@ export default function Footer() {
           </div>
 
           {/* Contact Info - Improved layout */}
-          <div className="mt-4 md:mt-0">
+          <div className="mt-2 md:mt-0">
             <h3 className="font-display text-xl font-bold mb-5 text-spice-secondary">
               Contact Information
             </h3>
 
-            <div className="space-y-4">
+            <div className="space-y-1">
               {" "}
               {/* Added vertical spacing between sections */}
               <div>

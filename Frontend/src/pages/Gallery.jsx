@@ -15,7 +15,7 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744106313/Business_App/qtpnhox07urfme1torrk.jpg",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234896/Business_App/fgwfyycfr5tdx1kg2qlh.jpg",
       alt: "Farmers in Field",
       title: "Our Farming Partners",
       description:
@@ -24,7 +24,7 @@ const Gallery = () => {
     },
     {
       id: 2,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303071/Business_App/lke9ucjiklhaajgikvkr.jpg",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234885/Business_App/komxqhoaxvyo8ad07xrb.jpg",
       alt: "Harvesting Process",
       title: "Harvest Season",
       description:
@@ -33,7 +33,7 @@ const Gallery = () => {
     },
     {
       id: 3,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303070/Business_App/if7fmackdd34uy6guyys.jpg",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234884/Business_App/cfhb9ffo3vpaqyrrhalp.jpg",
       alt: "Organic Farming",
       title: "Organic Cultivation",
       description:
@@ -42,12 +42,21 @@ const Gallery = () => {
     },
     {
       id: 4,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1744303069/Business_App/eir3jbhafkl4hthv3a8r.jpg",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234884/Business_App/wprvo8mjv0pmxbcwet3c.jpg",
       alt: "Farmer Training",
       title: "Farmer Education Program",
       description:
         "Regular training sessions to share modern farming techniques.",
-      category: "Videos",
+      category: "Images",
+    },
+    {
+      id: 5,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745235158/Business_App/dofsxe03fxf3gbbtynx5.jpg",
+      alt: "Farmer Training",
+      title: "World Of Spices",
+      description:
+        " Common spices include cinnamon, black pepper, turmeric, cumin, and cardamom. Each spice has its unique taste.",
+      category: "Images",
     },
   ];
 
