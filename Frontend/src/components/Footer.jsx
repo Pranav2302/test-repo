@@ -156,10 +156,10 @@ export default function Footer() {
               <div>
                 <h4 className="font-semibold mb-2">Get a Quote:</h4>
                 <a
-                  href="tel:+919922990829"
+                  href="tel:+9112345678"
                   className="block text-white/90 hover:text-spice-secondary transition-colors"
                 >
-                  +91 9922990829
+                  +91 123456789
                 </a>
               </div>
               <div>
