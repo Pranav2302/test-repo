@@ -203,7 +203,7 @@ ${formData.message}
               </label>
               <input
                 type="text"
-                id="name"
+                id="name" 
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
