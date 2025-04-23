@@ -4,7 +4,7 @@ export const BusinessDetails = () => {
   const details = [
     {
       title: "CEO & Founder",
-      value: "Ms. Reena V. Gole",
+      value: "Mrs. Reena Gole",
       icon: "👤",
     },
     {
@@ -14,7 +14,7 @@ export const BusinessDetails = () => {
     },
     {
       title: "Business Nature",
-      value: "Import & Export",
+      value: "Export & Import",
       icon: "🌐",
     },
   ];

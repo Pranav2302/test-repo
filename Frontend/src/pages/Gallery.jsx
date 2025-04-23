@@ -15,39 +15,48 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745238983/Business_App/tcsqftxegwootaxrajbq.jpg",
-      alt: "Team collaboration",
-      title: "Team collaboration",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234896/Business_App/fgwfyycfr5tdx1kg2qlh.jpg",
+      alt: "Farmers in Field",
+      title: "Our Farming Partners",
       description:
         "Working closely with local farmers to ensure sustainable agricultural practices.",
       category: "Images",
     },
     {
       id: 2,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745239007/Business_App/uro8o8ksxbaonnbbmrv3.jpg",
-      alt: "Team Working",
-      title: "Training ",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234885/Business_App/komxqhoaxvyo8ad07xrb.jpg",
+      alt: "Harvesting Process",
+      title: "Harvest Season",
       description:
         "Farmers harvesting crops using traditional and modern methods.",
       category: "Images",
     },
     {
       id: 3,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745238968/Business_App/arz8evuwviuwxqebdcgk.jpg",
-      alt: "Team Working",
-      title: "Team Working",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234884/Business_App/cfhb9ffo3vpaqyrrhalp.jpg",
+      alt: "Organic Farming",
+      title: "Organic Cultivation",
       description:
         "Promoting organic farming practices for better yield and sustainability.",
       category: "Images",
     },
     {
       id: 4,
-      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745239142/Business_App/mvubrj56mjj5xnzhlnrs.jpg",
-      alt: "Team Working",
-      title: "Team Working",
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745234884/Business_App/wprvo8mjv0pmxbcwet3c.jpg",
+      alt: "Farmer Training",
+      title: "Farmer Education Program",
       description:
         "Regular training sessions to share modern farming techniques.",
-      category: "Videos",
+      category: "Images",
+    },
+    {
+      id: 5,
+      src: "https://res.cloudinary.com/doxrnqdwn/image/upload/v1745235158/Business_App/dofsxe03fxf3gbbtynx5.jpg",
+      alt: "Farmer Training",
+      title: "World Of Spices",
+      description:
+        " Common spices include cinnamon, black pepper, turmeric, cumin, and cardamom. Each spice has its unique taste.",
+      category: "Images",
     },
   ];
 
